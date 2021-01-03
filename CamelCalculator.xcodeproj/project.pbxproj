@@ -13,6 +13,8 @@
 		C5C17B8925A2116100734B22 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5C17B8825A2116100734B22 /* Preview Assets.xcassets */; };
 		C5C17B9425A2116100734B22 /* CamelCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C17B9325A2116100734B22 /* CamelCalculatorTests.swift */; };
 		C5C17B9F25A2116100734B22 /* CamelCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C17B9E25A2116100734B22 /* CamelCalculatorUITests.swift */; };
+		C5C17BB025A222A100734B22 /* PersonConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C17BAF25A222A100734B22 /* PersonConfigurator.swift */; };
+		C5C17BB525A222D000734B22 /* CamelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C17BB425A222D000734B22 /* CamelModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		C5C17B9A25A2116100734B22 /* CamelCalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CamelCalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C17B9E25A2116100734B22 /* CamelCalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamelCalculatorUITests.swift; sourceTree = "<group>"; };
 		C5C17BA025A2116100734B22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5C17BAF25A222A100734B22 /* PersonConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonConfigurator.swift; sourceTree = "<group>"; };
+		C5C17BB425A222D000734B22 /* CamelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamelModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +101,11 @@
 			children = (
 				C5C17B8125A2115E00734B22 /* CamelCalculatorApp.swift */,
 				C5C17B8325A2115E00734B22 /* ContentView.swift */,
+				C5C17BAF25A222A100734B22 /* PersonConfigurator.swift */,
 				C5C17B8525A2116100734B22 /* Assets.xcassets */,
 				C5C17B8A25A2116100734B22 /* Info.plist */,
 				C5C17B8725A2116100734B22 /* Preview Content */,
+				C5C17BB425A222D000734B22 /* CamelModel.swift */,
 			);
 			path = CamelCalculator;
 			sourceTree = "<group>";
@@ -259,7 +265,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5C17BB025A222A100734B22 /* PersonConfigurator.swift in Sources */,
 				C5C17B8425A2115E00734B22 /* ContentView.swift in Sources */,
+				C5C17BB525A222D000734B22 /* CamelModel.swift in Sources */,
 				C5C17B8225A2115E00734B22 /* CamelCalculatorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,7 +355,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -402,7 +410,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
