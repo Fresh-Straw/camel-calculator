@@ -21,24 +21,57 @@ struct Person {
     var beard: Beard
     var figure: Figure
     
-    var computeValue: Int {
-        return computeValue(forAge: Int(age), andSex: sex) + computeValue(forheight: Int(height), andSex: sex) + hairColor.camelValue + hairLength.camelValue + eyeColor.camelValue + sex.getFittingValuable(male: beard, female: boobSize).camelValue + figure.camelValue
+    var camelValue: CamelValue {
+        return CamelValue(age: ageValue(age: age, sex: sex), height: computeValue(forheight: Int(height), andSex: sex), hairColor: hairColor.camelValue, hairLength: hairLength.camelValue, eyeColor: eyeColor.camelValue, extra: sex.getFittingValuable(male: beard, female: boobSize).camelValue, figure: figure.camelValue)
+    }
+    
+    private func ageValue(age: Double, sex: Sex) -> Int {
+        // If 19 is the preferred age, then maximum of:
+        // * 20-((x)-19)^2/100
+        // * (12-(x-19)^2/1000)
+        // plus
+        // * cos((x-19)/3)/2
+        
+        let preferredAge = Double(sex.preferredAge)
+        let val1 = 20.0 - pow(age - preferredAge, 2.0) / 100.0
+        let val2 = 12.0 - pow(age - preferredAge, 2.0) / 1000.0
+        let cosinus = cos((age - preferredAge) / 3.0) / 2.0
+        
+        return Int(max(val1, val2) + cosinus)
     }
     
     private func computeValue(forAge age: Int, andSex sex: Sex) -> Int {
-        return computeValue(age, max: 20, preferred: sex.preferredAge, divisor: 16)
+        return max(0, computeValue(Double(age), max: 20.5, preferred: Double(sex.preferredAge), divisor: 15))
     }
 
     private func computeValue(forheight height: Int, andSex sex: Sex) -> Int {
-        return computeValue(height, max: 18, preferred: sex.preferredHeight, divisor: 14)
+        return max(0, computeValue(Double(height), max: 18.5, preferred: Double(sex.preferredHeight), divisor: 12))
     }
 
-    private func computeValue(_ value: Int, max: Int, preferred preferredValue: Int, divisor: Int) -> Int {
+    private func computeValue(_ value: Double, max: Double, preferred preferredValue: Double, divisor: Double) -> Int {
         let xOffset = Double(value) - Double(preferredValue)
         let adjustedOffset = pow(xOffset / Double(divisor), 2)
         return Int(Double(max) - adjustedOffset)
     }
+    
+    // http://fooplot.com/
+    // Age: 20-((x)-19)^2/40 - cos(x/2)
+    // 10-((x)-19)^2/100 - cos(x/2)/2 +
+    // 10-((x)-19)^2/100 - cos(x/2)/2 + (10-(x-29)^2/1000)
+}
 
+struct CamelValue {
+    var age: Int
+    var height: Int
+    var hairColor: Int
+    var hairLength: Int
+    var eyeColor: Int
+    var extra: Int
+    var figure: Int
+    
+    var sum: Int {
+        return age + height + hairColor + hairLength + eyeColor + extra + figure
+    }
 }
 
 
