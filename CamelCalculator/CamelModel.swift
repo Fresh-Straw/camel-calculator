@@ -7,6 +7,11 @@
 
 import Foundation
 
+
+var ageRange = 0.0...120.0
+var heightRange = 120.0...220.0
+
+
 struct Person {
     static var `default` = Person(name: "Jane", sex: .female, age: 23, height: 169, hairColor: .blond, hairLength: .long, eyeColor: .blue, boobSize: BoobSize.c, beard: .mustache, figure: .sporty)
     
@@ -22,10 +27,12 @@ struct Person {
     var figure: Figure
     
     var camelValue: CamelValue {
-        return CamelValue(age: ageValue(age: age, sex: sex), height: computeValue(forheight: Int(height), andSex: sex), hairColor: hairColor.camelValue, hairLength: hairLength.camelValue, eyeColor: eyeColor.camelValue, extra: sex.getFittingValuable(male: beard, female: boobSize).camelValue, figure: figure.camelValue)
+        let specific: Valuable = sex.getFittingValuable(male: beard, female: boobSize)
+        return CamelValue(capping: sex.ageCapping(Int(age)), age: ageValue(age: age, sex: sex), height: computeValue(forheight: Int(height), andSex: sex), hairColor: hairColor.camelValue, hairLength: hairLength.camelValue, eyeColor: eyeColor.camelValue, extra: specific.camelValue, figure: figure.camelValue)
     }
     
     private func ageValue(age: Double, sex: Sex) -> Int {
+        // https://www.desmos.com/
         // If 19 is the preferred age, then maximum of:
         // * 20-((x)-19)^2/100
         // * (12-(x-19)^2/1000)
@@ -61,6 +68,7 @@ struct Person {
 }
 
 struct CamelValue {
+    var capping: Int
     var age: Int
     var height: Int
     var hairColor: Int
@@ -71,6 +79,10 @@ struct CamelValue {
     
     var sum: Int {
         return age + height + hairColor + hairLength + eyeColor + extra + figure
+    }
+    
+    var result: Int {
+        return min(sum, capping)
     }
 }
 
@@ -87,31 +99,47 @@ enum Sex: String, CaseIterable, Codable, Identifiable {
     
     var id: String { self.rawValue }
     
+    private static var femaleAgeCapping: [Double] = [0,10,40,53,76,110,90,85,70,45,34,26,23,19,16,14,12,10,8,6,5,4,3,2,1]
+    private static var maleAgeCapping: [Double] = [0,13,28,53,98,109,111,87,70,52,38,29,23,19,16,14,12,10,8,6,5,4,3,2,1]
+    
     var preferredAge: Int {
-        switch self {
-        case .female: return 19
-        case .male: return 25
-        }
+        return getFittingValuable(male: 25, female: 19)
     }
     
     var preferredHeight: Int {
-        switch self {
-        case .female: return 172
-        case .male: return 187
-        }
+        return getFittingValuable(male: 187, female: 172)
     }
     
-    func getFittingValuable(male: Valuable, female: Valuable) -> Valuable {
+    func getFittingValuable<T>(male: T, female: T) -> T {
         switch self {
         case .male: return male
         case .female: return female
         }
     }
+    
+    private var ageCapping: [Double] {
+        return getFittingValuable(male: Sex.maleAgeCapping, female: Sex.femaleAgeCapping)
+    }
+    
+    func ageCapping(_ age: Int) -> Int {
+        return Int(ceil(Sex.getSpline(ageCapping, forAge: age)))
+    }
+    
+    private static func getSpline(_ values: [Double], forAge age: Int) -> Double {
+        let t = Double(age % 5) / 5.0
+        let index = min(Int(age / 5), values.count - 4)
+        let pt0 = values[index]
+        let pt1 = values[index + 1]
+        let pt2 = values[index + 2]
+        let pt3 = values[index + 3]
+        
+        return Sex.catmullRomSpline(p0: pt0, p1: pt1, p2: pt2, p3: pt3, time: t)
+    }
+    
+    private static func catmullRomSpline(p0: Double, p1: Double, p2: Double, p3: Double, time: Double) -> Double {
+        return 0.5 * ((2.0 * p1) + (-p0 + p2) * time + (2.0 * p0 - 5.0 * p1 + 4 * p2 - p3) * time * time + (-p0 + 3.0 * p1 - 3.0 * p2 + p3) * time * time * time)
+    }
 }
-
-var ageRange = 0.0...120.0
-
-var heightRange = 120.0...220.0
 
 enum HairColor: String, Codable, CaseIterable, Identifiable, Valuable {
     case blond = "blond"
