@@ -144,9 +144,11 @@ struct PersonConfigurator: View {
                 
                 Group {
                     Text("Result").font(.title)
-                    Text("Points: \(person.camelValue.sum)")
-                    Text("Capping: \(person.camelValue.capping)")
-                    Text("Capped points: \(person.camelValue.result)")
+                    Text("Final Result: \(person.camelValue.result)")
+                        .font(.headline)
+                    Text("Raw: \(person.camelValue.uncappedSum), capping: \(person.camelValue.capping)")
+                        .font(.subheadline)
+                    
                 }
             }
             .padding()

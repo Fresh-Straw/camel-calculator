@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C5BAAE6625A50E35004A91FA /* NamesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BAAE6525A50E35004A91FA /* NamesList.swift */; };
+		C571A2C325A519E40037136D /* CamelMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C571A2C225A519E40037136D /* CamelMath.swift */; };
+		C5BAAE6625A50E35004A91FA /* PersonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BAAE6525A50E35004A91FA /* PersonList.swift */; };
 		C5BAAE6B25A515EA004A91FA /* PersonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BAAE6A25A515EA004A91FA /* PersonRow.swift */; };
 		C5C17B8225A2115E00734B22 /* CamelCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C17B8125A2115E00734B22 /* CamelCalculatorApp.swift */; };
 		C5C17B8425A2115E00734B22 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C17B8325A2115E00734B22 /* ContentView.swift */; };
@@ -37,7 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C5BAAE6525A50E35004A91FA /* NamesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesList.swift; sourceTree = "<group>"; };
+		C571A2C225A519E40037136D /* CamelMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamelMath.swift; sourceTree = "<group>"; };
+		C5BAAE6525A50E35004A91FA /* PersonList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonList.swift; sourceTree = "<group>"; };
 		C5BAAE6A25A515EA004A91FA /* PersonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRow.swift; sourceTree = "<group>"; };
 		C5C17B7E25A2115E00734B22 /* CamelCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CamelCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C17B8125A2115E00734B22 /* CamelCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamelCalculatorApp.swift; sourceTree = "<group>"; };
@@ -85,7 +87,7 @@
 			children = (
 				C5C17B8325A2115E00734B22 /* ContentView.swift */,
 				C5C17BAF25A222A100734B22 /* PersonConfigurator.swift */,
-				C5BAAE6525A50E35004A91FA /* NamesList.swift */,
+				C5BAAE6525A50E35004A91FA /* PersonList.swift */,
 				C5BAAE6A25A515EA004A91FA /* PersonRow.swift */,
 			);
 			path = Views;
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				C5C17BB425A222D000734B22 /* CamelModel.swift */,
+				C571A2C225A519E40037136D /* CamelMath.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -288,8 +291,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5C17BB025A222A100734B22 /* PersonConfigurator.swift in Sources */,
+				C571A2C325A519E40037136D /* CamelMath.swift in Sources */,
 				C5BAAE6B25A515EA004A91FA /* PersonRow.swift in Sources */,
-				C5BAAE6625A50E35004A91FA /* NamesList.swift in Sources */,
+				C5BAAE6625A50E35004A91FA /* PersonList.swift in Sources */,
 				C5C17B8425A2115E00734B22 /* ContentView.swift in Sources */,
 				C5C17BB525A222D000734B22 /* CamelModel.swift in Sources */,
 				C5C17B8225A2115E00734B22 /* CamelCalculatorApp.swift in Sources */,
