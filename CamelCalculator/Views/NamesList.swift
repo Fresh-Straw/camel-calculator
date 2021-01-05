@@ -18,10 +18,6 @@ struct NamesList: View {
                         Text("abcd")
                     }
                 }
-                .background(
-                    Image("kamel-logo")
-                        .resizable()
-                        .scaledToFill())
             }
         }
         .navigationTitle("Kamelrechner")

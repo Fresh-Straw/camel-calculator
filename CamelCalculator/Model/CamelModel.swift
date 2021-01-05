@@ -12,9 +12,11 @@ var ageRange = 0.0...120.0
 var heightRange = 120.0...220.0
 
 
-struct Person {
+struct Person: Identifiable {
     static var `default` = Person(name: "Jane", sex: .female, age: 23, height: 169, hairColor: .blond, hairLength: .long, eyeColor: .blue, boobSize: BoobSize.c, beard: .mustache, figure: .sporty)
     static var empty = Person(name: "", sex: .female, age: 1, height: 120, hairColor: .grey, hairLength: .short, eyeColor: .grey, boobSize: BoobSize.a, beard: .noBeard, figure: .thin)
+    
+    var id: String { name }
     
     var name: String
     var sex: Sex
