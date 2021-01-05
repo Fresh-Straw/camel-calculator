@@ -19,9 +19,9 @@ struct PersonConfigurator: View {
                             .bold()
                         Divider()
                         TextField("name", text: $person.name)
-                            .disableAutocorrection(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                            .disableAutocorrection(true)
                             .keyboardType(.webSearch)
-                            .textContentType(/*@START_MENU_TOKEN@*/.name/*@END_MENU_TOKEN@*/)
+                            .textContentType(.name)
                     }
                     
                     HStack {
