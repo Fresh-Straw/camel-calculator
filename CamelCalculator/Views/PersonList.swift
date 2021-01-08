@@ -10,17 +10,17 @@ import SwiftUI
 struct NamesList: View {
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Kamelrechner")
-                    .font(.title)
+            VStack(alignment: .leading) {
                 ScrollView {
                     NavigationLink(destination: PersonConfigurator(person: .empty)) {
-                        Text("abcd")
+                        Text("How many camels is your friend worth?")
+                            .padding()
+                            .border(Color.black)
                     }
                 }
             }
+            .navigationTitle("Kamelrechner")
         }
-        .navigationTitle("Kamelrechner")
     }
 }
 
