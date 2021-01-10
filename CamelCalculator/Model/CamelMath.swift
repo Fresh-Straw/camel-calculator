@@ -147,22 +147,18 @@ private var maleAgeCapping: [Double] = [0,13,28,53,98,109,111,87,70,52,38,29,23,
 
 private func computeAgeCapping(forAge age: Double, andSex sex: Sex) -> Int {
     let cappingRawValues = getFittingValuable(sex: sex, male: maleAgeCapping, female: femaleAgeCapping)
-    return Int(ceil(getSpline(cappingRawValues, forAge: age)))
+    return Int(ceil(getSpline(forValues: cappingRawValues, atPosition: age)))
 }
 
 // MARK: Freaky math
 // the spline computation for the age capping
 
-private func getSpline(_ values: [Double], forAge age: Double) -> Double {
-    let intAge = Int(age)
-    let t = Double(intAge % 5) / 5.0
-    let index = min(intAge / 5, values.count - 4)
-    let p0 = values[index]
-    let p1 = values[index + 1]
-    let p2 = values[index + 2]
-    let p3 = values[index + 3]
+private func getSpline(forValues values: [Double], atPosition position: Double) -> Double {
+    let intPosition = Int(position)
+    let t = Double(intPosition % 5) / 5.0
+    let index = min(intPosition / 5, values.count - 4)
     
-    return catmullRomSpline(p0: p0, p1: p1, p2: p2, p3: p3, time: t)
+    return catmullRomSpline(p0: values[index], p1: values[index + 1], p2: values[index + 2], p3: values[index + 3], time: t)
 }
 
 private func catmullRomSpline(p0: Double, p1: Double, p2: Double, p3: Double, time: Double) -> Double {
