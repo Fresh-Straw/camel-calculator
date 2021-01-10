@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C53C3B7B25AA22DA00FFBE1E /* PersonCreationStep1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C3B7A25AA22DA00FFBE1E /* PersonCreationStep1.swift */; };
+		C53C3B9125AA431E00FFBE1E /* PersonCreationStep2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C3B9025AA431E00FFBE1E /* PersonCreationStep2.swift */; };
 		C571A2C325A519E40037136D /* CamelMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C571A2C225A519E40037136D /* CamelMath.swift */; };
 		C5BAAE6625A50E35004A91FA /* PersonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BAAE6525A50E35004A91FA /* PersonList.swift */; };
 		C5BAAE6B25A515EA004A91FA /* PersonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BAAE6A25A515EA004A91FA /* PersonRow.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C53C3B7A25AA22DA00FFBE1E /* PersonCreationStep1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCreationStep1.swift; sourceTree = "<group>"; };
+		C53C3B9025AA431E00FFBE1E /* PersonCreationStep2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCreationStep2.swift; sourceTree = "<group>"; };
 		C571A2C225A519E40037136D /* CamelMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamelMath.swift; sourceTree = "<group>"; };
 		C5BAAE6525A50E35004A91FA /* PersonList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonList.swift; sourceTree = "<group>"; };
 		C5BAAE6A25A515EA004A91FA /* PersonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRow.swift; sourceTree = "<group>"; };
@@ -89,6 +93,8 @@
 				C5C17BAF25A222A100734B22 /* PersonConfigurator.swift */,
 				C5BAAE6525A50E35004A91FA /* PersonList.swift */,
 				C5BAAE6A25A515EA004A91FA /* PersonRow.swift */,
+				C53C3B7A25AA22DA00FFBE1E /* PersonCreationStep1.swift */,
+				C53C3B9025AA431E00FFBE1E /* PersonCreationStep2.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,10 +297,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5C17BB025A222A100734B22 /* PersonConfigurator.swift in Sources */,
+				C53C3B9125AA431E00FFBE1E /* PersonCreationStep2.swift in Sources */,
 				C571A2C325A519E40037136D /* CamelMath.swift in Sources */,
 				C5BAAE6B25A515EA004A91FA /* PersonRow.swift in Sources */,
 				C5BAAE6625A50E35004A91FA /* PersonList.swift in Sources */,
 				C5C17B8425A2115E00734B22 /* ContentView.swift in Sources */,
+				C53C3B7B25AA22DA00FFBE1E /* PersonCreationStep1.swift in Sources */,
 				C5C17BB525A222D000734B22 /* CamelModel.swift in Sources */,
 				C5C17B8225A2115E00734B22 /* CamelCalculatorApp.swift in Sources */,
 			);
@@ -466,7 +474,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.olafneumann.camel-calculator.CamelCalculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -488,7 +496,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.olafneumann.camel-calculator.CamelCalculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
