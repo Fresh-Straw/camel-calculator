@@ -16,42 +16,30 @@ struct PersonCreationStep1: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text("Tell us the name of your friend, please:")
-                TextField("What's the name?", text: $person.name)
-                    .keyboardType(.alphabet)
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    .padding()
+                // Name
+                Group {
+                    Text("Tell us the name of your friend, please:")
+                    TextField("What's the name?", text: $person.name)
+                        .keyboardType(.alphabet)
+                        .font(.title)
+                        .padding()
+                        .padding(.bottom, 20)
+                }
+                
+                // Sex
+                Group {
+                    Text("And what is the person's sex?")
+                    CustomPicker(value: $person.sex, allValues: Sex.allCases, labelProvider: {$0.rawValue})
+                    .padding(.bottom, 20)
+                }
+
+                // Age
+                SliderEditor(caption: "How old is your friend?", value: $person.age, range: ageRange)
                     .padding(.bottom, 20)
                 
-                Text("And what is the person's sex?")
-                HStack(alignment: .center) {
-                    ForEach(Sex.allCases) { sex in
-                        Button(sex.rawValue) {
-                            person.sex = sex
-                        }
-                        .font(.title)
-                        .frame(maxWidth: .infinity)
-                        .padding(10)
-                        .background(person.sex == sex ? PersonCreationStep1.pickerButtonColor : PersonCreationStep1.pickerBackgroundColor)
-                        .foregroundColor(.white)
-                        .cornerRadius(7)
-                    }
-                }
-                .frame(maxWidth: .infinity)
-                .padding(5)
-                .background(PersonCreationStep1.pickerBackgroundColor)
-                .cornerRadius(7)
-                .padding(.bottom, 20)
-
-                Text("How old is your friend?")
-                VStack(alignment: .center) {
-                    Slider(value: $person.age, in: ageRange, step: 1)
-                    Text("\(person.age, specifier: "%.0f")")
-                        .font(.headline)
-                }
-                .padding(.bottom, 20)
-                
-                NavigationLink(destination: PersonCreationStep2(person: person)) {
+                // Go to next screen
+                NavigationLink(destination: PersonCreationStep2(person: person)
+                                .navigationBarTitle(person.name)) {
                     Text("Next")
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -59,9 +47,7 @@ struct PersonCreationStep1: View {
                 }
                 
                 Spacer()
-
             }
-            .padding()
         }
         .padding()
     }

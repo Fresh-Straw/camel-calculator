@@ -14,7 +14,7 @@ struct NamesList: View {
             VStack(alignment: .leading) {
                 ScrollView {
                     NavigationLink(destination: PersonCreationStep1(person: .empty)
-                                    .navigationBarTitle("Your friend", displayMode: .inline)) {
+                                    .navigationBarTitle("About your friend", displayMode: .inline)) {
                         Text("How many camels is your friend worth?")
                             .padding()
                             .border(Color.black)

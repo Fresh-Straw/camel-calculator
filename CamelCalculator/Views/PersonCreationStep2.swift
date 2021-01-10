@@ -12,26 +12,14 @@ struct PersonCreationStep2: View {
     
     var body: some View {
         ScrollView {
-            HStack {
-                VStack{
-                Text("How high")
-                    .bold()
-                Text("\(person.height, specifier: "%.0f")")}
-                Divider()
-                Slider(value: $person.height, in: heightRange, step: 1)
-            }
+            SliderEditor(caption: "How high is \(person.name)?", value: $person.height, range: heightRange)
+                .padding(.bottom, 20)
             
-            
-            HStack {
-                Text("Hair Color")
-                    .bold()
-                Picker("hairColor", selection: $person.hairColor) {
-                    ForEach(HairColor.allCases) { color in
-                        Text(color.rawValue).tag(color)
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
+            VStack(alignment: .leading) {
+                Text("What is \(person.sex == .male ? "his" : "her") hair color?")
+                CustomPicker(value: $person.hairColor, allValues: HairColor.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
             }
+            .padding(.bottom, 20)
             
             
             HStack {
