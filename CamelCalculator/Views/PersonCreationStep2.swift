@@ -12,37 +12,39 @@ struct PersonCreationStep2: View {
     
     var body: some View {
         ScrollView {
-            SliderEditor(caption: "How high is \(person.name)?", value: $person.height, range: heightRange)
-                .padding(.bottom, 20)
-            
-            VStack(alignment: .leading) {
-                Text("What is \(person.sex == .male ? "his" : "her") hair color?")
-                CustomPicker(value: $person.hairColor, allValues: HairColor.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
-            }
+            // hair color
+            CustomPicker(caption: "What is \(person.sex == .male ? "his" : "her") hair color?", value: $person.hairColor, allValues: HairColor.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
             .padding(.bottom, 20)
             
+            // hair length
+            CustomPicker(caption: "How long is \(person.name)'s hair?", value: $person.hairLength, allValues: HairLength.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
+            .padding(.bottom, 20)
             
-            HStack {
-                Text("Hair Length")
-                    .bold()
-                Picker("hairLength", selection: $person.hairLength) {
-                    ForEach(HairLength.allCases) { length in
-                        Text(length.rawValue).tag(length)
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
+            // Eye color
+            CustomPicker(caption: "Which eye color does \(person.name)'s have?", value: $person.eyeColor, allValues: EyeColor.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
+            .padding(.bottom, 20)
+            
+            // Eye color
+            CustomPicker(caption: person.sex == .male ? "How does he look?" : "How does she look?", value: $person.figure, allValues: Figure.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
+            .padding(.bottom, 20)
+            
+            // Sex specific question
+            switch person.sex {
+            case .male: CustomPicker(caption: "What kind of beard does he have?", value: $person.beard, allValues: Beard.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
+                .padding(.bottom, 20)
+            case .female: CustomPicker(caption: "How big are her boobs?", value: $person.boobSize, allValues: BoobSize.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
+                .padding(.bottom, 20)
             }
             
-            HStack {
-                Text("Eye Color")
-                    .bold()
-                Picker("eyeColor", selection: $person.eyeColor) {
-                    ForEach(EyeColor.allCases) { color in
-                        Text(color.rawValue).tag(color)
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
+            // Go to next screen
+            NavigationLink(destination: PersonCreationStep2(person: person)
+                            .navigationBarTitle("\(person.name)'s result")) {
+                Text("Calculate result")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .border(Color.black)
             }
+            
         }
         .padding()
     }

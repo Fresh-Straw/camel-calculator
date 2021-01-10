@@ -22,7 +22,7 @@ struct NamesList: View {
                     
                 }
             }
-            .navigationTitle("Kamelrechner")
+            .navigationTitle("Camels")
         }
     }
 }
