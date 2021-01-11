@@ -11,6 +11,7 @@ struct PersonResult: View {
     var camelValue: CamelValue
     
     @State private var value: Int = 0
+    var returnToHome: () -> Void = {}
     
     var body: some View {
         VStack(alignment: .center) {
@@ -33,8 +34,18 @@ struct PersonResult: View {
             HStack {
                 Spacer()
                 Text("Save")
+                    .padding()
+                    .background(Color.yellow)
+                    .onTapGesture {
+                        // TODO save stuff
+                    }
                 Spacer()
                 Text("Next")
+                    .padding()
+                    .background(Color.red)
+                    .onTapGesture {
+                        returnToHome()
+                    }
                 Spacer()
             }
             

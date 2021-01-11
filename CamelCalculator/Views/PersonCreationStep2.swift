@@ -9,9 +9,10 @@ import SwiftUI
 
 struct PersonCreationStep2: View {
     @State var person: Person
+    var returnToHome: () -> Void = {}
     
-    private var pageFilled: Bool {
-        !person.name.isEmpty && person.sex != nil
+    private var isPageComplete: Bool {
+        person.hairLength != nil && person.hairColor != nil && person.eyeColor != nil && person.figure != nil && (person.beard != nil || person.boobSize != nil)
     }
     
     var body: some View {
@@ -28,7 +29,7 @@ struct PersonCreationStep2: View {
             CustomPicker(caption: "Which eye color does \(person.name)'s have?", value: $person.eyeColor, allValues: EyeColor.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
             .padding(.bottom, 20)
             
-            // Eye color
+            // Figure
             CustomPicker(caption: person.sex == .male ? "How does he look?" : "How does she look?", value: $person.figure, allValues: Figure.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
             .padding(.bottom, 20)
             
@@ -42,13 +43,16 @@ struct PersonCreationStep2: View {
             }
             
             // Go to next screen
-            NavigationLink(destination: PersonResult(camelValue: CamelValue(person: person))
-                            .navigationBarTitle("\(person.name)'s result")) {
+            NavigationLink(destination: PersonResult(camelValue: CamelValue(person: person), returnToHome: returnToHome)
+                            .navigationBarTitle("\(person.name)'s result")
+                            .navigationBarBackButtonHidden(true)
+            ) {
                 Text("Calculate result")
                     .frame(maxWidth: .infinity)
                     .padding()
                     .border(Color.black)
             }
+            .disabled(!isPageComplete)
             
         }
         .padding()

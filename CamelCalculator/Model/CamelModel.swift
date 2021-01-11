@@ -8,6 +8,8 @@
 var ageRange = 0.0...120.0
 var heightRange = 120.0...220.0
 
+// var persons: [Person] = []
+
 struct Person: Identifiable {
     static var `default` = Person(name: "Jane", sex: .female, age: 23, height: 169, hairColor: .blond, hairLength: .long, eyeColor: .blue, boobSize: BoobSize.c, beard: .mustache, figure: .sporty)
     static var empty = Person(name: "", sex: nil, age: 20, height: 160, hairColor: nil, hairLength: nil, eyeColor: nil, boobSize: nil, beard: nil, figure: nil)
