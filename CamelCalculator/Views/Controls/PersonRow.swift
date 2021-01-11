@@ -13,26 +13,23 @@ struct PersonRow: View {
     var body: some View {
         HStack(alignment: .top) {
             Text(person.name)
-                .font(.title)
+                .font(.title2)
             Spacer()
             VStack(alignment: .trailing) {
                 Text(person.sex?.rawValue ?? "-")
-                    .font(.headline)
-                Text(String(person.camelValue.result))
                     .font(.subheadline)
+                Text(String(person.camelValue.result))
+                    .font(.headline)
             }
         }
-        .padding()
+        .padding(.bottom, 10)
     }
 }
 
 struct PersonRow_Previews: PreviewProvider {
-    private static var bernd = Person(name: "Bernd Brot", sex: .male, age: 109, height: 210, hairColor: .brown, hairLength: .long, eyeColor: .blue, boobSize: .a, beard: .full, figure: .chubby)
-    private static var persons: [Person] = [.default, .empty, bernd]
-    
     static var previews: some View {
         Group {
-            ForEach(persons) { person in
+            ForEach(CamelAppModel().persons) { person in
                 PersonRow(person: person)
             }
         }

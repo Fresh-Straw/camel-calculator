@@ -12,47 +12,43 @@ struct NamesList: View {
     @State private var navigationActive = false
     
     var body: some View {
-        NavigationView {
-            VStack(alignment: .leading) {
-                NavigationLink(destination: PersonCreationStep1(person: .default)
-                                .navigationBarTitle("About your friend", displayMode: .inline), isActive: $appModel.computationActive) {
-                    Text("How many camels is your friend worth?")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.pickerBackground)
-                        .cornerRadius(7)
-                }
-                .padding(.bottom, 20)
+        VStack(alignment: .leading) {
+            Text("How many camels are your friends worth?")
+                .font(.headline)
+            NavigationLink(destination: PersonCreationStep1(person: .default)
+                            .navigationBarTitle("About your friend", displayMode: .inline), isActive: $appModel.computationActive) {
+                BigButton(caption: "Calculate Camels")
+            }
+            .padding(.bottom, 20)
 
-                
-                VStack(alignment: .leading) {
-                    Text("Previous calculations")
-                        .font(.headline)
-                    ScrollView(showsIndicators: true) {
-                        ForEach (appModel.persons) { person in
-                            NavigationLink(destination: PersonRow(person: person)
-                                            .navigationBarTitle(person.name)) {
-                                PersonRow(person: person)
-                            }
+            
+            VStack(alignment: .leading) {
+                Text("Previous calculations")
+                    .font(.headline)
+                ScrollView(showsIndicators: true) {
+                    ForEach (appModel.persons) { person in
+                        NavigationLink(destination: PersonRow(person: person)
+                                        .navigationBarTitle(person.name)) {
+                            PersonRow(person: person)
                         }
                     }
                 }
                 .padding(10)
                 .background(Color.pickerBackground)
                 .cornerRadius(7)
-                
-                
-                VStack(alignment: .center) {
-                    Text("Please consider this app as a joke.")
-                        .bold()
-                    Text("There is no serious situation in which another person, their life or their actions may be counted in camels or any other currency.")
-                        .multilineTextAlignment(.center)
-                }.foregroundColor(Color.gray)
             }
-            .padding()
-            .navigationTitle("Camel Calculator")
-            .edgesIgnoringSafeArea(.bottom)
+            
+            
+            VStack(alignment: .center) {
+                Text("Please consider this app as a joke.")
+                    .bold()
+                Text("There is no serious situation in which other persons, their life or their actions may be counted in camels or any other currency.")
+                    .multilineTextAlignment(.center)
+            }.foregroundColor(Color.gray)
         }
+        .padding()
+        .navigationTitle("Camel Calculator")
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 

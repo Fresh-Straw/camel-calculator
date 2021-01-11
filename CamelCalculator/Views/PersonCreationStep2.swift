@@ -46,10 +46,7 @@ struct PersonCreationStep2: View {
                             .navigationBarTitle("\(person.name)'s result")
                             .navigationBarBackButtonHidden(true)
             ) {
-                Text("Calculate result")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .border(Color.black)
+                BigButton(caption: "Calculate result")
             }
             .disabled(!isPageComplete)
             

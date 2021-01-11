@@ -32,7 +32,7 @@ struct CustomPicker<T: Equatable & Identifiable>: View {
                     .padding(10)
                     .background(value == v ? Color.pickerForeground : Color.pickerBackground)
                     .animation(.easeInOut)
-                    .foregroundColor(.white)
+                    .foregroundColor(.pickerFont)
                     .cornerRadius(7)
                 }
             }

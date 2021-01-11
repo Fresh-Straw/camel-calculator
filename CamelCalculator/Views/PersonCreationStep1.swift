@@ -44,10 +44,7 @@ struct PersonCreationStep1: View {
                 // Go to next screen
                 NavigationLink(destination: PersonCreationStep2(person: person)
                     .navigationBarTitle(person.name)) {
-                    Text("Next")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .border(Color.black)
+                    BigButton(caption: "Next")
                 }.disabled(!isPageComplete)
                 
                 Spacer()

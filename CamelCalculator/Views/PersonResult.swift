@@ -33,16 +33,13 @@ struct PersonResult: View {
             
             HStack {
                 Spacer()
-                Text("Save")
-                    .padding()
-                    .background(Color.yellow)
+                BigButton(caption: "Save")
+
                     .onTapGesture {
                         // TODO save stuff
                     }
                 Spacer()
-                Text("Next")
-                    .padding()
-                    .background(Color.red)
+                BigButton(caption: "Next", backgroundColor: Color.red)
                     .onTapGesture {
                         appModel.computationActive = false
                     }

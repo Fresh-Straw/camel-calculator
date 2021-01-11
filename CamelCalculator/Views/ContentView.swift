@@ -9,7 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NamesList()
+        NavigationView {
+            NamesList()
+                .accentColor(Color.applicationAccent)
+                .foregroundColor(Color.applicationForeground)
+        }
     }
 }
 
