@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        PersonConfigurator(person: Person.default)
+        NamesList()
     }
 }
 
