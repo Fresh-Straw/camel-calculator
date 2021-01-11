@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PersonCreationStep2: View {
     @State var person: Person
-    var returnToHome: () -> Void = {}
     
     private var isPageComplete: Bool {
         person.hairLength != nil && person.hairColor != nil && person.eyeColor != nil && person.figure != nil && (person.beard != nil || person.boobSize != nil)
@@ -43,7 +42,7 @@ struct PersonCreationStep2: View {
             }
             
             // Go to next screen
-            NavigationLink(destination: PersonResult(camelValue: CamelValue(person: person), returnToHome: returnToHome)
+            NavigationLink(destination: PersonResult(camelValue: CamelValue(person: person))
                             .navigationBarTitle("\(person.name)'s result")
                             .navigationBarBackButtonHidden(true)
             ) {

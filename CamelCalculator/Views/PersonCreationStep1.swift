@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PersonCreationStep1: View {
     @State var person: Person
-    var returnToHome: () -> Void = {}
     
     private var isPageComplete: Bool {
         !person.name.isEmpty && person.sex != nil
@@ -43,7 +42,7 @@ struct PersonCreationStep1: View {
                     .padding(.bottom, 20)
                 
                 // Go to next screen
-                NavigationLink(destination: PersonCreationStep2(person: person, returnToHome: returnToHome)
+                NavigationLink(destination: PersonCreationStep2(person: person)
                     .navigationBarTitle(person.name)) {
                     Text("Next")
                         .frame(maxWidth: .infinity)

@@ -8,20 +8,38 @@
 import SwiftUI
 
 struct NamesList: View {
+    @EnvironmentObject var appModel: CamelAppModel
     @State private var navigationActive = false
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                ScrollView {
-                    NavigationLink(destination: PersonCreationStep1(person: .default, returnToHome: { self.returnToHome() })
-                                    .navigationBarTitle("About your friend", displayMode: .inline), isActive: $navigationActive) {
-                        Text("How many camels is your friend worth?")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .border(Color.black)
+                NavigationLink(destination: PersonCreationStep1(person: .default)
+                                .navigationBarTitle("About your friend", displayMode: .inline), isActive: $appModel.computationActive) {
+                    Text("How many camels is your friend worth?")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.pickerBackground)
+                        .cornerRadius(7)
+                }
+                .padding(.bottom, 20)
+
+                
+                VStack(alignment: .leading) {
+                    Text("Previous calculations")
+                        .font(.headline)
+                    ScrollView(showsIndicators: true) {
+                        ForEach (appModel.persons) { person in
+                            NavigationLink(destination: PersonRow(person: person)
+                                            .navigationBarTitle(person.name)) {
+                                PersonRow(person: person)
+                            }
+                        }
                     }
                 }
+                .padding(10)
+                .background(Color.pickerBackground)
+                .cornerRadius(7)
                 
                 
                 VStack(alignment: .center) {
@@ -36,14 +54,11 @@ struct NamesList: View {
             .edgesIgnoringSafeArea(.bottom)
         }
     }
-    
-    private func returnToHome() {
-        navigationActive = false
-    }
 }
 
 struct NamesList_Previews: PreviewProvider {
     static var previews: some View {
         NamesList()
+            .environmentObject(CamelAppModel())
     }
 }

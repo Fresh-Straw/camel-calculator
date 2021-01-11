@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct PersonResult: View {
+    @EnvironmentObject var appModel: CamelAppModel
     var camelValue: CamelValue
     
     @State private var value: Int = 0
-    var returnToHome: () -> Void = {}
     
     var body: some View {
         VStack(alignment: .center) {
@@ -44,7 +44,7 @@ struct PersonResult: View {
                     .padding()
                     .background(Color.red)
                     .onTapGesture {
-                        returnToHome()
+                        appModel.computationActive = false
                     }
                 Spacer()
             }
@@ -58,5 +58,6 @@ struct PersonResult: View {
 struct PersonResult_Previews: PreviewProvider {
     static var previews: some View {
         PersonResult(camelValue: CamelValue(person: .default))
+            .environmentObject(CamelAppModel())
     }
 }

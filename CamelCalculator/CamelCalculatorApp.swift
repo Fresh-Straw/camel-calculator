@@ -12,6 +12,7 @@ struct CamelCalculatorApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(CamelAppModel())
         }
     }
 }
