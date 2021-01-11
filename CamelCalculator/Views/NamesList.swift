@@ -15,7 +15,7 @@ struct NamesList: View {
         VStack(alignment: .leading) {
             Text("How many camels are your friends worth?")
                 .font(.headline)
-            NavigationLink(destination: PersonCreationStep1(person: .default)
+            NavigationLink(destination: PersonCreationStep1(person: .empty)
                             .navigationBarTitle("About your friend", displayMode: .inline), isActive: $appModel.computationActive) {
                 BigButton(caption: "Calculate Camels")
             }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PersonResult: View {
+struct PersonResultDisplay: View {
     @EnvironmentObject var appModel: CamelAppModel
     var camelValue: CamelValue
     
@@ -52,9 +52,9 @@ struct PersonResult: View {
     }
 }
 
-struct PersonResult_Previews: PreviewProvider {
+struct PersonResultDisplay_Previews: PreviewProvider {
     static var previews: some View {
-        PersonResult(camelValue: CamelValue(person: .default))
+        PersonResultDisplay(camelValue: CamelValue(person: .default))
             .environmentObject(CamelAppModel())
     }
 }

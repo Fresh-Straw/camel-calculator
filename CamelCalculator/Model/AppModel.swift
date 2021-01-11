@@ -13,6 +13,13 @@ final class CamelAppModel : ObservableObject {
     
 }
 
+struct PersonResult {
+    let name: String
+    let date: Date
+    let sex: Sex
+    let camelResult: Int
+}
+
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
 
