@@ -37,7 +37,7 @@ struct PersonCreationStep2: View {
             }
             
             // Go to next screen
-            NavigationLink(destination: PersonCreationStep2(person: person)
+            NavigationLink(destination: PersonResult(camelValue: CamelValue(person: person))
                             .navigationBarTitle("\(person.name)'s result")) {
                 Text("Calculate result")
                     .frame(maxWidth: .infinity)

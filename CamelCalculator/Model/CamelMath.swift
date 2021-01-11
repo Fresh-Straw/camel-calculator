@@ -8,7 +8,7 @@
 import Foundation
 
 struct CamelValue {
-    private let person: Person
+    let person: Person
     var capping: Int
     var age: Int
     var height: Int
