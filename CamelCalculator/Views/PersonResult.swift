@@ -29,6 +29,13 @@ struct PersonResult: View {
                 .font(.title)
             
             Spacer()
+            
+            HStack {
+                Text("Save")
+                Text("Next")
+            }
+            
+            Spacer()
         }
         .padding()
     }

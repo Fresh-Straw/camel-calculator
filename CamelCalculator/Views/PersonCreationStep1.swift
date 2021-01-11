@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct PersonCreationStep1: View {
-    static let pickerBackgroundColor = Color(red: 75 / 255, green: 75 / 255, blue: 75 / 255)
-    static let pickerButtonColor = Color(red: 209.0 / 255, green: 152.0 / 255, blue: 105.0 / 255)
-    
     @State var person: Person
+    
+    private var pageFilled: Bool {
+        !person.name.isEmpty && person.sex != nil
+    }
 
     var body: some View {
         ScrollView {
@@ -41,13 +42,13 @@ struct PersonCreationStep1: View {
                     .padding(.bottom, 20)
                 
                 // Go to next screen
-                NavigationLink(destination: PersonCreationStep2(person: person)
-                                .navigationBarTitle(person.name)) {
+                NavigationLink(destination: pageFilled ? PersonCreationStep2(person: person)
+                    .navigationBarTitle(person.name) : nil) {
                     Text("Next")
                         .frame(maxWidth: .infinity)
                         .padding()
                         .border(Color.black)
-                }
+                }.disabled(!pageFilled)
                 
                 Spacer()
             }

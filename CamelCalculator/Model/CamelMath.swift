@@ -22,19 +22,24 @@ struct CamelValue {
         // the original person data
         self.person = person
         
+        guard person.sex != nil else {
+            fatalError("No sex given.")
+        }
+        let sex: Sex = person.sex!
+        
         // main capping value - it is not possible to get a score higher than this
-        capping = computeAgeCapping(forAge: person.age, andSex: person.sex)
+        capping = computeAgeCapping(forAge: person.age, andSex: sex)
         
         // compute the other values
-        age = getValueFor(age: person.age, sex: person.sex)
-        height = getValueFor(height: person.height, sex: person.sex)
-        hairColor = getValueFor(hairColor: person.hairColor)
-        hairLength = getValueFor(hairLength: person.hairLength)
-        eyeColor = getValueFor(eyeColor: person.eyeColor)
-        figure = getValueFor(figure: person.figure)
-        switch person.sex {
-        case .female: extra = getValueFor(boobSize: person.boobSize)
-        case .male: extra = getValueFor(beard: person.beard)
+        age = getValueFor(age: person.age, sex: sex)
+        height = getValueFor(height: person.height, sex: sex)
+        hairColor = getValueFor(hairColor: person.hairColor!)
+        hairLength = getValueFor(hairLength: person.hairLength!)
+        eyeColor = getValueFor(eyeColor: person.eyeColor!)
+        figure = getValueFor(figure: person.figure!)
+        switch sex {
+        case .female: extra = getValueFor(boobSize: person.boobSize!)
+        case .male: extra = getValueFor(beard: person.beard!)
         }
     }
     
@@ -100,7 +105,6 @@ private func getValueFor(hairLength: HairLength) -> Int {
     case .short: return 5
     case .shoulder: return 8
     case .long: return 13
-    case .veryLong: return 17
     }
 }
 

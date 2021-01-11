@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C51F87C025AB7CFD00D326A8 /* PersonResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F87BF25AB7CFD00D326A8 /* PersonResult.swift */; };
 		C51F87CA25AB7F7D00D326A8 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F87C925AB7F7D00D326A8 /* Helpers.swift */; };
+		C51F87E325AC882800D326A8 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F87E225AC882800D326A8 /* AppTheme.swift */; };
 		C53C3B7B25AA22DA00FFBE1E /* PersonCreationStep1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C3B7A25AA22DA00FFBE1E /* PersonCreationStep1.swift */; };
 		C53C3B9125AA431E00FFBE1E /* PersonCreationStep2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C3B9025AA431E00FFBE1E /* PersonCreationStep2.swift */; };
 		C571A2C325A519E40037136D /* CamelMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C571A2C225A519E40037136D /* CamelMath.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		C51F87BF25AB7CFD00D326A8 /* PersonResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonResult.swift; sourceTree = "<group>"; };
 		C51F87C925AB7F7D00D326A8 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		C51F87E225AC882800D326A8 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		C53C3B7A25AA22DA00FFBE1E /* PersonCreationStep1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCreationStep1.swift; sourceTree = "<group>"; };
 		C53C3B9025AA431E00FFBE1E /* PersonCreationStep2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCreationStep2.swift; sourceTree = "<group>"; };
 		C571A2C225A519E40037136D /* CamelMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamelMath.swift; sourceTree = "<group>"; };
@@ -94,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C51F87EA25AC891300D326A8 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				C51F87E225AC882800D326A8 /* AppTheme.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
 		C5BAAE5A25A4D084004A91FA /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +153,7 @@
 				C5C17B8125A2115E00734B22 /* CamelCalculatorApp.swift */,
 				C5BAAE5A25A4D084004A91FA /* Views */,
 				C5BAAE5E25A4D08A004A91FA /* Model */,
+				C51F87EA25AC891300D326A8 /* Design */,
 				C5C17B8525A2116100734B22 /* Assets.xcassets */,
 				C5C17B8A25A2116100734B22 /* Info.plist */,
 				C5C17B8725A2116100734B22 /* Preview Content */,
@@ -323,6 +334,7 @@
 				C5BAAE6B25A515EA004A91FA /* PersonRow.swift in Sources */,
 				C5BAAE6625A50E35004A91FA /* NamesList.swift in Sources */,
 				C5C17B8425A2115E00734B22 /* ContentView.swift in Sources */,
+				C51F87E325AC882800D326A8 /* AppTheme.swift in Sources */,
 				C5F1450125AB4E1100AA325C /* SliderEditor.swift in Sources */,
 				C51F87C025AB7CFD00D326A8 /* PersonResult.swift in Sources */,
 				C53C3B7B25AA22DA00FFBE1E /* PersonCreationStep1.swift in Sources */,
