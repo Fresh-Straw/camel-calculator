@@ -14,13 +14,18 @@ struct SliderEditor: View {
     
     var alignment = HorizontalAlignment.leading
     
+    var customAction: () -> Void = {}
+
     var body: some View {
         VStack(alignment: alignment) {
             Text(caption)
             VStack(alignment: .center) {
-                Slider(value: $value, in: range, step: 1)
                 Text("\(value, specifier: "%.0f")")
-                    .font(.headline)            }
+                    .font(.headline)
+                Slider(value: $value, in: range, step: 1, onEditingChanged: { v in
+                    customAction()
+                })
+            }
         }
     }
 }

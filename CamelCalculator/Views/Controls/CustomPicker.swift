@@ -13,13 +13,17 @@ struct CustomPicker<T: Equatable & Identifiable>: View {
     var allValues: [T]
     var labelProvider: (T) -> String
     var fontSize: Font = .title
+    var customAction: () -> Void = {}
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(caption)
             HStack(alignment: .center) {
                 ForEach(allValues) { v in
-                    Button(action: {value = v}) {
+                    Button(action: {
+                        value = v
+                        customAction()
+                    }) {
                         Text(labelProvider(v))
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }

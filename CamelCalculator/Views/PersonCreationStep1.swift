@@ -29,16 +29,16 @@ struct PersonCreationStep1: View {
                 
                 // Sex
                 Group {
-                    CustomPicker(caption: "And what is your friend's sex?", value: $person.sex, allValues: Sex.allCases, labelProvider: {$0.rawValue})
+                    CustomPicker(caption: "And what is your friend's sex?", value: $person.sex, allValues: Sex.allCases, labelProvider: {$0.rawValue}, customAction: {self.hideKeyboard()})
                     .padding(.bottom, 20)
                 }
 
                 // Age
-                SliderEditor(caption: "How old is your friend?", value: $person.age, range: ageRange)
+                SliderEditor(caption: "How old is your friend?", value: $person.age, range: ageRange, customAction: {self.hideKeyboard()})
                     .padding(.bottom, 20)
                 
                 // height
-                SliderEditor(caption: "How high is your friend?", value: $person.height, range: heightRange)
+                SliderEditor(caption: "How high is your friend?", value: $person.height, range: heightRange, customAction: {self.hideKeyboard()})
                     .padding(.bottom, 20)
                 
                 // Go to next screen

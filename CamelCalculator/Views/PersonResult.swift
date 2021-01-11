@@ -18,7 +18,7 @@ struct PersonResult: View {
             Text("The number of camels")
             Text(camelValue.person.name)
                 .font(.title)
-            Text("is worth is:")
+            Text("is worth:")
             
             Spacer()
             
@@ -31,8 +31,11 @@ struct PersonResult: View {
             Spacer()
             
             HStack {
+                Spacer()
                 Text("Save")
+                Spacer()
                 Text("Next")
+                Spacer()
             }
             
             Spacer()
