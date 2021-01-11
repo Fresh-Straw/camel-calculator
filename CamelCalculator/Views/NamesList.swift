@@ -19,7 +19,6 @@ struct NamesList: View {
                             .padding()
                             .border(Color.black)
                     }
-                    
                 }
             }
             .navigationTitle("Camels")

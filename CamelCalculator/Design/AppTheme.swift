@@ -8,7 +8,8 @@
 import SwiftUI
 
 extension Color {
-    static let pickerBackgroundColor = Color("Picker-Background")
-    static let pickerForegroundColor = Color("Picker-Foreground")
+    static let applicationBackground = Color("Application-Background")
+    static let pickerBackground = Color("Picker-Background")
+    static let pickerForeground = Color("Picker-Foreground")
 }
 

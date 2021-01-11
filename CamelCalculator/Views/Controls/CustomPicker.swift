@@ -26,7 +26,7 @@ struct CustomPicker<T: Equatable & Identifiable>: View {
                     .font(fontSize)
                     .frame(maxWidth: .infinity)
                     .padding(10)
-                    .background(value == v ? Color.pickerForegroundColor : Color.pickerBackgroundColor)
+                    .background(value == v ? Color.pickerForeground : Color.pickerBackground)
                     .animation(.easeInOut)
                     .foregroundColor(.white)
                     .cornerRadius(7)
@@ -34,7 +34,7 @@ struct CustomPicker<T: Equatable & Identifiable>: View {
             }
             .frame(maxWidth: .infinity)
             .padding(5)
-            .background(Color.pickerBackgroundColor)
+            .background(Color.pickerBackground)
             .cornerRadius(7)
         }
     }

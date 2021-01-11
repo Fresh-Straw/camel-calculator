@@ -33,13 +33,13 @@ struct CamelValue {
         // compute the other values
         age = getValueFor(age: person.age, sex: sex)
         height = getValueFor(height: person.height, sex: sex)
-        hairColor = getValueFor(hairColor: person.hairColor!)
-        hairLength = getValueFor(hairLength: person.hairLength!)
-        eyeColor = getValueFor(eyeColor: person.eyeColor!)
-        figure = getValueFor(figure: person.figure!)
+        hairColor = getValueFor(hairColor: person.hairColor)
+        hairLength = getValueFor(hairLength: person.hairLength)
+        eyeColor = getValueFor(eyeColor: person.eyeColor)
+        figure = getValueFor(figure: person.figure)
         switch sex {
-        case .female: extra = getValueFor(boobSize: person.boobSize!)
-        case .male: extra = getValueFor(beard: person.beard!)
+        case .female: extra = getValueFor(boobSize: person.boobSize)
+        case .male: extra = getValueFor(beard: person.beard)
         }
     }
     
@@ -89,59 +89,65 @@ private func computeValue(_ value: Double, max: Double, preferred preferredValue
     return Int(Double(max) - adjustedOffset)
 }
 
-private func getValueFor(hairColor: HairColor) -> Int {
+private func getValueFor(hairColor: HairColor?) -> Int {
     switch hairColor {
     case .blond: return 20
     case .brown: return 16
     case .black: return 10
     case .red: return 17
     case .grey: return 5
+    default: return 0
     }
 }
 
-private func getValueFor(hairLength: HairLength) -> Int {
+private func getValueFor(hairLength: HairLength?) -> Int {
     switch hairLength {
     case .noHair: return 2
     case .short: return 5
     case .shoulder: return 8
     case .long: return 13
+    default: return 0
     }
 }
 
-private func getValueFor(eyeColor: EyeColor) -> Int {
+private func getValueFor(eyeColor: EyeColor?) -> Int {
     switch eyeColor {
     case .blue: return 16
     case .green: return 14
     case .brown: return 10
     case .grey: return 4
+    default: return 0
     }
 }
 
-private func getValueFor(boobSize: BoobSize) -> Int {
+private func getValueFor(boobSize: BoobSize?) -> Int {
     switch boobSize {
     case .a: return 9
     case .b: return 13
     case .c: return 16
     case .d: return 15
+    default: return 0
     }
 }
 
-private func getValueFor(figure: Figure) -> Int {
+private func getValueFor(figure: Figure?) -> Int {
     switch figure {
     case .thin: return 8
     case .sporty: return 16
     case .normal: return 15
     case .chubby: return 6
     case .fat: return 4
+    default: return 0
     }
 }
 
-private func getValueFor(beard: Beard) -> Int {
+private func getValueFor(beard: Beard?) -> Int {
     switch beard {
     case .noBeard: return 7
     case .mustache: return 9
     case .threeDay: return 14
     case .full: return 12
+    default: return 0
     }
 }
 
