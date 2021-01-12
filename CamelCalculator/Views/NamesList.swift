@@ -9,12 +9,37 @@ import SwiftUI
 
 struct NamesList: View {
     @EnvironmentObject var appModel: CamelAppModel
-    @State private var navigationActive = false
     
     init(){
         UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear
         UITableView.appearance().tableFooterView = UIView()
+    }
+    
+    var sortedPersons: [Person] {
+        switch (appModel.personSortOrder) {
+        case .byNameUp: return appModel.persons.sorted(by: { (a,b) in
+            a.name.localizedLowercase < b.name.localizedLowercase
+        })
+        case .byResultDown: return appModel.persons.sorted(by: { (a,b) in
+            a.camelValue.result > b.camelValue.result
+        })
+        case .byNameDown: return appModel.persons.sorted(by: { (a,b) in
+            a.name.localizedLowercase > b.name.localizedLowercase
+        })
+        case .byResultUp: return appModel.persons.sorted(by: { (a,b) in
+            a.camelValue.result < b.camelValue.result
+        })
+        }
+    }
+    
+    func sortImage() -> Image {
+        switch appModel.personSortOrder {
+        case .byNameUp: return Image(systemName: "a.circle.fill")
+        case .byNameDown: return Image(systemName: "z.circle.fill")
+        case .byResultUp: return Image(systemName: "0.circle.fill")
+        case .byResultDown: return Image(systemName: "10.circle.fill")
+        }
     }
     
     var body: some View {
@@ -23,7 +48,7 @@ struct NamesList: View {
                 Text("How many camels are your friends worth?")
                     .font(.headline)
                 NavigationLink(destination: PersonCreationStep1(person: .empty)
-                                .navigationBarTitle("About your friend", displayMode: .inline), isActive: $appModel.computationActive) {
+                                .navigationBarTitle("About your friend", displayMode: .inline), isActive: $appModel.computationNavigationActive) {
                     BigButton(caption: "Calculate Camels")
                 }
             }
@@ -32,11 +57,22 @@ struct NamesList: View {
             Divider()
             
             VStack(alignment: .leading) {
-                Text("Previous calculations")
-                    .font(.headline)
+                HStack {
+                    Text("Previous calculations")
+                        .font(.headline)
+                    Spacer()
+                    Button(action: {
+                        appModel.personSortOrder = appModel.getNextSortOrder()
+                    }, label: {
+                        sortImage()
+                        Image(systemName: "arrow.up.arrow.down")
+                    })
+                }
                 ScrollView {
-                    ForEach (appModel.persons) { person in
-                        NavigationLink(destination: PersonResultDisplay(person: person)) {
+                    ForEach (sortedPersons) { person in
+                        NavigationLink(destination: PersonResultDisplay(person: person)
+                                        .navigationBarItems(trailing: self.createDeleteButton(for: person)), isActive: $appModel.resultNavigationActive
+                        ) {
                             PersonRow(person: person)
                                 .padding(10)
                             Divider()
@@ -57,6 +93,20 @@ struct NamesList: View {
         }
         .navigationTitle("Camel Calculator")
         .edgesIgnoringSafeArea(.bottom)
+    }
+    
+    @State private var showDeleteAlert = false
+    private func createDeleteButton(for person: Person) -> some View {
+        Button(action: {
+            self.showDeleteAlert = true
+        }, label: {
+            Image(systemName:"trash")
+        })
+        .alert(isPresented: $showDeleteAlert, content: {
+            Alert(title: Text("Delete \(person.name)?"), primaryButton: .destructive(Text("Delete")) {
+                appModel.delete(person: person)
+            }, secondaryButton: .cancel())
+        })
     }
 }
 

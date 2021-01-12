@@ -9,8 +9,34 @@ import Foundation
 
 final class CamelAppModel : ObservableObject {
     @Published var persons: [Person] = [.example1, .example2, .example3, .example4]
-    @Published var computationActive = false
+    @Published var computationNavigationActive = false
+    @Published var resultNavigationActive = false
+    @Published var personSortOrder: PersonSortOrder = .byResultDown
     
+    func finishPersonComputation(for person: Person) {
+        persons.append(person)
+        computationNavigationActive = false
+    }
+    
+    func getNextSortOrder() -> PersonSortOrder {
+        let currentIndex = PersonSortOrder.allCases.firstIndex(of: personSortOrder)!
+        let newIndex = (currentIndex + 1) % PersonSortOrder.allCases.count
+        return PersonSortOrder.allCases[newIndex]
+    }
+    
+    func delete(person: Person) {
+        // TODO
+        self.resultNavigationActive = false
+    }
+}
+
+enum PersonSortOrder: String, Codable, CaseIterable, Identifiable {
+    case byNameUp = "byNameUp"
+    case byNameDown = "byNameDown"
+    case byResultUp = "byResultUp"
+    case byResultDown = "byResultDown"
+    
+    var id: String { self.rawValue }
 }
 
 struct PersonResult {

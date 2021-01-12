@@ -51,8 +51,7 @@ struct PersonResultDisplay: View {
                 if showSaveButton {
                     BigButton(caption: "Wow, next one")
                     .onTapGesture {
-                        appModel.persons.append(person)
-                        appModel.computationActive = false
+                        appModel.finishPersonComputation(for: person)
                     }
                 }
             }
