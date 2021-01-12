@@ -28,20 +28,23 @@ struct NamesList: View {
                 }
             }
             .padding()
-            .padding(.bottom)
+            
+            Divider()
             
             VStack(alignment: .leading) {
                 Text("Previous calculations")
                     .font(.headline)
-                    .padding(.horizontal)
-                List {
+                ScrollView {
                     ForEach (appModel.persons) { person in
                         NavigationLink(destination: PersonResultDisplay(person: person)) {
                             PersonRow(person: person)
+                                .padding(10)
+                            Divider()
                         }
                     }
                 }
             }
+            .padding()
             
             VStack(alignment: .center) {
                 Text("Please consider this app as a joke.")
