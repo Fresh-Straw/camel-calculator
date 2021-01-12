@@ -11,7 +11,7 @@ struct PersonRow: View {
     var person: Person
     
     var body: some View {
-        HStack(alignment: .top) {
+        HStack(alignment: .center) {
             Text(person.name)
                 .font(.title2)
             Spacer()
@@ -22,7 +22,6 @@ struct PersonRow: View {
                     .font(.headline)
             }
         }
-        .padding(.bottom, 10)
     }
 }
 

@@ -8,42 +8,53 @@
 import SwiftUI
 
 struct PersonResultDisplay: View {
-    @EnvironmentObject var appModel: CamelAppModel
-    var camelValue: CamelValue
+    private static var basefontsize: CGFloat = 30
     
+    @EnvironmentObject var appModel: CamelAppModel
     @State private var value: Int = 0
+    
+    var person: Person
+    var showSaveButton = false
+    
+    var camelValue: CamelValue {
+        CamelValue(person: person)
+    }
     
     var body: some View {
         VStack(alignment: .center) {
             
-            Text("The number of camels")
-            Text(camelValue.person.name)
-                .font(.title)
-            Text("is worth:")
-            
             Spacer()
             
-            Text("\(value)")
-                .onAppear {
-                    runCounter(counter: $value, start: 0, end: camelValue.result, speed: 0.05)
+            Group {
+                VStack(alignment: .center) {
+                    Text("The number of camels")
+                    Text(camelValue.person.name)
+                        .bold()
+                        .font(.system(size: PersonResultDisplay.basefontsize * 1.6))
+                        .padding(10)
+                    Text("is worth:")
                 }
-                .font(.title)
+                .padding(.bottom, 50)
+                
+                Text("\(value)")
+                    .font(.system(size: PersonResultDisplay.basefontsize * 3.5))
+                    .bold()
+                    .onAppear {
+                        runCounter(counter: $value, start: 0, end: camelValue.result, speed: 0.05)
+                    }
+            }
+            .font(.system(size: PersonResultDisplay.basefontsize))
             
             Spacer()
             
-            HStack {
-                Spacer()
-                BigButton(caption: "Save")
-
+            VStack {
+                if showSaveButton {
+                    BigButton(caption: "Wow, next one")
                     .onTapGesture {
-                        // TODO save stuff
-                    }
-                Spacer()
-                BigButton(caption: "Next", backgroundColor: Color.red)
-                    .onTapGesture {
+                        appModel.persons.append(person)
                         appModel.computationActive = false
                     }
-                Spacer()
+                }
             }
             
             Spacer()
@@ -54,7 +65,7 @@ struct PersonResultDisplay: View {
 
 struct PersonResultDisplay_Previews: PreviewProvider {
     static var previews: some View {
-        PersonResultDisplay(camelValue: CamelValue(person: .default))
+        PersonResultDisplay(person: .default, showSaveButton: true)
             .environmentObject(CamelAppModel())
     }
 }

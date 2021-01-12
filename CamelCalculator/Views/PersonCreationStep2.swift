@@ -42,7 +42,7 @@ struct PersonCreationStep2: View {
             }
             
             // Go to next screen
-            NavigationLink(destination: PersonResultDisplay(camelValue: CamelValue(person: person))
+            NavigationLink(destination: PersonResultDisplay(person: person, showSaveButton: true)
                             .navigationBarTitle("\(person.name)'s result")
                             .navigationBarBackButtonHidden(true)
             ) {

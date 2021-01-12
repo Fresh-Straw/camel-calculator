@@ -11,42 +11,47 @@ struct NamesList: View {
     @EnvironmentObject var appModel: CamelAppModel
     @State private var navigationActive = false
     
+    init(){
+        UITableView.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().backgroundColor = .clear
+        UITableView.appearance().tableFooterView = UIView()
+    }
+    
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("How many camels are your friends worth?")
-                .font(.headline)
-            NavigationLink(destination: PersonCreationStep1(person: .empty)
-                            .navigationBarTitle("About your friend", displayMode: .inline), isActive: $appModel.computationActive) {
-                BigButton(caption: "Calculate Camels")
+        VStack {
+            VStack(alignment: .leading) {
+                Text("How many camels are your friends worth?")
+                    .font(.headline)
+                NavigationLink(destination: PersonCreationStep1(person: .empty)
+                                .navigationBarTitle("About your friend", displayMode: .inline), isActive: $appModel.computationActive) {
+                    BigButton(caption: "Calculate Camels")
+                }
             }
-            .padding(.bottom, 20)
-
+            .padding()
+            .padding(.bottom)
             
             VStack(alignment: .leading) {
                 Text("Previous calculations")
                     .font(.headline)
-                ScrollView(showsIndicators: true) {
+                    .padding(.horizontal)
+                List {
                     ForEach (appModel.persons) { person in
-                        NavigationLink(destination: PersonRow(person: person)
-                                        .navigationBarTitle(person.name)) {
+                        NavigationLink(destination: PersonResultDisplay(person: person)) {
                             PersonRow(person: person)
                         }
                     }
                 }
-                .padding(10)
-                .background(Color.pickerBackground)
-                .cornerRadius(7)
             }
-            
             
             VStack(alignment: .center) {
                 Text("Please consider this app as a joke.")
                     .bold()
                 Text("There is no serious situation in which other persons, their life or their actions may be counted in camels or any other currency.")
                     .multilineTextAlignment(.center)
-            }.foregroundColor(Color.gray)
+            }
+            .padding()
+            .foregroundColor(Color.gray)
         }
-        .padding()
         .navigationTitle("Camel Calculator")
         .edgesIgnoringSafeArea(.bottom)
     }
