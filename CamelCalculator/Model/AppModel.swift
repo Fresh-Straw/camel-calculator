@@ -14,18 +14,23 @@ final class CamelAppModel : ObservableObject {
     private static var example4 = Person(id: CamelAppModel.getNextId(), name: "Phil", sex: .male, age: 34, height: 184, hairColor: .blond, hairLength: .short, eyeColor: .blue, boobSize: nil, beard: .threeDay, figure: .thin)
     
     private static var currentId: Int = 0
+    private static let currentIdLock = NSLock()
     
     fileprivate static func getNextId() -> Int {
+        currentIdLock.lock()
         currentId += 1
-        return currentId
+        let idToReturn = currentId
+        currentIdLock.unlock()
+        return idToReturn
     }
     
     @Published var persons: [Person] = [CamelAppModel.example1, CamelAppModel.example2, CamelAppModel.example3, CamelAppModel.example4]
     @Published var computationNavigationActive = false
     @Published var personSortOrder: PersonSortOrder = .byResultDown
    
-    func finishPersonComputation(for person: Person) {
-        persons.append(Person(id: CamelAppModel.getNextId(), person: person))
+    func finishPersonComputation(for personToCopy: Person) {
+        let newPerson = Person(id: CamelAppModel.getNextId(), person: personToCopy)
+        persons.append(newPerson)
         computationNavigationActive = false
     }
     
