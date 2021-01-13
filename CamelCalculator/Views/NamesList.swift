@@ -8,28 +8,26 @@
 import SwiftUI
 
 struct NamesList: View {
-    @EnvironmentObject var appModel: CamelAppModel
-    
-    init(){
-        UITableView.appearance().backgroundColor = .clear
-        UITableViewCell.appearance().backgroundColor = .clear
-        UITableView.appearance().tableFooterView = UIView()
-    }
+    @EnvironmentObject private var appModel: CamelAppModel
     
     var sortedPersons: [Person] {
+        appModel.persons.sorted(by: createPersonSorter())
+    }
+    
+    private func createPersonSorter() -> ((Person, Person) -> Bool) {
         switch (appModel.personSortOrder) {
-        case .byNameUp: return appModel.persons.sorted(by: { (a,b) in
-            a.name.localizedLowercase < b.name.localizedLowercase
-        })
-        case .byResultDown: return appModel.persons.sorted(by: { (a,b) in
-            a.camelValue.result > b.camelValue.result
-        })
-        case .byNameDown: return appModel.persons.sorted(by: { (a,b) in
-            a.name.localizedLowercase > b.name.localizedLowercase
-        })
-        case .byResultUp: return appModel.persons.sorted(by: { (a,b) in
-            a.camelValue.result < b.camelValue.result
-        })
+            case .byNameUp: return { (a,b) in
+                a.name.localizedLowercase < b.name.localizedLowercase
+            }
+            case .byResultDown: return  { (a,b) in
+                a.camelValue.result > b.camelValue.result
+            }
+            case .byNameDown: return { (a,b) in
+                a.name.localizedLowercase > b.name.localizedLowercase
+            }
+            case .byResultUp: return { (a,b) in
+                a.camelValue.result < b.camelValue.result
+            }
         }
     }
     
@@ -70,9 +68,7 @@ struct NamesList: View {
                 }
                 ScrollView {
                     ForEach (sortedPersons) { person in
-                        NavigationLink(destination: PersonResultDisplay(person: person)
-                                        .navigationBarItems(trailing: self.createDeleteButton(for: person)), isActive: $appModel.resultNavigationActive
-                        ) {
+                        NavigationLink(destination: PersonResultDisplay(person: person)) {
                             PersonRow(person: person)
                                 .padding(10)
                             Divider()
@@ -93,20 +89,6 @@ struct NamesList: View {
         }
         .navigationTitle("Camel Calculator")
         .edgesIgnoringSafeArea(.bottom)
-    }
-    
-    @State private var showDeleteAlert = false
-    private func createDeleteButton(for person: Person) -> some View {
-        Button(action: {
-            self.showDeleteAlert = true
-        }, label: {
-            Image(systemName:"trash")
-        })
-        .alert(isPresented: $showDeleteAlert, content: {
-            Alert(title: Text("Delete \(person.name)?"), primaryButton: .destructive(Text("Delete")) {
-                appModel.delete(person: person)
-            }, secondaryButton: .cancel())
-        })
     }
 }
 

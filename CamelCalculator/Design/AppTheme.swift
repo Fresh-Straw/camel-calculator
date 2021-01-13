@@ -16,3 +16,5 @@ extension Color {
     static let pickerFont = Color("Picker-Fontcolor")
 }
 
+let resultBaseFontsize: CGFloat = 30
+

@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct PersonResultDisplay: View {
-    private static var basefontsize: CGFloat = 30
-    
-    @EnvironmentObject var appModel: CamelAppModel
+    @EnvironmentObject private var appModel: CamelAppModel
+    @Environment(\.presentationMode) private var presentation
     @State private var value: Int = 0
+    @State private var showDeleteAlert = false
     
     var person: Person
     var showSaveButton = false
@@ -30,20 +30,22 @@ struct PersonResultDisplay: View {
                     Text("The number of camels")
                     Text(camelValue.person.name)
                         .bold()
-                        .font(.system(size: PersonResultDisplay.basefontsize * 1.6))
+                        .font(.system(size: resultBaseFontsize * 1.6))
                         .padding(10)
                     Text("is worth:")
                 }
                 .padding(.bottom, 50)
                 
-                Text("\(value)")
-                    .font(.system(size: PersonResultDisplay.basefontsize * 3.5))
+                Text("\(showSaveButton ? value : person.camelValue.result)")
+                    .font(.system(size: resultBaseFontsize * 3.5))
                     .bold()
                     .onAppear {
-                        runCounter(counter: $value, start: 0, end: camelValue.result, speed: 0.05)
+                        if showSaveButton {
+                            runCounter(counter: $value, start: 0, end: camelValue.result, speed: 0.05)
+                        }
                     }
             }
-            .font(.system(size: PersonResultDisplay.basefontsize))
+            .font(.system(size: resultBaseFontsize))
             
             Spacer()
             
@@ -59,6 +61,21 @@ struct PersonResultDisplay: View {
             Spacer()
         }
         .padding()
+        .navigationBarItems(trailing: showSaveButton ? nil : createDeleteButton(for: person))
+    }
+    
+    private func createDeleteButton(for person: Person) -> some View {
+        Button(action: {
+            self.showDeleteAlert = true
+        }, label: {
+            Image(systemName:"trash")
+        })
+        .alert(isPresented: $showDeleteAlert, content: {
+            Alert(title: Text("Delete \(person.name)?"), primaryButton: .destructive(Text("Delete")) {
+                appModel.delete(person: person)
+                self.presentation.wrappedValue.dismiss()
+            }, secondaryButton: .cancel())
+        })
     }
 }
 
