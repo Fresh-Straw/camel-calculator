@@ -27,11 +27,43 @@ final class CamelAppModel : ObservableObject {
     @Published var persons: [Person] = [CamelAppModel.example1, CamelAppModel.example2, CamelAppModel.example3, CamelAppModel.example4]
     @Published var computationNavigationActive = false
     @Published var personSortOrder: PersonSortOrder = .byResultDown
-   
+    
+    init() {
+        let defaults = UserDefaults.standard
+        let abc = defaults.integer(forKey: "person.id")
+        CamelAppModel.currentId = abc
+        personSortOrder = PersonSortOrder(rawValue: defaults.string(forKey: "person.sortOrder") ?? PersonSortOrder.byResultDown.rawValue)!
+        do {
+            let json = defaults.string(forKey: "person.list") ?? "[]"
+            try persons = JSONDecoder().decode([Person].self, from: json.data(using: .utf8)!)
+        } catch {
+            fatalError("Unable to load settings: \n\(error)")
+        }
+    }
+    
     func finishPersonComputation(for personToCopy: Person) {
         let newPerson = Person(id: CamelAppModel.getNextId(), person: personToCopy)
         persons.append(newPerson)
+        saveData()
         computationNavigationActive = false
+    }
+    
+    func delete(person: Person) {
+        persons.removeAll(where: { $0.id == person.id })
+        saveData()
+    }
+    
+    func saveData() {
+        // https://stackoverflow.com/questions/28628225/how-to-save-local-data-in-a-swift-app
+        let defaults = UserDefaults.standard
+        defaults.set(CamelAppModel.currentId, forKey: "person.id")
+        defaults.set(personSortOrder.rawValue, forKey: "person.sortOrder")
+        do {
+            let json = String(data: try JSONEncoder().encode(persons), encoding: .utf8)
+            defaults.set(json, forKey: "person.list")
+        } catch {
+            fatalError("Unable to save settings: \n\(error)")
+        }
     }
     
     func getNextSortOrder() -> PersonSortOrder {
@@ -39,13 +71,9 @@ final class CamelAppModel : ObservableObject {
         let newIndex = (currentIndex + 1) % PersonSortOrder.allCases.count
         return PersonSortOrder.allCases[newIndex]
     }
-    
-    func delete(person: Person) {
-        persons.removeAll(where: { $0.id == person.id })
-    }
 }
 
-struct Person: Identifiable {
+struct Person: Identifiable, Codable {
     static var `default` = Person(name: "Jane", sex: .female, age: 23, height: 169, hairColor: .blond, hairLength: .long, eyeColor: .brown, boobSize: BoobSize.c, beard: nil, figure: .sporty)
     static var empty = Person(name: "", sex: nil, age: 20, height: 160, hairColor: nil, hairLength: nil, eyeColor: nil, boobSize: nil, beard: nil, figure: nil)
     
