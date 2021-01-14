@@ -17,7 +17,9 @@ struct CustomPicker<T: Equatable & Identifiable>: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(caption)
+            if !caption.isEmpty {
+                Text(caption)
+            }
             HStack(alignment: .center) {
                 ForEach(allValues) { v in
                     Button(action: {

@@ -10,13 +10,13 @@ import Foundation
 struct CamelValue {
     let person: Person
     var capping: Int
-    var age: Int
-    var height: Int
-    var hairColor: Int
-    var hairLength: Int
-    var eyeColor: Int
-    var extra: Int
-    var figure: Int
+    var age: Change
+    var height: Change
+    var hairColor: Change
+    var hairLength: Change
+    var eyeColor: Change
+    var extra: Change
+    var figure: Change
     
     init(person: Person) {
         // the original person data
@@ -31,10 +31,10 @@ struct CamelValue {
         capping = computeAgeCapping(forAge: person.age, andSex: sex)
         
         // compute the other values
-        age = getValueFor(age: person.age, sex: sex)
+        age = Change(summand: Double(capping) * 0.5, factor: 1.0)
         height = getValueFor(height: person.height, sex: sex)
         hairColor = getValueFor(hairColor: person.hairColor)
-        hairLength = getValueFor(hairLength: person.hairLength)
+        hairLength = getValueFor(hairLength: person.hairLength, andSex: person.sex)
         eyeColor = getValueFor(eyeColor: person.eyeColor)
         figure = getValueFor(figure: person.figure)
         switch sex {
@@ -43,13 +43,16 @@ struct CamelValue {
         }
     }
     
-    var uncappedSum: Int {
-        return age + height + hairColor + hairLength + eyeColor + extra + figure
-    }
+    private var allChanges: [Change] { [age, height, hairLength, hairColor, eyeColor, extra, figure] }
+    var sum: Change { Change(summand: allChanges.map {$0.summand}.reduce(0, +), factor: allChanges.map {$0.factor}.reduce(1.0, *)) }
+    var result: Int { min(Int(sum.result), capping)}
+}
+
+struct Change {
+    var summand: Double
+    var factor: Double
     
-    var result: Int {
-        return min(uncappedSum, capping)
-    }
+    var result: Double { summand * factor }
 }
 
 func getFittingValuable<T>(sex: Sex, male: T, female: T) -> T {
@@ -61,25 +64,10 @@ func getFittingValuable<T>(sex: Sex, male: T, female: T) -> T {
 
 // MARK: Value Computation
 
-private func getValueFor(age: Double, sex: Sex) -> Int {
-    // https://www.desmos.com/
-    // If 19 is the preferred age, then maximum of:
-    // * 20-((x)-19)^2/100
-    // * (12-(x-19)^2/1000)
-    // plus
-    // * cos((x-19)/3)/2
-    
-    let preferredAge: Double = getFittingValuable(sex: sex, male: 23, female: 19)
-    let val1 = 20.0 - pow(age - preferredAge, 2.0) / 100.0
-    let val2 = 12.0 - pow(age - preferredAge, 2.0) / 1000.0
-    let cosinus = cos((age - preferredAge) / 3.0) / 2.0
-    
-    return Int(max(val1, val2) + cosinus)
-}
-
-private func getValueFor(height: Double, sex: Sex) -> Int {
+// TODO remove
+private func getValueFor(height: Double, sex: Sex) -> Change {
     let preferredHeight: Double = getFittingValuable(sex: sex, male: 186, female: 172)
-    return max(0, computeValue(height, max: 18.5, preferred: preferredHeight, divisor: 12))
+    return Change(summand: Double(max(0, computeValue(height, max: 18.5, preferred: preferredHeight, divisor: 12))), factor: 1)
 }
 
 // TODO remove
@@ -89,65 +77,77 @@ private func computeValue(_ value: Double, max: Double, preferred preferredValue
     return Int(Double(max) - adjustedOffset)
 }
 
-private func getValueFor(hairColor: HairColor?) -> Int {
+private func getValueFor(hairColor: HairColor?) -> Change {
     switch hairColor {
-    case .blond: return 20
-    case .brown: return 16
-    case .black: return 10
-    case .red: return 17
-    case .grey: return 5
-    default: return 0
+    case .blond: return Change(summand: 6, factor: 1.05)
+    case .brown: return Change(summand: 3, factor: 1.03)
+    case .black: return Change(summand: 3, factor: 0.92)
+    case .red: return Change(summand: 4, factor: 1.13)
+    case .grey: return Change(summand: -1, factor: 0.97)
+    default: return Change(summand: 0, factor: 1)
     }
 }
 
-private func getValueFor(hairLength: HairLength?) -> Int {
-    switch hairLength {
-    case .noHair: return 2
-    case .short: return 5
-    case .shoulder: return 8
-    case .long: return 13
-    default: return 0
+private func getValueFor(hairLength: HairLength?, andSex sex: Sex?) -> Change {
+    switch sex {
+    case .female:
+        switch hairLength {
+        case .noHair: return Change(summand: -5, factor: 0.7)
+        case .short: return Change(summand: 1, factor: 0.8)
+        case .shoulder: return Change(summand: 1, factor: 1.25)
+        case .long: return Change(summand: 5, factor: 1.2)
+        default: return Change(summand: 0, factor: 1)
+        }
+    case .male:
+        switch hairLength {
+        case .noHair: return Change(summand: 2, factor: 1)
+        case .short: return Change(summand: 5, factor: 1)
+        case .shoulder: return Change(summand: 8, factor: 1)
+        case .long: return Change(summand: 13, factor: 1)
+        default: return Change(summand: 0, factor: 1)
+        }
+    default: return Change(summand: 0, factor: 1)
     }
 }
 
-private func getValueFor(eyeColor: EyeColor?) -> Int {
+private func getValueFor(eyeColor: EyeColor?) -> Change {
     switch eyeColor {
-    case .blue: return 16
-    case .green: return 14
-    case .brown: return 10
-    case .grey: return 4
-    default: return 0
+    case .blue: return Change(summand: 16, factor: 1)
+    case .green: return Change(summand: 14, factor: 1)
+    case .brown: return Change(summand: 10, factor: 1)
+    case .grey: return Change(summand: 4, factor: 1)
+    default: return Change(summand: 0, factor: 1)
     }
 }
 
-private func getValueFor(boobSize: BoobSize?) -> Int {
+private func getValueFor(boobSize: BoobSize?) -> Change {
     switch boobSize {
-    case .a: return 9
-    case .b: return 13
-    case .c: return 16
-    case .d: return 15
-    default: return 0
+    case .a: return Change(summand: 9, factor: 1)
+    case .b: return Change(summand: 13, factor: 1)
+    case .c: return Change(summand: 16, factor: 1)
+    case .d: return Change(summand: 15, factor: 1)
+    default: return Change(summand: 0, factor: 1)
     }
 }
 
-private func getValueFor(figure: Figure?) -> Int {
+private func getValueFor(figure: Figure?) -> Change {
     switch figure {
-    case .thin: return 8
-    case .sporty: return 16
-    case .normal: return 15
-    case .chubby: return 6
-    case .fat: return 4
-    default: return 0
+    case .thin: return Change(summand: 8, factor: 1)
+    case .sporty: return Change(summand: 16, factor: 1)
+    case .normal: return Change(summand: 15, factor: 1)
+    case .chubby: return Change(summand: 6, factor: 1)
+    case .fat: return Change(summand: 4, factor: 1)
+    default: return Change(summand: 0, factor: 1)
     }
 }
 
-private func getValueFor(beard: Beard?) -> Int {
+private func getValueFor(beard: Beard?) -> Change {
     switch beard {
-    case .noBeard: return 7
-    case .mustache: return 9
-    case .threeDay: return 14
-    case .full: return 12
-    default: return 0
+    case .noBeard: return Change(summand: 7, factor: 1)
+    case .mustache: return Change(summand: 9, factor: 1)
+    case .threeDay: return Change(summand: 14, factor: 1)
+    case .full: return Change(summand: 12, factor: 1)
+    default: return Change(summand: 0, factor: 1)
     }
 }
 

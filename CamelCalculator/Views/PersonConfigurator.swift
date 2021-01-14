@@ -24,131 +24,95 @@ struct PersonConfigurator: View {
                             .textContentType(.name)
                     }
                     
-                    HStack {
-                        Text("Sex")
-                            .bold()
-                        Picker("Sex", selection: $person.sex) {
-                            ForEach(Sex.allCases) { sex in
-                                Text(sex.rawValue).tag(sex)
-                            }
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
-                    }
+                    CustomPicker(caption:"", value: $person.sex, allValues: Sex.allCases, labelProvider: {$0.rawValue}, fontSize: .subheadline)
                 }
                 
                 Divider()
                 
                 Group {
                     HStack {
+                        SliderEditor(caption: "", value: $person.age, range: ageRange)
+                        
                         VStack {
-                            Text("Age")
-                                .bold()
-                            Text("\(person.age, specifier: "%.0f")")
+                            Text(String(person.camelValue.age.summand))
+                            Text(String(person.camelValue.age.factor))
                         }
-                        Divider()
-                        Slider(value: $person.age, in: ageRange, step: 1)
-                        
-                        Text(String(person.camelValue.age))
                     }
                     
                     HStack {
-                        VStack{
-                        Text("Height")
-                            .bold()
-                        Text("\(person.height, specifier: "%.0f")")}
-                        Divider()
-                        Slider(value: $person.height, in: heightRange, step: 1)
+                        SliderEditor(caption: "", value: $person.height, range: heightRange)
                         
-                        Text(String(person.camelValue.height))
+                        VStack {
+                            Text(String(person.camelValue.height.summand))
+                            Text(String(person.camelValue.height.factor))
+                        }
                     }
                     
                     HStack {
-                        Text("Hair Color")
-                            .bold()
-                        Picker("hairColor", selection: $person.hairColor) {
-                            ForEach(HairColor.allCases) { color in
-                                Text(color.rawValue).tag(color)
-                            }
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
+                        CustomPicker(caption:"", value: $person.hairColor, allValues: HairColor.allCases, labelProvider: {$0.rawValue}, fontSize: .subheadline)
                         
-                        Text(String(person.camelValue.hairColor))
+                        VStack {
+                            Text(String(person.camelValue.hairColor.summand))
+                            Text(String(person.camelValue.hairColor.factor))
+                        }
                     }
                     
                     
                     HStack {
-                        Text("Hair Length")
-                            .bold()
-                        Picker("hairLength", selection: $person.hairLength) {
-                            ForEach(HairLength.allCases) { length in
-                                Text(length.rawValue).tag(length)
-                            }
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
+                        CustomPicker(caption:"", value: $person.hairLength, allValues: HairLength.allCases, labelProvider: {$0.rawValue}, fontSize: .subheadline)
                         
-                        Text(String(person.camelValue.hairLength))
+                        VStack {
+                            Text(String(person.camelValue.hairLength.summand))
+                            Text(String(person.camelValue.hairLength.factor))
+                        }
                     }
                     
                     HStack {
-                        Text("Eye Color")
-                            .bold()
-                        Picker("eyeColor", selection: $person.eyeColor) {
-                            ForEach(EyeColor.allCases) { color in
-                                Text(color.rawValue).tag(color)
-                            }
+                        CustomPicker(caption:"", value: $person.eyeColor, allValues: EyeColor.allCases, labelProvider: {$0.rawValue}, fontSize: .subheadline)
+                        
+                        VStack {
+                            Text(String(person.camelValue.eyeColor.summand))
+                            Text(String(person.camelValue.eyeColor.factor))
                         }
-                        .pickerStyle(SegmentedPickerStyle())
-                        Text(String(person.camelValue.eyeColor))
                     }
                     
                     if person.sex == .female {
                         HStack {
-                            Text("Boob Size")
-                                .bold()
-                            Picker("boobSize", selection: $person.boobSize) {
-                                ForEach(BoobSize.allCases) { size in
-                                    Text(size.rawValue).tag(size)
-                                }
+                            CustomPicker(caption:"", value: $person.boobSize, allValues: BoobSize.allCases, labelProvider: {$0.rawValue}, fontSize: .subheadline)
+                            
+                            VStack {
+                                Text(String(person.camelValue.extra.summand))
+                                Text(String(person.camelValue.extra.factor))
                             }
-                            .pickerStyle(SegmentedPickerStyle())
-                            Text(String(person.camelValue.extra))
                         }
                     } else {
                         HStack {
-                            Text("Beard")
-                                .bold()
-                            Picker("beard", selection: $person.beard) {
-                                ForEach(Beard.allCases) { beard in
-                                    Text(beard.rawValue).tag(beard)
-                                }
+                            CustomPicker(caption:"", value: $person.beard, allValues: Beard.allCases, labelProvider: {$0.rawValue}, fontSize: .subheadline)
+                            
+                            VStack {
+                                Text(String(person.camelValue.extra.summand))
+                                Text(String(person.camelValue.extra.factor))
                             }
-                            .pickerStyle(SegmentedPickerStyle())
-                            Text(String(person.camelValue.extra))
                         }
                     }
                                     
                     HStack {
-                        Text("Figure")
-                            .bold()
-                        Picker("figure", selection: $person.figure) {
-                            ForEach(Figure.allCases) { figure in
-                                Text(figure.rawValue).tag(figure)
-                            }
+                        CustomPicker(caption:"", value: $person.figure, allValues: Figure.allCases, labelProvider: {$0.rawValue}, fontSize: .subheadline)
+                        
+                        VStack {
+                            Text(String(person.camelValue.figure.summand))
+                            Text(String(person.camelValue.figure.factor))
                         }
-                        .pickerStyle(SegmentedPickerStyle())
-                        Text(String(person.camelValue.figure))
                     }
                 }
                 
                 Divider()
                 
-                Group {
-                    Text("Result").font(.title)
-                    Text("Final Result: \(person.camelValue.result)")
-                        .font(.headline)
-                    Text("Raw: \(person.camelValue.uncappedSum), capping: \(person.camelValue.capping)")
-                        .font(.subheadline)
-                    
+                VStack(alignment: .leading) {
+                    Text("Uncapped: \(person.camelValue.sum.result, specifier: "%.02f")")
+                    Text("Consists of: \(person.camelValue.sum.summand, specifier: "%.0f") * \(person.camelValue.sum.factor, specifier: "%.02f")").font(.subheadline)
+                    Text("Capping: \(person.camelValue.capping)")
+                    Text("Result: \(person.camelValue.result)").font(.title)
                 }
             }
             .padding()

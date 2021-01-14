@@ -18,7 +18,9 @@ struct SliderEditor: View {
 
     var body: some View {
         VStack(alignment: alignment) {
-            Text(caption)
+            if !caption.isEmpty {
+                Text(caption)
+            }
             VStack(alignment: .center) {
                 Text("\(value, specifier: "%.0f")")
                     .font(.headline)
