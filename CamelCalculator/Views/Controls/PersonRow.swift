@@ -18,7 +18,7 @@ struct PersonRow: View {
             VStack(alignment: .trailing) {
                 Text(person.sex?.rawValue ?? "-")
                     .font(.subheadline)
-                Text(String(person.camelValue.result))
+                Text(String(person.camelValue.sum.result))
                     .font(.headline)
             }
         }

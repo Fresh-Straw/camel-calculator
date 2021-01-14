@@ -36,6 +36,7 @@ struct CustomPicker<T: Equatable & Identifiable>: View {
                     .animation(.easeInOut)
                     .foregroundColor(.pickerFont)
                     .cornerRadius(7)
+                    .shadow(color: .pickerForeground, radius: 10)
                 }
             }
             .frame(maxWidth: .infinity)

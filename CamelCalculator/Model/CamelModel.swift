@@ -5,8 +5,8 @@
 //  Created by Olaf Neumann on 03.01.21.
 //
 
-var ageRange = 0.0...120.0
-var heightRange = 120.0...220.0
+var ageRange = 14.0...75.0
+var heightRange = 140.0...210.0
 
 enum Sex: String, CaseIterable, Codable, Identifiable {
     case male = "male"
@@ -37,9 +37,9 @@ enum HairLength: String, Codable, CaseIterable, Identifiable {
 enum EyeColor: String, Codable, CaseIterable, Identifiable {
     case blue = "blue"
     case green = "green"
-    case grey = "grey"
     case brown = "brown"
-    
+    case grey = "grey"
+
     var id: String { self.rawValue }
 }
 

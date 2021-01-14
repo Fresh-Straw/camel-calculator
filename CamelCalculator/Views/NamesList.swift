@@ -20,13 +20,13 @@ struct NamesList: View {
                 a.name.localizedLowercase < b.name.localizedLowercase
             }
             case .byResultDown: return  { (a,b) in
-                a.camelValue.result > b.camelValue.result
+                a.camelValue.sum.result > b.camelValue.sum.result
             }
             case .byNameDown: return { (a,b) in
                 a.name.localizedLowercase > b.name.localizedLowercase
             }
             case .byResultUp: return { (a,b) in
-                a.camelValue.result < b.camelValue.result
+                a.camelValue.sum.result < b.camelValue.sum.result
             }
         }
     }

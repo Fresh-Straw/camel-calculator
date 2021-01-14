@@ -36,12 +36,12 @@ struct PersonResultDisplay: View {
                 }
                 .padding(.bottom, 50)
                 
-                Text("\(showSaveButton ? value : person.camelValue.result)")
+                Text("\(showSaveButton ? value : Int(person.camelValue.sum.result))")
                     .font(.system(size: resultBaseFontsize * 3.5))
                     .bold()
                     .onAppear {
                         if showSaveButton {
-                            runCounter(counter: $value, start: 0, end: camelValue.result, speed: 0.05)
+                            runCounter(counter: $value, start: 0, end: Int(camelValue.sum.result), speed: 0.05)
                         }
                     }
             }

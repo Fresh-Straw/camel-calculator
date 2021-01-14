@@ -109,10 +109,8 @@ struct PersonConfigurator: View {
                 Divider()
                 
                 VStack(alignment: .leading) {
-                    Text("Uncapped: \(person.camelValue.sum.result, specifier: "%.02f")")
-                    Text("Consists of: \(person.camelValue.sum.summand, specifier: "%.0f") * \(person.camelValue.sum.factor, specifier: "%.02f")").font(.subheadline)
-                    Text("Capping: \(person.camelValue.capping)")
-                    Text("Result: \(person.camelValue.result)").font(.title)
+                    Text("Result: \(person.camelValue.sum.result, specifier: "%.0f")").font(.title)
+                    Text("Consists of: \(person.camelValue.sum.result, specifier: "%.02f") = \(person.camelValue.sum.summand, specifier: "%.0f") * \(person.camelValue.sum.factor, specifier: "%.02f")").font(.subheadline)
                 }
             }
             .padding()
