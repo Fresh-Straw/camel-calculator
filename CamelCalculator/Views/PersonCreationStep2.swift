@@ -33,12 +33,13 @@ struct PersonCreationStep2: View {
             .padding(.bottom, 20)
             
             // Sex specific question
-            switch person.sex {
-            case .male: CustomPicker(caption: "What kind of beard does he have?", value: $person.beard, allValues: Beard.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
-                .padding(.bottom, 20)
-            case .female: CustomPicker(caption: "How big are her boobs?", value: $person.boobSize, allValues: BoobSize.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
-                .padding(.bottom, 20)
-            default: fatalError("Unknown sex: \(String(describing: person.sex))")
+            if person.sex != nil {
+                switch person.sex! {
+                    case .male: CustomPicker(caption: "What kind of beard does he have?", value: $person.beard, allValues: Beard.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
+                        .padding(.bottom, 20)
+                    case .female: CustomPicker(caption: "How big are her boobs?", value: $person.boobSize, allValues: BoobSize.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
+                        .padding(.bottom, 20)
+                }
             }
             
             // Go to next screen

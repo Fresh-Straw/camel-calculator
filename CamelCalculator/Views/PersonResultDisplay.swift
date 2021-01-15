@@ -25,16 +25,14 @@ struct PersonResultDisplay: View {
             
             Spacer()
             
-            Group {
-                VStack(alignment: .center) {
-                    Text("The number of camels")
-                    Text(camelValue.person.name)
-                        .bold()
-                        .font(.system(size: resultBaseFontsize * 1.6))
-                        .padding(10)
-                    Text("is worth:")
-                }
-                .padding(.bottom, 50)
+            VStack {
+                Text("The number of camels")
+                Text(camelValue.person.name)
+                    .bold()
+                    .font(.system(size: resultBaseFontsize * 1.6))
+                    .padding(10)
+                Text("is worth:")
+                    .padding(.bottom, 50)
                 
                 Text("\(showSaveButton ? value : Int(person.camelValue.sum.result))")
                     .font(.system(size: resultBaseFontsize * 3.5))
@@ -52,15 +50,15 @@ struct PersonResultDisplay: View {
             VStack {
                 if showSaveButton {
                     BigButton(caption: "Wow, next one")
-                    .onTapGesture {
-                        appModel.finishPersonComputation(for: person)
-                    }
+                        .padding()
+                        .onTapGesture {
+                            appModel.finishPersonComputation(for: person)
+                        }
                 }
             }
             
             Spacer()
         }
-        .padding()
         .navigationBarItems(trailing: showSaveButton ? nil : createDeleteButton(for: person))
     }
     

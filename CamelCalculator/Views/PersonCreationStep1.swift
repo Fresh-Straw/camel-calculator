@@ -16,39 +16,34 @@ struct PersonCreationStep1: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading) {
                 // Name
-                Group {
+                VStack(alignment: .leading) {
                     Text("Tell us the name of your friend, please:")
                     TextField("What's the name?", text: $person.name)
                         .keyboardType(.alphabet)
+                        .autocapitalization(.words)
                         .font(.title)
                         .padding()
-                        .padding(.bottom, 20)
                 }
+                .padding(.bottom, 20)
                 
                 // Sex
-                Group {
-                    CustomPicker(caption: "And what is your friend's sex?", value: $person.sex, allValues: Sex.allCases, labelProvider: {$0.rawValue}, customAction: {self.hideKeyboard()})
-                    .padding(.bottom, 20)
-                }
+                CustomPicker(caption: "And what is your friend's sex?", value: $person.sex, allValues: Sex.allCases, labelProvider: {$0.rawValue}, customAction: {self.hideKeyboard()})
+                .padding(.bottom, 15)
 
                 // Age
                 SliderEditor(caption: "How old is your friend?", value: $person.age, range: ageRange, customAction: {self.hideKeyboard()})
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 15)
                 
                 // height
                 SliderEditor(caption: "How high is your friend?", value: $person.height, range: heightRange, customAction: {self.hideKeyboard()})
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 15)
                 
                 // Go to next screen
                 NavigationLink(destination: PersonCreationStep2(person: person)
                     .navigationBarTitle(person.name)) {
                     BigButton(caption: "Next")
                 }.disabled(!isPageComplete)
-                
-                Spacer()
-            }
         }
         .padding()
     }
