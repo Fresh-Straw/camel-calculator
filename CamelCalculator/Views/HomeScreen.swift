@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NamesList: View {
+struct HomeScreen: View {
     @EnvironmentObject private var appModel: CamelAppModel
     
     var sortedPersons: [Person] {
@@ -94,7 +94,7 @@ struct NamesList: View {
 
 struct NamesList_Previews: PreviewProvider {
     static var previews: some View {
-        NamesList()
+        HomeScreen()
             .environmentObject(CamelAppModel())
     }
 }
