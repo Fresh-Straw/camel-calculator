@@ -11,6 +11,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             HomeScreen()
+                .padding(.horizontal)
                 .accentColor(Color.applicationAccent)
                 .foregroundColor(Color.applicationForeground)
         }

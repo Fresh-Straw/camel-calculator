@@ -22,6 +22,7 @@ struct PersonRow: View {
                     .font(.headline)
             }
         }
+        .padding(.vertical, 10)
     }
 }
 

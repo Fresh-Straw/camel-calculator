@@ -37,7 +37,8 @@ final class CamelAppModel : ObservableObject {
             let json = defaults.string(forKey: "person.list") ?? "[]"
             try persons = JSONDecoder().decode([Person].self, from: json.data(using: .utf8)!)
         } catch {
-            fatalError("Unable to load settings: \n\(error)")
+            // doesn't matter... just implicitly reset app to default
+            // fatalError("Unable to load settings: \n\(error)")
         }
     }
     

@@ -10,27 +10,6 @@ import SwiftUI
 struct HomeScreen: View {
     @EnvironmentObject private var appModel: CamelAppModel
     
-    var sortedPersons: [Person] {
-        appModel.persons.sorted(by: createPersonSorter())
-    }
-    
-    private func createPersonSorter() -> ((Person, Person) -> Bool) {
-        switch (appModel.personSortOrder) {
-            case .byNameUp: return { (a,b) in
-                a.name.localizedLowercase < b.name.localizedLowercase
-            }
-            case .byResultDown: return  { (a,b) in
-                a.camelValue.sum.result > b.camelValue.sum.result
-            }
-            case .byNameDown: return { (a,b) in
-                a.name.localizedLowercase > b.name.localizedLowercase
-            }
-            case .byResultUp: return { (a,b) in
-                a.camelValue.sum.result < b.camelValue.sum.result
-            }
-        }
-    }
-    
     func sortImage() -> Image {
         switch appModel.personSortOrder {
         case .byNameUp: return Image(systemName: "a.circle.fill")
@@ -41,42 +20,30 @@ struct HomeScreen: View {
     }
     
     var body: some View {
-        VStack {
-            VStack(alignment: .leading) {
-                Text("How many camels are your friends worth?")
-                    .font(.headline)
-                NavigationLink(destination: PersonCreationStep1(person: .empty)
-                                .navigationBarTitle("About your friend", displayMode: .inline), isActive: $appModel.computationNavigationActive) {
-                    BigButton(caption: "Calculate Camels")
-                }
+         VStack {
+            Text("How many camels are your friends worth?")
+                .font(.headline)
+            NavigationLink(destination: PersonCreationStep1(person: .empty)
+                            .navigationBarTitle("About your friend", displayMode: .inline), isActive: $appModel.computationNavigationActive) {
+                BigButton(caption: "Calculate Camels")
             }
-            .padding()
             
             Divider()
+                .padding(.vertical)
             
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("Previous calculations")
-                        .font(.headline)
-                    Spacer()
-                    Button(action: {
-                        appModel.personSortOrder = appModel.getNextSortOrder()
-                    }, label: {
-                        sortImage()
-                        Image(systemName: "arrow.up.arrow.down")
-                    })
-                }
-                ScrollView {
-                    ForEach (sortedPersons) { person in
-                        NavigationLink(destination: PersonResultDisplay(person: person)) {
-                            PersonRow(person: person)
-                                .padding(10)
-                            Divider()
-                        }
-                    }
-                }
+            HStack {
+                Text("Previous calculations")
+                    .font(.headline)
+                Spacer()
+                Button(action: {
+                    appModel.personSortOrder = appModel.getNextSortOrder()
+                }, label: {
+                    sortImage()
+                    Image(systemName: "arrow.up.arrow.down")
+                })
             }
-            .padding()
+            
+            PersonList()
             
             VStack(alignment: .center) {
                 Text("Please consider this app as a joke.")
@@ -84,7 +51,7 @@ struct HomeScreen: View {
                 Text("There is no serious situation in which other persons, their life or their actions may be counted in camels or any other currency.")
                     .multilineTextAlignment(.center)
             }
-            .padding()
+            .padding(.bottom, 10)
             .foregroundColor(Color.gray)
         }
         .navigationTitle("Camel Calculator")
