@@ -52,7 +52,7 @@ struct HomeScreen: View {
                     .multilineTextAlignment(.center)
             }
             .padding(.bottom, 10)
-            .foregroundColor(Color.gray)
+            .foregroundColor(Color.textInfo)
         }
         .navigationTitle("Camel Calculator")
         .edgesIgnoringSafeArea(.bottom)
