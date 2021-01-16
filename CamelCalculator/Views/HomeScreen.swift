@@ -56,6 +56,7 @@ struct HomeScreen: View {
         }
         .navigationTitle("Camel Calculator")
         .edgesIgnoringSafeArea(.bottom)
+        .camelDesign()
     }
 }
 

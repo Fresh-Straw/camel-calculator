@@ -46,6 +46,7 @@ struct PersonCreationStep1: View {
                 }.disabled(!isPageComplete)
         }
         .padding()
+        .camelDesign()
     }
 }
 

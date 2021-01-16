@@ -53,6 +53,7 @@ struct PersonCreationStep2: View {
             
         }
         .padding()
+        .camelDesign()
     }
 }
 

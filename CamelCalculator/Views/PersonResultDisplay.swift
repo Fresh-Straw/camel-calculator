@@ -60,6 +60,7 @@ struct PersonResultDisplay: View {
             Spacer()
         }
         .navigationBarItems(trailing: showSaveButton ? nil : createDeleteButton(for: person))
+        .camelDesign()
     }
     
     private func createDeleteButton(for person: Person) -> some View {
