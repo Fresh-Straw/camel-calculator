@@ -32,11 +32,11 @@ struct CustomPicker<T: Equatable & Identifiable>: View {
                     .font(fontSize)
                     .frame(maxWidth: .infinity)
                     .padding(10)
-                    .background(value == v ? Color.pickerForeground : Color.pickerBackground)
+                    .background(value == v ? Color.pickerSelected : Color.pickerUnselected)
                     .animation(.easeInOut)
-                    .foregroundColor(.pickerFont)
+                    //.foregroundColor(.pickerFont)
                     .cornerRadius(7)
-                    .shadow(color: .pickerForeground, radius: 10)
+                    .shadow(color: .pickerUnselected, radius: 7)
                 }
             }
             .frame(maxWidth: .infinity)

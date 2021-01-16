@@ -9,15 +9,15 @@ import SwiftUI
 
 struct BigButton: View {
     var caption: String
-    var backgroundColor: Color? = nil
     
     var body: some View {
         Text(caption)
             .font(.title3)
             .frame(maxWidth: .infinity)
             .padding()
-            .background(backgroundColor != nil ? backgroundColor : Color.pickerBackground)
+            .background(Color.buttonBackground.opacity(0.7))
             .cornerRadius(7)
+            .shadow(color: Color.buttonShadow, radius: 20)
     }
 }
 

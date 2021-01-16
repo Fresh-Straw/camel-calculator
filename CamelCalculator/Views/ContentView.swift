@@ -8,10 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    init() {
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+    }
+    
     var body: some View {
         NavigationView {
             HomeScreen()
                 .padding(.horizontal)
+                .colorScheme(.light)
         }
     }
 }
