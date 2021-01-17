@@ -11,7 +11,8 @@ struct CustomPicker<T: Equatable & Identifiable>: View {
     var caption: String
     @Binding var value: T?
     var allValues: [T]
-    var labelProvider: (T) -> String
+    var textProvider: ((T) -> String)? = nil
+    var imageProvider: ((T) -> String)? = nil
     var fontSize: Font = .title
     var customAction: () -> Void = {}
     
@@ -26,8 +27,15 @@ struct CustomPicker<T: Equatable & Identifiable>: View {
                         value = v
                         customAction()
                     }) {
-                        Text(labelProvider(v))
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        VStack {
+                            if textProvider != nil {
+                                Text(textProvider!(v))
+                            }
+                            if imageProvider != nil {
+                                Image(imageProvider!(v))
+                            }
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                     .font(fontSize)
                     .frame(maxWidth: .infinity)
@@ -50,8 +58,8 @@ struct CustomPicker<T: Equatable & Identifiable>: View {
 struct CustomPicker_Previews: PreviewProvider {
     static var previews: some View {
         Group{
-            CustomPicker<BoobSize>(caption: "String", value: .constant(.b), allValues: BoobSize.allCases, labelProvider: { $0.rawValue }, fontSize: .caption)
-            CustomPicker<Sex>(caption: "Caption", value: .constant(.male), allValues: Sex.allCases, labelProvider: { $0.rawValue })
+            CustomPicker<BoobSize>(caption: "String", value: .constant(.b), allValues: BoobSize.allCases, imageProvider: { "boobSize-\($0.rawValue)" }, fontSize: .caption)
+            CustomPicker<Sex>(caption: "Caption", value: .constant(.male), allValues: Sex.allCases, textProvider: { $0.rawValue })
         }
         .previewLayout(.fixed(width: 420, height: 300))
     }

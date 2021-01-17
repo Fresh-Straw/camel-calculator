@@ -17,27 +17,27 @@ struct PersonCreationStep2: View {
     var body: some View {
         ScrollView {
             // hair length
-            CustomPicker(caption: "How long is \(person.name)'s hair?", value: $person.hairLength, allValues: HairLength.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
+            CustomPicker(caption: "How long is \(person.name)'s hair?", value: $person.hairLength, allValues: HairLength.allCases, imageProvider: {"hairLength-\($0.rawValue)"}, fontSize: .caption)
             .padding(.bottom, 20)
             
             // hair color
-            CustomPicker(caption: "And what is \(person.sex == .male ? "his" : "her") hair color?", value: $person.hairColor, allValues: HairColor.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
+            CustomPicker(caption: "And what is \(person.sex == .male ? "his" : "her") hair color?", value: $person.hairColor, allValues: HairColor.allCases, textProvider: {$0.rawValue}, fontSize: .caption)
             .padding(.bottom, 20)
             
             // Eye color
-            CustomPicker(caption: "Which eye color does \(person.name)'s have?", value: $person.eyeColor, allValues: EyeColor.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
+            CustomPicker(caption: "Which eye color does \(person.name)'s have?", value: $person.eyeColor, allValues: EyeColor.allCases, textProvider: {$0.rawValue}, fontSize: .caption)
             .padding(.bottom, 20)
             
             // Figure
-            CustomPicker(caption: person.sex == .male ? "How does he look?" : "How does she look?", value: $person.figure, allValues: Figure.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
+            CustomPicker(caption: person.sex == .male ? "How does he look?" : "How does she look?", value: $person.figure, allValues: Figure.allCases, textProvider: {$0.rawValue}, fontSize: .caption)
             .padding(.bottom, 20)
             
             // Sex specific question
             if person.sex != nil {
                 switch person.sex! {
-                    case .male: CustomPicker(caption: "What kind of beard does he have?", value: $person.beard, allValues: Beard.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
+                    case .male: CustomPicker(caption: "What kind of beard does he have?", value: $person.beard, allValues: Beard.allCases, textProvider: {$0.rawValue}, fontSize: .caption)
                         .padding(.bottom, 20)
-                    case .female: CustomPicker(caption: "How big are her boobs?", value: $person.boobSize, allValues: BoobSize.allCases, labelProvider: {$0.rawValue}, fontSize: .caption)
+                    case .female: CustomPicker(caption: "How big are her boobs?", value: $person.boobSize, allValues: BoobSize.allCases, imageProvider: {"boobSize-\($0.rawValue)"}, fontSize: .caption)
                         .padding(.bottom, 20)
                 }
             }
