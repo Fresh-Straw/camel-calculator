@@ -27,7 +27,6 @@
 		C5C17B8925A2116100734B22 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5C17B8825A2116100734B22 /* Preview Assets.xcassets */; };
 		C5C17B9425A2116100734B22 /* CamelCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C17B9325A2116100734B22 /* CamelCalculatorTests.swift */; };
 		C5C17B9F25A2116100734B22 /* CamelCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C17B9E25A2116100734B22 /* CamelCalculatorUITests.swift */; };
-		C5C17BB025A222A100734B22 /* PersonConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C17BAF25A222A100734B22 /* PersonConfigurator.swift */; };
 		C5C17BB525A222D000734B22 /* CamelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C17BB425A222D000734B22 /* CamelModel.swift */; };
 		C5DF1E3525B2F96900A75ACA /* ViewDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DF1E3425B2F96900A75ACA /* ViewDesign.swift */; };
 		C5F1450125AB4E1100AA325C /* SliderEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F1450025AB4E1100AA325C /* SliderEditor.swift */; };
@@ -78,7 +77,6 @@
 		C5C17B9A25A2116100734B22 /* CamelCalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CamelCalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C17B9E25A2116100734B22 /* CamelCalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamelCalculatorUITests.swift; sourceTree = "<group>"; };
 		C5C17BA025A2116100734B22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C5C17BAF25A222A100734B22 /* PersonConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonConfigurator.swift; sourceTree = "<group>"; };
 		C5C17BB425A222D000734B22 /* CamelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamelModel.swift; sourceTree = "<group>"; };
 		C5DF1E3425B2F96900A75ACA /* ViewDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDesign.swift; sourceTree = "<group>"; };
 		C5F1450025AB4E1100AA325C /* SliderEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderEditor.swift; sourceTree = "<group>"; };
@@ -123,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				C5C17B8325A2115E00734B22 /* ContentView.swift */,
-				C5C17BAF25A222A100734B22 /* PersonConfigurator.swift */,
 				C5BAAE6525A50E35004A91FA /* HomeScreen.swift */,
 				C53C3B7A25AA22DA00FFBE1E /* PersonCreationStep1.swift */,
 				C53C3B9025AA431E00FFBE1E /* PersonCreationStep2.swift */,
@@ -351,7 +348,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5C17BB025A222A100734B22 /* PersonConfigurator.swift in Sources */,
 				C51F87CA25AB7F7D00D326A8 /* Helpers.swift in Sources */,
 				C53C3B9125AA431E00FFBE1E /* PersonCreationStep2.swift in Sources */,
 				C571A2C325A519E40037136D /* CamelMath.swift in Sources */,
