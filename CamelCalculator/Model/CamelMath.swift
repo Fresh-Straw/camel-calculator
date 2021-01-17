@@ -142,7 +142,7 @@ private func getValueFor(boobSize: BoobSize?) -> Change {
 private func getValueFor(figure: Figure?) -> Change {
     switch figure {
     case .thin: return Change(summand: 4, factor: 1.001)
-    case .sporty: return Change(summand: 7, factor: 1.03)
+    //case .sporty: return Change(summand: 7, factor: 1.03)
     case .normal: return Change(summand: 5.5, factor: 1)
     case .chubby: return Change(summand: 1, factor: 1)
     case .fat: return Change(summand: -1, factor: 0.98)

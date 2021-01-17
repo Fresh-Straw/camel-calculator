@@ -8,8 +8,8 @@
 import Foundation
 
 final class CamelAppModel : ObservableObject {
-    private static var example1 = Person(id: CamelAppModel.getNextId(), name: "Tarzan", sex: .male, age: 23, height: 175, hairColor: .black, hairLength: .shoulder, eyeColor: .green, boobSize: BoobSize.c, beard: nil, figure: .sporty)
-    private static var example2 = Person(id: CamelAppModel.getNextId(), name: "Jane", sex: .female, age: 23, height: 169, hairColor: .blond, hairLength: .long, eyeColor: .brown, boobSize: BoobSize.c, beard: nil, figure: .sporty)
+    private static var example1 = Person(id: CamelAppModel.getNextId(), name: "Tarzan", sex: .male, age: 23, height: 175, hairColor: .black, hairLength: .shoulder, eyeColor: .green, boobSize: BoobSize.c, beard: nil, figure: .normal)
+    private static var example2 = Person(id: CamelAppModel.getNextId(), name: "Jane", sex: .female, age: 23, height: 169, hairColor: .blond, hairLength: .long, eyeColor: .brown, boobSize: BoobSize.c, beard: nil, figure: .thin)
     private static var example3 = Person(id: CamelAppModel.getNextId(), name: "Claire", sex: .female, age: 30, height: 172, hairColor: .blond, hairLength: .long, eyeColor: .blue, boobSize: BoobSize.c, beard: nil, figure: .normal)
     private static var example4 = Person(id: CamelAppModel.getNextId(), name: "Phil", sex: .male, age: 34, height: 184, hairColor: .blond, hairLength: .short, eyeColor: .blue, boobSize: nil, beard: .threeDay, figure: .thin)
     
@@ -75,7 +75,7 @@ final class CamelAppModel : ObservableObject {
 }
 
 struct Person: Identifiable, Codable {
-    static var `default` = Person(name: "Jane", sex: .female, age: 23, height: 169, hairColor: .blond, hairLength: .long, eyeColor: .brown, boobSize: BoobSize.c, beard: nil, figure: .sporty)
+    static var `default` = Person(name: "Jane", sex: .female, age: 23, height: 169, hairColor: .blond, hairLength: .long, eyeColor: .brown, boobSize: BoobSize.c, beard: nil, figure: .normal)
     static var empty = Person(name: "", sex: nil, age: 20, height: 160, hairColor: nil, hairLength: nil, eyeColor: nil, boobSize: nil, beard: nil, figure: nil)
     
     fileprivate init(id: Int, person: Person) {

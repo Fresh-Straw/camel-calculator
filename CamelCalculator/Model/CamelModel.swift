@@ -54,7 +54,7 @@ enum BoobSize: String, Codable, CaseIterable, Identifiable {
 
 enum Figure: String, Codable, CaseIterable, Identifiable {
     case thin = "thin"
-    case sporty = "sporty"
+    //case sporty = "sporty"
     case normal = "normal"
     case chubby = "chubby"
     case fat = "fat"
