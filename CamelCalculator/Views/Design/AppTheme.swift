@@ -12,6 +12,8 @@ extension Color {
     static let applicationForeground = Color("Application-Foreground")
     static let buttonBackground = Color("Button-Background")
     static let buttonShadow = Color("Button-Shadow")
+    static let buttonColor = Color("Button-Color")
+    static let buttonColorDeactivated = Color("Button-Color-Deactivated")
     static let pickerBackground = Color("Picker-Background")
     static let pickerSelected = Color("Picker-Selected")
     static let pickerUnselected = Color("Picker-Unselected")

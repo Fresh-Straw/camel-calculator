@@ -20,7 +20,7 @@ struct HomeScreen: View {
     }
     
     var body: some View {
-         VStack {
+        VStack {
             Text("How many camels are your friends worth?")
                 .font(.headline)
             NavigationLink(destination: PersonCreationStep1(person: .empty)

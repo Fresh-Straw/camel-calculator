@@ -18,20 +18,20 @@ struct PersonConfigurator: View {
                         Text("Name")
                             .bold()
                         Divider()
-                        TextField("name", text: $person.name)
+                        TextField("Name", text: $person.name)
                             .disableAutocorrection(true)
                             .keyboardType(.webSearch)
                             .textContentType(.name)
                     }
                     
-                    CustomPicker(caption:"", value: $person.sex, allValues: Sex.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .subheadline)
+                    CustomPicker(value: $person.sex, allValues: Sex.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .subheadline)
                 }
                 
                 Divider()
                 
                 Group {
                     HStack {
-                        SliderEditor(caption: "", value: $person.age, range: ageRange)
+                        SliderEditor(value: $person.age, range: ageRange)
                         
                         VStack {
                             Text(String(person.camelValue.age.summand))
@@ -40,7 +40,7 @@ struct PersonConfigurator: View {
                     }
                     
                     HStack {
-                        SliderEditor(caption: "", value: $person.height, range: heightRange)
+                        SliderEditor(value: $person.height, range: heightRange)
                         
                         VStack {
                             Text(String(person.camelValue.height.summand))
@@ -49,7 +49,7 @@ struct PersonConfigurator: View {
                     }
                     
                     HStack {
-                        CustomPicker(caption:"", value: $person.hairColor, allValues: HairColor.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .subheadline)
+                        CustomPicker(value: $person.hairColor, allValues: HairColor.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .subheadline)
                         
                         VStack {
                             Text(String(person.camelValue.hairColor.summand))
@@ -59,7 +59,7 @@ struct PersonConfigurator: View {
                     
                     
                     HStack {
-                        CustomPicker(caption:"", value: $person.hairLength, allValues: HairLength.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .subheadline)
+                        CustomPicker(value: $person.hairLength, allValues: HairLength.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .subheadline)
                         
                         VStack {
                             Text(String(person.camelValue.hairLength.summand))
@@ -68,7 +68,7 @@ struct PersonConfigurator: View {
                     }
                     
                     HStack {
-                        CustomPicker(caption:"", value: $person.eyeColor, allValues: EyeColor.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .subheadline)
+                        CustomPicker(value: $person.eyeColor, allValues: EyeColor.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .subheadline)
                         
                         VStack {
                             Text(String(person.camelValue.eyeColor.summand))
@@ -78,7 +78,7 @@ struct PersonConfigurator: View {
                     
                     if person.sex == .female {
                         HStack {
-                            CustomPicker(caption:"", value: $person.boobSize, allValues: BoobSize.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .subheadline)
+                            CustomPicker(value: $person.boobSize, allValues: BoobSize.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .subheadline)
                             
                             VStack {
                                 Text(String(person.camelValue.extra.summand))
@@ -87,7 +87,7 @@ struct PersonConfigurator: View {
                         }
                     } else {
                         HStack {
-                            CustomPicker(caption:"", value: $person.beard, allValues: Beard.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .subheadline)
+                            CustomPicker(value: $person.beard, allValues: Beard.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .subheadline)
                             
                             VStack {
                                 Text(String(person.camelValue.extra.summand))
@@ -97,7 +97,7 @@ struct PersonConfigurator: View {
                     }
                                     
                     HStack {
-                        CustomPicker(caption:"", value: $person.figure, allValues: Figure.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .subheadline)
+                        CustomPicker(value: $person.figure, allValues: Figure.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .subheadline)
                         
                         VStack {
                             Text(String(person.camelValue.figure.summand))

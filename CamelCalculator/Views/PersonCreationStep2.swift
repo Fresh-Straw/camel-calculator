@@ -16,41 +16,52 @@ struct PersonCreationStep2: View {
     
     var body: some View {
         ScrollView {
-            // hair length
-            CustomPicker(caption: "How long is \(person.name)'s hair?", value: $person.hairLength, allValues: HairLength.allCases, imageProvider: {"hairLength-\($0.rawValue)"}, fontSize: .caption)
-            .padding(.bottom, 20)
-            
-            // hair color
-            CustomPicker(caption: "And what is \(person.sex == .male ? "his" : "her") hair color?", value: $person.hairColor, allValues: HairColor.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .caption)
-            .padding(.bottom, 20)
-            
-            // Eye color
-            CustomPicker(caption: "Which eye color does \(person.name)'s have?", value: $person.eyeColor, allValues: EyeColor.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .caption)
-            .padding(.bottom, 20)
-            
-            // Figure
-            CustomPicker(caption: person.sex == .male ? "How does he look?" : "How does she look?", value: $person.figure, allValues: Figure.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .caption)
-            .padding(.bottom, 20)
-            
-            // Sex specific question
-            if person.sex != nil {
-                switch person.sex! {
-                    case .male: CustomPicker(caption: "What kind of beard does he have?", value: $person.beard, allValues: Beard.allCases, imageProvider: {"beard-\($0.rawValue)"}, fontSize: .caption)
-                        .padding(.bottom, 20)
-                    case .female: CustomPicker(caption: "How big are her boobs?", value: $person.boobSize, allValues: BoobSize.allCases, imageProvider: {"boobSize-\($0.rawValue)"}, fontSize: .caption)
-                        .padding(.bottom, 20)
+            VStack(alignment: .leading) {
+                // hair length
+                Text("How long is \(person.name)'s hair?")
+                CustomPicker(value: $person.hairLength, allValues: HairLength.allCases, imageProvider: {"hairLength-\($0.rawValue)"}, fontSize: .caption)
+                .padding(.bottom, 20)
+                
+                // hair color
+                Text("And what is \(person.sex == .male ? "his" : "her") hair color?")
+                CustomPicker(value: $person.hairColor, allValues: HairColor.allCases, imageProvider: {"hairColor-\($0.rawValue)"}, fontSize: .caption)
+                .padding(.bottom, 20)
+                
+                // Eye color
+                Text("Which eye color does \(person.name)'s have?")
+                CustomPicker(value: $person.eyeColor, allValues: EyeColor.allCases, imageProvider: {"eyeColor-\($0.rawValue)"}, fontSize: .caption)
+                .padding(.bottom, 20)
+                
+                // Figure
+                Text(person.sex == .male ? "How does he look?" : "How does she look?")
+                CustomPicker(value: $person.figure, allValues: Figure.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .caption)
+                .padding(.bottom, 20)
+                
+                // Sex specific question
+                if person.sex != nil {
+                    switch person.sex! {
+                        case .male:
+                            Text("What kind of beard does he have?")
+                            CustomPicker(value: $person.beard, allValues: Beard.allCases, imageProvider: {"beard-\($0.rawValue)"}, fontSize: .caption)
+                            .padding(.bottom, 20)
+                        case .female:
+                            Text("How big are her boobs?")
+                            CustomPicker(value: $person.boobSize, allValues: BoobSize.allCases, imageProvider: {"boobSize-\($0.rawValue)"}, fontSize: .caption)
+                            .padding(.bottom, 20)
+                    }
                 }
+                
+                // Go to next screen
+                NavigationLink(destination: PersonResultDisplay(person: person, showSaveButton: true)
+                                .navigationBarTitle("\(person.name)'s result")
+                                .navigationBarBackButtonHidden(true)
+                ) {
+                    BigButton(caption: "Calculate result")
+                        .opacity(isPageComplete ? 1 : 0.5)
+                        .animation(.easeInOut)
+                }
+                .disabled(!isPageComplete)
             }
-            
-            // Go to next screen
-            NavigationLink(destination: PersonResultDisplay(person: person, showSaveButton: true)
-                            .navigationBarTitle("\(person.name)'s result")
-                            .navigationBarBackButtonHidden(true)
-            ) {
-                BigButton(caption: "Calculate result")
-            }
-            .disabled(!isPageComplete)
-            
         }
         .padding()
         .camelDesign()

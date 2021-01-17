@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CustomPicker<T: Equatable & Identifiable>: View {
-    var caption: LocalizedStringKey
     @Binding var value: T?
     var allValues: [T]
     var textProvider: ((T) -> LocalizedStringKey)? = nil
@@ -17,47 +16,44 @@ struct CustomPicker<T: Equatable & Identifiable>: View {
     var customAction: () -> Void = {}
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(caption)
-            HStack(alignment: .center) {
-                ForEach(allValues) { v in
-                    Button(action: {
-                        value = v
-                        customAction()
-                    }) {
-                        VStack {
-                            if textProvider != nil {
-                                Text(textProvider!(v))
-                            }
-                            if imageProvider != nil {
-                                Image(imageProvider!(v))
-                            }
+        HStack(alignment: .center) {
+            ForEach(allValues) { v in
+                Button(action: {
+                    value = v
+                    customAction()
+                }) {
+                    VStack {
+                        if textProvider != nil {
+                            Text(textProvider!(v))
                         }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        if imageProvider != nil {
+                            Image(imageProvider!(v))
+                        }
                     }
-                    .font(fontSize)
-                    .frame(maxWidth: .infinity)
-                    .padding(10)
-                    .background(value == v ? Color.pickerSelected : Color.pickerUnselected)
-                    .animation(.easeInOut)
-                    //.foregroundColor(.pickerFont)
-                    .cornerRadius(7)
-                    .shadow(color: .pickerUnselected, radius: 7)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
+                .font(fontSize)
+                .frame(maxWidth: .infinity)
+                .padding(textProvider != nil ? 10 : 0)
+                .background(value == v ? Color.pickerSelected : Color.pickerUnselected)
+                .animation(.easeInOut)
+                //.foregroundColor(.pickerFont)
+                .cornerRadius(7)
+                .shadow(color: .pickerUnselected, radius: 7)
             }
-            .frame(maxWidth: .infinity)
-            .padding(5)
-            .background(Color.pickerBackground)
-            .cornerRadius(7)
         }
+        .frame(maxWidth: .infinity)
+        .padding(5)
+        .background(Color.pickerBackground)
+        .cornerRadius(7)
     }
 }
 
 struct CustomPicker_Previews: PreviewProvider {
     static var previews: some View {
         Group{
-            CustomPicker<BoobSize>(caption: "String", value: .constant(.b), allValues: BoobSize.allCases, imageProvider: { "boobSize-\($0.rawValue)" }, fontSize: .caption)
-            CustomPicker<Sex>(caption: "Caption", value: .constant(.male), allValues: Sex.allCases, textProvider: { LocalizedStringKey($0.rawValue) })
+            CustomPicker<BoobSize>(value: .constant(.b), allValues: BoobSize.allCases, imageProvider: { "boobSize-\($0.rawValue)" }, fontSize: .caption)
+            CustomPicker<Sex>(value: .constant(.male), allValues: Sex.allCases, textProvider: { LocalizedStringKey($0.rawValue) })
         }
         .previewLayout(.fixed(width: 420, height: 300))
     }
