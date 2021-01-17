@@ -21,15 +21,15 @@ struct PersonCreationStep2: View {
             .padding(.bottom, 20)
             
             // hair color
-            CustomPicker(caption: "And what is \(person.sex == .male ? "his" : "her") hair color?", value: $person.hairColor, allValues: HairColor.allCases, textProvider: {$0.rawValue}, fontSize: .caption)
+            CustomPicker(caption: "And what is \(person.sex == .male ? "his" : "her") hair color?", value: $person.hairColor, allValues: HairColor.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .caption)
             .padding(.bottom, 20)
             
             // Eye color
-            CustomPicker(caption: "Which eye color does \(person.name)'s have?", value: $person.eyeColor, allValues: EyeColor.allCases, textProvider: {$0.rawValue}, fontSize: .caption)
+            CustomPicker(caption: "Which eye color does \(person.name)'s have?", value: $person.eyeColor, allValues: EyeColor.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .caption)
             .padding(.bottom, 20)
             
             // Figure
-            CustomPicker(caption: person.sex == .male ? "How does he look?" : "How does she look?", value: $person.figure, allValues: Figure.allCases, textProvider: {$0.rawValue}, fontSize: .caption)
+            CustomPicker(caption: person.sex == .male ? "How does he look?" : "How does she look?", value: $person.figure, allValues: Figure.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, fontSize: .caption)
             .padding(.bottom, 20)
             
             // Sex specific question

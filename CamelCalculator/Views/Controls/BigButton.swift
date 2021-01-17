@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BigButton: View {
-    var caption: String
+    var caption: LocalizedStringKey
     
     var body: some View {
         Text(caption)

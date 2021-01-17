@@ -1,0 +1,91 @@
+/* No comment provided by engineer. */
+"-" = "-";
+
+/* No comment provided by engineer. */
+"%.0f" = "";
+
+/* No comment provided by engineer. */
+"Consists of: %.02f = %.0f * %.02f" = "Besteht aus: %1$.02f = %2$.0f * %3$.02f";
+
+/* No comment provided by engineer. */
+"Delete" = "Löschen";
+
+/* No comment provided by engineer. */
+"Delete %@?" = "%@ löschen?";
+
+/* No comment provided by engineer. */
+"How many camels are your friends worth?" = "Wie viele Kamele sind deine Freunde wert?";
+
+/* No comment provided by engineer. */
+"is worth:" = "wert ist:";
+
+/* No comment provided by engineer. */
+"name" = "Name";
+
+/* No comment provided by engineer. */
+"Name" = "Name";
+
+/* No comment provided by engineer. */
+"Please consider this app as a joke." = "Bitte betrachten Sie diese App als Witz.";
+
+/* No comment provided by engineer. */
+"Previous calculations" = "Alte Berechnungen";
+
+/* No comment provided by engineer. */
+"Result: %.0f" = "Ergebnis: %.0f";
+
+/* No comment provided by engineer. */
+"Tell us the name of your friend, please:" = "Wie heißt dein Freund?";
+
+/* No comment provided by engineer. */
+"The number of camels" = "Die Anzahl der Kamele, die";
+
+/* No comment provided by engineer. */
+"There is no serious situation in which other persons, their life or their actions may be counted in camels or any other currency." = "Es gibt keine ernsthafte Situation, in der andere Personen, ihr Leben oder ihre Handlungen in Kamelen oder einer anderen Währung gezählt werden könnten.";
+
+/* No comment provided by engineer. */
+"What's the name?" = "Wie ist der Name?";
+
+/* No comment provided by engineer. */
+"Calculate Camels" = "Kamele berechnen";
+
+/* No comment provided by engineer. */
+"Next" = "Weiter";
+
+"Camel Calculator" = "Kamelrechner";
+
+"blond" = "blond";
+
+"brown" = "braun";
+
+"black" = "schwarz";
+
+"red" = "rot";
+
+"grey" = "grau";
+
+"blue" = "blau";
+
+"green" = "grün";
+
+"male" = "männlich";
+
+"female" = "weiblich";
+
+"thin" = "dünn";
+
+"normal" = "normal";
+
+"chubby" = "moppelig";
+
+"fat" = "fett";
+
+"Calculate result" = "Ergebnis berechnen";
+
+"Wow, next one" = "Cool, nächster";
+
+"And what is your friend's sex?" = "Ist dein Freund männlich oder weiblich?";
+
+"How old is your friend?" = "Wie alt ist dein Freund?";
+
+"How high is your friend?" = "Wie groß ist dein Freund?";

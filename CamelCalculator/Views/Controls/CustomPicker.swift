@@ -8,19 +8,17 @@
 import SwiftUI
 
 struct CustomPicker<T: Equatable & Identifiable>: View {
-    var caption: String
+    var caption: LocalizedStringKey
     @Binding var value: T?
     var allValues: [T]
-    var textProvider: ((T) -> String)? = nil
+    var textProvider: ((T) -> LocalizedStringKey)? = nil
     var imageProvider: ((T) -> String)? = nil
     var fontSize: Font = .title
     var customAction: () -> Void = {}
     
     var body: some View {
         VStack(alignment: .leading) {
-            if !caption.isEmpty {
-                Text(caption)
-            }
+            Text(caption)
             HStack(alignment: .center) {
                 ForEach(allValues) { v in
                     Button(action: {
@@ -59,7 +57,7 @@ struct CustomPicker_Previews: PreviewProvider {
     static var previews: some View {
         Group{
             CustomPicker<BoobSize>(caption: "String", value: .constant(.b), allValues: BoobSize.allCases, imageProvider: { "boobSize-\($0.rawValue)" }, fontSize: .caption)
-            CustomPicker<Sex>(caption: "Caption", value: .constant(.male), allValues: Sex.allCases, textProvider: { $0.rawValue })
+            CustomPicker<Sex>(caption: "Caption", value: .constant(.male), allValues: Sex.allCases, textProvider: { LocalizedStringKey($0.rawValue) })
         }
         .previewLayout(.fixed(width: 420, height: 300))
     }

@@ -13,6 +13,8 @@
 		C53C3B7B25AA22DA00FFBE1E /* PersonCreationStep1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C3B7A25AA22DA00FFBE1E /* PersonCreationStep1.swift */; };
 		C53C3B9125AA431E00FFBE1E /* PersonCreationStep2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C3B9025AA431E00FFBE1E /* PersonCreationStep2.swift */; };
 		C53C5B2525B1FE9100D0395F /* PersonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53C5B2425B1FE9100D0395F /* PersonList.swift */; };
+		C542C13125B431BE00015BD9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C542C12F25B431BE00015BD9 /* InfoPlist.strings */; };
+		C542C13425B431BE00015BD9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C542C13225B431BE00015BD9 /* Localizable.strings */; };
 		C571A2C325A519E40037136D /* CamelMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C571A2C225A519E40037136D /* CamelMath.swift */; };
 		C575138B25ACC8C300CF6731 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C575138A25ACC8C300CF6731 /* Helper.swift */; };
 		C575139E25ACDDE500CF6731 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C575139D25ACDDE500CF6731 /* AppModel.swift */; };
@@ -56,6 +58,8 @@
 		C53C3B7A25AA22DA00FFBE1E /* PersonCreationStep1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCreationStep1.swift; sourceTree = "<group>"; };
 		C53C3B9025AA431E00FFBE1E /* PersonCreationStep2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCreationStep2.swift; sourceTree = "<group>"; };
 		C53C5B2425B1FE9100D0395F /* PersonList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonList.swift; sourceTree = "<group>"; };
+		C542C13025B431BE00015BD9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C542C13325B431BE00015BD9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C571A2C225A519E40037136D /* CamelMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamelMath.swift; sourceTree = "<group>"; };
 		C575138A25ACC8C300CF6731 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		C575139D25ACDDE500CF6731 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 				C5BAAE5E25A4D08A004A91FA /* Model */,
 				C5C17B8525A2116100734B22 /* Assets.xcassets */,
 				C5C17B8A25A2116100734B22 /* Info.plist */,
+				C542C13225B431BE00015BD9 /* Localizable.strings */,
+				C542C12F25B431BE00015BD9 /* InfoPlist.strings */,
 				C5C17B8725A2116100734B22 /* Preview Content */,
 			);
 			path = CamelCalculator;
@@ -318,6 +324,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5C17B8925A2116100734B22 /* Preview Assets.xcassets in Resources */,
+				C542C13425B431BE00015BD9 /* Localizable.strings in Resources */,
+				C542C13125B431BE00015BD9 /* InfoPlist.strings in Resources */,
 				C5C17B8625A2116100734B22 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,6 +403,25 @@
 			targetProxy = C5C17B9B25A2116100734B22 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C542C12F25B431BE00015BD9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C542C13025B431BE00015BD9 /* de */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C542C13225B431BE00015BD9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C542C13325B431BE00015BD9 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C5C17BA125A2116100734B22 /* Debug */ = {

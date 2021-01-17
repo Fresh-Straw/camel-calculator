@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SliderEditor: View {
-    var caption: String
+    var caption: LocalizedStringKey
     @Binding var value: Double
     var range: ClosedRange<Double>
     
@@ -18,9 +18,7 @@ struct SliderEditor: View {
 
     var body: some View {
         VStack(alignment: alignment) {
-            if !caption.isEmpty {
-                Text(caption)
-            }
+            Text(caption)
             VStack(alignment: .center) {
                 Text("\(value, specifier: "%.0f")")
                     .font(.headline)

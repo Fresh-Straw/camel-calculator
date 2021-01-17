@@ -28,7 +28,7 @@ struct PersonCreationStep1: View {
                 .padding(.bottom, 20)
                 
                 // Sex
-                CustomPicker(caption: "And what is your friend's sex?", value: $person.sex, allValues: Sex.allCases, textProvider: {$0.rawValue}, customAction: {self.hideKeyboard()})
+                CustomPicker(caption: "And what is your friend's sex?", value: $person.sex, allValues: Sex.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, customAction: {self.hideKeyboard()})
                 .padding(.bottom, 15)
 
                 // Age
