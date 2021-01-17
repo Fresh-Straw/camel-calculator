@@ -35,7 +35,7 @@ struct PersonCreationStep2: View {
             // Sex specific question
             if person.sex != nil {
                 switch person.sex! {
-                    case .male: CustomPicker(caption: "What kind of beard does he have?", value: $person.beard, allValues: Beard.allCases, textProvider: {$0.rawValue}, fontSize: .caption)
+                    case .male: CustomPicker(caption: "What kind of beard does he have?", value: $person.beard, allValues: Beard.allCases, imageProvider: {"beard-\($0.rawValue)"}, fontSize: .caption)
                         .padding(.bottom, 20)
                     case .female: CustomPicker(caption: "How big are her boobs?", value: $person.boobSize, allValues: BoobSize.allCases, imageProvider: {"boobSize-\($0.rawValue)"}, fontSize: .caption)
                         .padding(.bottom, 20)
@@ -59,6 +59,6 @@ struct PersonCreationStep2: View {
 
 struct PersonCreationStep2_Previews: PreviewProvider {
     static var previews: some View {
-        PersonCreationStep2(person: .default)
+        PersonCreationStep2(person: CamelAppModel.example1)
     }
 }
