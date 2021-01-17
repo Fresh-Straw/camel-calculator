@@ -2,7 +2,10 @@
 "-" = "-";
 
 /* No comment provided by engineer. */
-"%.0f" = "";
+"And what is %@ hair color?" = "Und welche Haarfarbe hat %@?";
+
+/* No comment provided by engineer. */
+"And what is your friend's sex?" = "Ist dein Freund männlich oder weiblich?";
 
 /* No comment provided by engineer. */
 "Consists of: %.02f = %.0f * %.02f" = "Besteht aus: %1$.02f = %2$.0f * %3$.02f";
@@ -14,13 +17,22 @@
 "Delete %@?" = "%@ löschen?";
 
 /* No comment provided by engineer. */
+"How big are her boobs?" = "Wie groß sind ihre Brüste?";
+
+/* No comment provided by engineer. */
+"How high is your friend?" = "Wie groß ist dein Freund?";
+
+/* No comment provided by engineer. */
+"How long is %@'s hair?" = "Wie lang sind die Haar von %@?";
+
+/* No comment provided by engineer. */
 "How many camels are your friends worth?" = "Wie viele Kamele sind deine Freunde wert?";
 
 /* No comment provided by engineer. */
-"is worth:" = "wert ist:";
+"How old is your friend?" = "Wie alt ist dein Freund?";
 
 /* No comment provided by engineer. */
-"name" = "Name";
+"is worth:" = "wert ist:";
 
 /* No comment provided by engineer. */
 "Name" = "Name";
@@ -44,48 +56,40 @@
 "There is no serious situation in which other persons, their life or their actions may be counted in camels or any other currency." = "Es gibt keine ernsthafte Situation, in der andere Personen, ihr Leben oder ihre Handlungen in Kamelen oder einer anderen Währung gezählt werden könnten.";
 
 /* No comment provided by engineer. */
+"What kind of beard does he have?" = "Was für einen Bart hat er?";
+
+/* No comment provided by engineer. */
 "What's the name?" = "Wie ist der Name?";
 
 /* No comment provided by engineer. */
-"Calculate Camels" = "Kamele berechnen";
+"Which eye color does %@'s have?" = "Welche Augenfarbe hat %@?";
 
-/* No comment provided by engineer. */
-"Next" = "Weiter";
+"fat" = "fett";
 
-"Camel Calculator" = "Kamelrechner";
+"chubby" = "moppelig";
 
-"blond" = "blond";
+"normal" = "normal";
 
-"brown" = "braun";
-
-"black" = "schwarz";
-
-"red" = "rot";
-
-"grey" = "grau";
-
-"blue" = "blau";
-
-"green" = "grün";
+"thin" = "dünn";
 
 "male" = "männlich";
 
 "female" = "weiblich";
 
-"thin" = "dünn";
+"Camel Calculator" = "Kamelrechner";
 
-"normal" = "normal";
+"Calculate Camels" = "Kamele berechnen";
 
-"chubby" = "moppelig";
+"About your friend" = "Über deinen Freund";
 
-"fat" = "fett";
+"Next" = "Weiter";
+
+"How does she look?" = "Wie sieht sie aus?";
+
+"How does he look?" = "Wie sieht er aus?";
 
 "Calculate result" = "Ergebnis berechnen";
 
 "Wow, next one" = "Cool, nächster";
 
-"And what is your friend's sex?" = "Ist dein Freund männlich oder weiblich?";
-
-"How old is your friend?" = "Wie alt ist dein Freund?";
-
-"How high is your friend?" = "Wie groß ist dein Freund?";
+"Result" = "Ergebnis";

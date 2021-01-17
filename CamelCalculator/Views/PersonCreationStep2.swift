@@ -53,7 +53,7 @@ struct PersonCreationStep2: View {
                 
                 // Go to next screen
                 NavigationLink(destination: PersonResultDisplay(person: person, showSaveButton: true)
-                                .navigationBarTitle("\(person.name)'s result")
+                                .navigationBarTitle("Result")
                                 .navigationBarBackButtonHidden(true)
                 ) {
                     BigButton(caption: "Calculate result")
