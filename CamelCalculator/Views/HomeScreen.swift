@@ -35,12 +35,15 @@ struct HomeScreen: View {
                 Text("Previous calculations")
                     .font(.headline)
                 Spacer()
-                Button(action: {
-                    appModel.personSortOrder = appModel.getNextSortOrder()
-                }, label: {
-                    sortImage()
-                    Image(systemName: "arrow.up.arrow.down")
-                })
+
+                if appModel.persons.count > 1 {
+                    Button(action: {
+                        appModel.personSortOrder = appModel.getNextSortOrder()
+                    }, label: {
+                        sortImage()
+                        Image(systemName: "arrow.up.arrow.down")
+                    })
+                }
             }
             
             PersonList()
