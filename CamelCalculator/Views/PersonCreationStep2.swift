@@ -18,7 +18,7 @@ struct PersonCreationStep2: View {
         ScrollView {
             VStack(alignment: .leading) {
                 // hair length
-                Text("How long is \(person.name)'s hair?")
+                Text("How long is \(person.name.trimName())'s hair?")
                 CustomPicker(value: $person.hairLength, allValues: HairLength.allCases, imageProvider: {"hairLength-\($0.rawValue)"}, fontSize: .caption)
                 .padding(.bottom, 20)
                 
@@ -28,7 +28,7 @@ struct PersonCreationStep2: View {
                 .padding(.bottom, 20)
                 
                 // Eye color
-                Text("Which eye color does \(person.name) have?")
+                Text("Which eye color does \(person.name.trimName()) have?")
                 CustomPicker(value: $person.eyeColor, allValues: EyeColor.allCases, imageProvider: {"eyeColor-\($0.rawValue)"}, fontSize: .caption)
                 .padding(.bottom, 20)
                 

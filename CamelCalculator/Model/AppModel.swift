@@ -84,7 +84,7 @@ struct Person: Identifiable, Codable {
     
     fileprivate init(id: Int = CamelAppModel.getNextId(), name: String, sex: Sex?, age: Double, height: Double, hairColor: HairColor?, hairLength: HairLength?, eyeColor: EyeColor?, boobSize: BoobSize?, beard: Beard?, figure: Figure?) {
         self.id = id
-        self.name = name
+        self.name = name.trimName()
         self.sex = sex
         self.age = age
         self.height = height

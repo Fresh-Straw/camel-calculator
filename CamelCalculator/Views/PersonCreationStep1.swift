@@ -54,7 +54,7 @@ struct PersonCreationStep1: View {
             
             // Go to next screen
             NavigationLink(destination: PersonCreationStep2(person: person)
-                .navigationBarTitle(person.name)) {
+                            .navigationBarTitle(person.name.trimName())) {
                 BigButton(caption: "Next")
                     .opacity(isPageComplete ? 1 : 0.5)
                     .animation(.easeInOut)

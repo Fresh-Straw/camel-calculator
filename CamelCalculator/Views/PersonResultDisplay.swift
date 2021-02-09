@@ -27,7 +27,7 @@ struct PersonResultDisplay: View {
             
             VStack {
                 Text("The number of camels")
-                Text(camelValue.person.name)
+                Text(camelValue.person.name.trimName())
                     .bold()
                     .font(.system(size: resultBaseFontsize * 1.6))
                     .padding(10)
@@ -70,7 +70,7 @@ struct PersonResultDisplay: View {
             Image(systemName:"trash")
         })
         .alert(isPresented: $showDeleteAlert, content: {
-            Alert(title: Text("Delete \(person.name)?"), primaryButton: .destructive(Text("Delete")) {
+            Alert(title: Text("Delete \(person.name.trimName())?"), primaryButton: .destructive(Text("Delete")) {
                 appModel.delete(person: person)
                 self.presentation.wrappedValue.dismiss()
             }, secondaryButton: .cancel())
