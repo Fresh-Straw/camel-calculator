@@ -2,7 +2,8 @@
 "-" = "-";
 
 /* No comment provided by engineer. */
-"And what is %@ hair color?" = "Und welche Haarfarbe hat %@?";
+"And what is his hair color?" = "Und welche Haarfarbe hat er?";
+"And what is her hair color?" = "Und welche Haarfarbe hat sie?";
 
 /* No comment provided by engineer. */
 "And what is your friend's sex?" = "Ist dein Freund männlich oder weiblich?";
@@ -23,7 +24,7 @@
 "How high is your friend?" = "Wie groß ist dein Freund?";
 
 /* No comment provided by engineer. */
-"How long is %@'s hair?" = "Wie lang sind die Haar von %@?";
+"How long is %@'s hair?" = "Wie lang sind die Haare von %@?";
 
 /* No comment provided by engineer. */
 "How many camels are your friends worth?" = "Wie viele Kamele sind deine Freunde wert?";
@@ -62,7 +63,7 @@
 "What's the name?" = "Wie ist der Name?";
 
 /* No comment provided by engineer. */
-"Which eye color does %@'s have?" = "Welche Augenfarbe hat %@?";
+"Which eye color does %@ have?" = "Welche Augenfarbe hat %@?";
 
 "fat" = "fett";
 

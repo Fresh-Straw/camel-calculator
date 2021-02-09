@@ -23,12 +23,12 @@ struct PersonCreationStep2: View {
                 .padding(.bottom, 20)
                 
                 // hair color
-                Text("And what is \(person.sex == .male ? "his" : "her") hair color?")
+                Text(person.sex == .male ? "And what is his hair color?" : "And what is her hair color?")
                 CustomPicker(value: $person.hairColor, allValues: HairColor.allCases, imageProvider: {"hairColor-\($0.rawValue)"}, fontSize: .caption)
                 .padding(.bottom, 20)
                 
                 // Eye color
-                Text("Which eye color does \(person.name)'s have?")
+                Text("Which eye color does \(person.name) have?")
                 CustomPicker(value: $person.eyeColor, allValues: EyeColor.allCases, imageProvider: {"eyeColor-\($0.rawValue)"}, fontSize: .caption)
                 .padding(.bottom, 20)
                 
