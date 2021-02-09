@@ -13,6 +13,10 @@ struct PersonCreationStep1: View {
     private var isPageComplete: Bool {
         !person.name.isEmpty && person.sex != nil
     }
+    
+    private var isOnlyNameMissing: Bool {
+        person.name.isEmpty && person.sex != nil
+    }
 
     var body: some View {
         ScrollView {
@@ -55,6 +59,13 @@ struct PersonCreationStep1: View {
                     .opacity(isPageComplete ? 1 : 0.5)
                     .animation(.easeInOut)
             }.disabled(!isPageComplete)
+            
+            // Hint, that the name is missing
+            if isOnlyNameMissing {
+                Text("Please enter the name of your friend.")
+                    .opacity(0.8)
+                    .padding(.top, 5)
+            }
         }
         .padding()
         .camelDesign()
