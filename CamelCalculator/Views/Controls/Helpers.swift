@@ -17,9 +17,3 @@ func runCounter(counter: Binding<Int>, start: Int, end: Int, speed: Double) {
         }
     }
 }
-
-extension String {
-    func trimName() -> String {
-        return self.trimmingCharacters(in: .whitespacesAndNewlines).trimmingCharacters(in: .punctuationCharacters)
-    }
-}

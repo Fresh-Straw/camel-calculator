@@ -17,3 +17,8 @@ extension View {
 }
 #endif
 
+extension String {
+    func trimName() -> String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+}
