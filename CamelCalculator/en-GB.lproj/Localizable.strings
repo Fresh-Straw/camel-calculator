@@ -1,0 +1,95 @@
+/* No comment provided by engineer. */
+"-" = "-";
+
+"Please enter the name of your friend." = "Please enter the name of your friend.";
+
+/* No comment provided by engineer. */
+"And what is his hair color?" = "And what is his hair color?";
+"And what is her hair color?" = "And what is her hair color?";
+
+/* No comment provided by engineer. */
+"And what is your friend's sex?" = "And what is your friend's sex?";
+
+/* No comment provided by engineer. */
+"Delete" = "Delete";
+
+/* No comment provided by engineer. */
+"Delete %@?" = "Delete %@?";
+
+/* No comment provided by engineer. */
+"How big are her boobs?" = "How big are her boobs?";
+
+/* No comment provided by engineer. */
+"How high is your friend?" = "How high is your friend?";
+
+/* No comment provided by engineer. */
+"How long is %@'s hair?" = "How long is %@'s hair?";
+
+/* No comment provided by engineer. */
+"How many camels are your friends worth?" = "How many camels are your friends worth?";
+
+/* No comment provided by engineer. */
+"How old is your friend?" = "How old is your friend?";
+
+/* No comment provided by engineer. */
+"is worth:" = "is worth:";
+
+/* No comment provided by engineer. */
+"Name" = "Name";
+
+/* No comment provided by engineer. */
+"Please consider this app as a joke." = "Please consider this app as a joke.";
+
+/* No comment provided by engineer. */
+"Previous calculations" = "Previous calculations";
+
+/* No comment provided by engineer. */
+"Result: %.0f" = "Result: %.0f";
+
+/* No comment provided by engineer. */
+"Tell us the name of your friend, please:" = "Tell us the name of your friend, please:";
+
+/* No comment provided by engineer. */
+"The number of camels" = "The number of camels";
+
+/* No comment provided by engineer. */
+"There is no serious situation in which other persons, their life or their actions may be counted in camels or any other currency." = "There is no serious situation in which other persons, their life or their actions may be counted in camels or any other currency.";
+
+/* No comment provided by engineer. */
+"What kind of beard does he have?" = "What kind of beard does he have?";
+
+/* No comment provided by engineer. */
+"What's the name?" = "What's the name?";
+
+/* No comment provided by engineer. */
+"Which eye color does %@ have?" = "Which eye color does %@ have?";
+
+"fat" = "fat";
+
+"chubby" = "chubby";
+
+"normal" = "normal";
+
+"thin" = "thin";
+
+"male" = "male";
+
+"female" = "female";
+
+"Camel Calculator" = "Camel Calculator";
+
+"Calculate Camels" = "Calculate Camels";
+
+"About your friend" = "About your friend";
+
+"Next" = "Next";
+
+"How does she look?" = "How does she look?";
+
+"How does he look?" = "How does he look?";
+
+"Calculate result" = "Calculate result";
+
+"Wow, next one" = "Wow, next one";
+
+"Result" = "Result";
