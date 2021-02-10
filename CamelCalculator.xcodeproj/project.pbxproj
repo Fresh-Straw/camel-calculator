@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,6 +29,7 @@
 		C5C17B9F25A2116100734B22 /* CamelCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C17B9E25A2116100734B22 /* CamelCalculatorUITests.swift */; };
 		C5C17BB525A222D000734B22 /* CamelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C17BB425A222D000734B22 /* CamelModel.swift */; };
 		C5DF1E3525B2F96900A75ACA /* ViewDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DF1E3425B2F96900A75ACA /* ViewDesign.swift */; };
+		C5ECFA6725D3384D00EDC175 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = C5ECFA6625D3384D00EDC175 /* Introspect */; };
 		C5F1450125AB4E1100AA325C /* SliderEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F1450025AB4E1100AA325C /* SliderEditor.swift */; };
 		C5F1450D25AB54AD00AA325C /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F1450C25AB54AD00AA325C /* CustomPicker.swift */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5ECFA6725D3384D00EDC175 /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +234,9 @@
 			dependencies = (
 			);
 			name = CamelCalculator;
+			packageProductDependencies = (
+				C5ECFA6625D3384D00EDC175 /* Introspect */,
+			);
 			productName = CamelCalculator;
 			productReference = C5C17B7E25A2115E00734B22 /* CamelCalculator.app */;
 			productType = "com.apple.product-type.application";
@@ -304,6 +309,9 @@
 				de,
 			);
 			mainGroup = C5C17B7525A2115E00734B22;
+			packageReferences = (
+				C5ECFA6525D3384D00EDC175 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+			);
 			productRefGroup = C5C17B7F25A2115E00734B22 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -544,7 +552,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"CamelCalculator/Preview Content\"";
 				DEVELOPMENT_TEAM = NBA2M3HYSW;
 				ENABLE_PREVIEWS = YES;
@@ -567,7 +575,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"CamelCalculator/Preview Content\"";
 				DEVELOPMENT_TEAM = NBA2M3HYSW;
 				ENABLE_PREVIEWS = YES;
@@ -708,6 +716,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C5ECFA6525D3384D00EDC175 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C5ECFA6625D3384D00EDC175 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5ECFA6525D3384D00EDC175 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C5C17B7625A2115E00734B22 /* Project object */;
 }

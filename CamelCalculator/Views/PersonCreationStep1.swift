@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct PersonCreationStep1: View {
     @State var person: Person
@@ -17,7 +18,7 @@ struct PersonCreationStep1: View {
     private var isOnlyNameMissing: Bool {
         person.name.isEmpty && person.sex != nil
     }
-
+    
     var body: some View {
         ScrollView {
             // Name
@@ -28,6 +29,7 @@ struct PersonCreationStep1: View {
                     .autocapitalization(.words)
                     .font(.title)
                     .padding()
+                    .introspectTextField { field in DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200), execute: { field.becomeFirstResponder() })  }
             }
             .padding(.bottom, 20)
             
@@ -75,5 +77,6 @@ struct PersonCreationStep1: View {
 struct PersonCreationStep1_Previews: PreviewProvider {
     static var previews: some View {
         PersonCreationStep1(person: .empty)
+            .environmentObject(CamelAppModel())
     }
 }
