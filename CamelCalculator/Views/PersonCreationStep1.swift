@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Introspect
 
 struct PersonCreationStep1: View {
     @State var person: Person
@@ -29,7 +28,6 @@ struct PersonCreationStep1: View {
                     .autocapitalization(.words)
                     .font(.title)
                     .padding()
-                    .introspectTextField { field in DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200), execute: { field.becomeFirstResponder() })  }
             }
             .padding(.bottom, 20)
             

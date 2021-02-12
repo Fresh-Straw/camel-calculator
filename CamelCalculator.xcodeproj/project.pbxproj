@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C518ADD525D6AAA600DE7560 /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C518ADCF25D6AAA600DE7560 /* PromisesObjC.xcframework */; };
+		C518ADD625D6AAA600DE7560 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C518ADD025D6AAA600DE7560 /* nanopb.xcframework */; };
+		C518ADD725D6AAA600DE7560 /* UserMessagingPlatform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C518ADD125D6AAA600DE7560 /* UserMessagingPlatform.xcframework */; };
+		C518ADD825D6AAA600DE7560 /* GoogleAppMeasurement.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C518ADD225D6AAA600DE7560 /* GoogleAppMeasurement.xcframework */; };
+		C518ADD925D6AAA600DE7560 /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C518ADD325D6AAA600DE7560 /* GoogleMobileAds.xcframework */; };
+		C518ADDA25D6AAA600DE7560 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C518ADD425D6AAA600DE7560 /* GoogleUtilities.xcframework */; };
+		C518ADE025D6ABE200DE7560 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C518ADDF25D6ABE200DE7560 /* Banner.swift */; };
+		C518ADE525D6ABFF00DE7560 /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C518ADE425D6ABFF00DE7560 /* AppSecrets.swift */; };
 		C51F87C025AB7CFD00D326A8 /* PersonResultDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F87BF25AB7CFD00D326A8 /* PersonResultDisplay.swift */; };
 		C51F87CA25AB7F7D00D326A8 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F87C925AB7F7D00D326A8 /* Helpers.swift */; };
 		C51F87E325AC882800D326A8 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F87E225AC882800D326A8 /* AppTheme.swift */; };
@@ -29,7 +37,6 @@
 		C5C17B9F25A2116100734B22 /* CamelCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C17B9E25A2116100734B22 /* CamelCalculatorUITests.swift */; };
 		C5C17BB525A222D000734B22 /* CamelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C17BB425A222D000734B22 /* CamelModel.swift */; };
 		C5DF1E3525B2F96900A75ACA /* ViewDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DF1E3425B2F96900A75ACA /* ViewDesign.swift */; };
-		C5ECFA6725D3384D00EDC175 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = C5ECFA6625D3384D00EDC175 /* Introspect */; };
 		C5F1450125AB4E1100AA325C /* SliderEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F1450025AB4E1100AA325C /* SliderEditor.swift */; };
 		C5F1450D25AB54AD00AA325C /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F1450C25AB54AD00AA325C /* CustomPicker.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +59,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C518ADCF25D6AAA600DE7560 /* PromisesObjC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PromisesObjC.xcframework; path = GoogleMobileAdsSdkiOS/PromisesObjC.xcframework; sourceTree = SOURCE_ROOT; };
+		C518ADD025D6AAA600DE7560 /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = nanopb.xcframework; path = GoogleMobileAdsSdkiOS/nanopb.xcframework; sourceTree = SOURCE_ROOT; };
+		C518ADD125D6AAA600DE7560 /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UserMessagingPlatform.xcframework; path = GoogleMobileAdsSdkiOS/UserMessagingPlatform.xcframework; sourceTree = SOURCE_ROOT; };
+		C518ADD225D6AAA600DE7560 /* GoogleAppMeasurement.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleAppMeasurement.xcframework; path = GoogleMobileAdsSdkiOS/GoogleAppMeasurement.xcframework; sourceTree = SOURCE_ROOT; };
+		C518ADD325D6AAA600DE7560 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = GoogleMobileAdsSdkiOS/GoogleMobileAds.xcframework; sourceTree = SOURCE_ROOT; };
+		C518ADD425D6AAA600DE7560 /* GoogleUtilities.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleUtilities.xcframework; path = GoogleMobileAdsSdkiOS/GoogleUtilities.xcframework; sourceTree = SOURCE_ROOT; };
+		C518ADDF25D6ABE200DE7560 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
+		C518ADE425D6ABFF00DE7560 /* AppSecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecrets.swift; sourceTree = "<group>"; };
 		C51F87BF25AB7CFD00D326A8 /* PersonResultDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonResultDisplay.swift; sourceTree = "<group>"; };
 		C51F87C925AB7F7D00D326A8 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		C51F87E225AC882800D326A8 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
@@ -91,7 +106,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5ECFA6725D3384D00EDC175 /* Introspect in Frameworks */,
+				C518ADD525D6AAA600DE7560 /* PromisesObjC.xcframework in Frameworks */,
+				C518ADD925D6AAA600DE7560 /* GoogleMobileAds.xcframework in Frameworks */,
+				C518ADD725D6AAA600DE7560 /* UserMessagingPlatform.xcframework in Frameworks */,
+				C518ADD825D6AAA600DE7560 /* GoogleAppMeasurement.xcframework in Frameworks */,
+				C518ADD625D6AAA600DE7560 /* nanopb.xcframework in Frameworks */,
+				C518ADDA25D6AAA600DE7560 /* GoogleUtilities.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +132,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C518ADCE25D6AA8B00DE7560 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				C518ADD225D6AAA600DE7560 /* GoogleAppMeasurement.xcframework */,
+				C518ADD325D6AAA600DE7560 /* GoogleMobileAds.xcframework */,
+				C518ADD425D6AAA600DE7560 /* GoogleUtilities.xcframework */,
+				C518ADD025D6AAA600DE7560 /* nanopb.xcframework */,
+				C518ADCF25D6AAA600DE7560 /* PromisesObjC.xcframework */,
+				C518ADD125D6AAA600DE7560 /* UserMessagingPlatform.xcframework */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		C518ADDE25D6ABCD00DE7560 /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				C518ADDF25D6ABE200DE7560 /* Banner.swift */,
+			);
+			path = Ads;
+			sourceTree = "<group>";
+		};
 		C51F87EA25AC891300D326A8 /* Design */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +172,7 @@
 				C51F87BF25AB7CFD00D326A8 /* PersonResultDisplay.swift */,
 				C5F1450525AB509700AA325C /* Controls */,
 				C51F87EA25AC891300D326A8 /* Design */,
+				C518ADDE25D6ABCD00DE7560 /* Ads */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -151,6 +193,7 @@
 				C5C17B8025A2115E00734B22 /* CamelCalculator */,
 				C5C17B9225A2116100734B22 /* CamelCalculatorTests */,
 				C5C17B9D25A2116100734B22 /* CamelCalculatorUITests */,
+				C518ADCE25D6AA8B00DE7560 /* libs */,
 				C5C17B7F25A2115E00734B22 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -169,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				C5C17B8125A2115E00734B22 /* CamelCalculatorApp.swift */,
+				C518ADE425D6ABFF00DE7560 /* AppSecrets.swift */,
 				C575138A25ACC8C300CF6731 /* Helper.swift */,
 				C5BAAE5A25A4D084004A91FA /* Views */,
 				C5BAAE5E25A4D08A004A91FA /* Model */,
@@ -237,7 +281,6 @@
 			);
 			name = CamelCalculator;
 			packageProductDependencies = (
-				C5ECFA6625D3384D00EDC175 /* Introspect */,
 			);
 			productName = CamelCalculator;
 			productReference = C5C17B7E25A2115E00734B22 /* CamelCalculator.app */;
@@ -312,7 +355,6 @@
 			);
 			mainGroup = C5C17B7525A2115E00734B22;
 			packageReferences = (
-				C5ECFA6525D3384D00EDC175 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = C5C17B7F25A2115E00734B22 /* Products */;
 			projectDirPath = "";
@@ -370,10 +412,12 @@
 				C51F87E325AC882800D326A8 /* AppTheme.swift in Sources */,
 				C53C5B2525B1FE9100D0395F /* PersonList.swift in Sources */,
 				C5F1450125AB4E1100AA325C /* SliderEditor.swift in Sources */,
+				C518ADE025D6ABE200DE7560 /* Banner.swift in Sources */,
 				C51F87C025AB7CFD00D326A8 /* PersonResultDisplay.swift in Sources */,
 				C575139E25ACDDE500CF6731 /* AppModel.swift in Sources */,
 				C53C3B7B25AA22DA00FFBE1E /* PersonCreationStep1.swift in Sources */,
 				C5F1450D25AB54AD00AA325C /* CustomPicker.swift in Sources */,
+				C518ADE525D6ABFF00DE7560 /* AppSecrets.swift in Sources */,
 				C5C17BB525A222D000734B22 /* CamelModel.swift in Sources */,
 				C5C17B8225A2115E00734B22 /* CamelCalculatorApp.swift in Sources */,
 			);
@@ -566,6 +610,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = org.olafneumann.CamelCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -589,6 +634,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = org.olafneumann.CamelCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -720,25 +766,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		C5ECFA6525D3384D00EDC175 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		C5ECFA6625D3384D00EDC175 /* Introspect */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C5ECFA6525D3384D00EDC175 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
-			productName = Introspect;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C5C17B7625A2115E00734B22 /* Project object */;
 }
