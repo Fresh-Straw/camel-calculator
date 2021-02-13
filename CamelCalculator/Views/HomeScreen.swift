@@ -49,7 +49,6 @@ struct HomeScreen: View {
             PersonList()
             
             VStack(alignment: .center) {
-                Banner(bannerID: googleAds_bannerId_mainScreen)
                 Text("Please consider this app as a joke.")
                     .bold()
                 Text("There is no serious situation in which other persons, their life or their actions may be counted in camels or any other currency.")
