@@ -4,7 +4,7 @@ name: Publish Docs
 
 # Controls when the action will run. 
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  # Triggers the workflow on push events but only for the master branch
   push:
     branches: [ master ]
 
@@ -20,12 +20,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: GH Pages deploy
-        uses: Cecilapp/GitHub-Pages-deploy@3.1.0
+      - name: Deploy Site
+        # if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          # Where static files are.
-          build_dir: docs
-          # Which branch to push files.
-          branch: gh-pages
-          # The custom domain name.
-          cname: camel-calculator.olafneumann.org
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          enable_jekyll: false
