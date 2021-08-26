@@ -6,5 +6,5 @@ set -eo pipefail
 
 xcodebuild -project CamelCalculator.xcodeproj \
             -scheme CamelCalculator \
-            -destination platform=iOS\ Simulator,OS=14.4,name=iPhone\ 12 \
+            -destination platform=iOS\ Simulator,OS=14.5,name=iPhone\ 12 \
             clean test | xcpretty
