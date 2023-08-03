@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct HomeScreen: View {
-    @EnvironmentObject private var appModel: CamelAppModel
+    @EnvironmentObject private var model: CamelAppModel
     
-    func sortImage() -> Image {
-        switch appModel.personSortOrder {
+    private func sortImage() -> Image {
+        switch model.personSortOrder {
         case .byNameUp: return Image(systemName: "a.circle.fill")
         case .byNameDown: return Image(systemName: "z.circle.fill")
         case .byResultUp: return Image(systemName: "0.circle.fill")
@@ -23,10 +23,16 @@ struct HomeScreen: View {
         VStack {
             Text("How many camels are your friends worth?")
                 .font(.headline)
-            NavigationLink(destination: PersonCreationStep1(person: .empty)
-                            .navigationBarTitle("About your friend", displayMode: .inline), isActive: $appModel.computationNavigationActive) {
-                BigButton(caption: "Calculate Camels")
-            }
+            
+            Button(action: {
+                model.currentPerson = .empty
+                model.appState = .NameAndAge
+            }, label: {
+                Label("Calculate Camels", systemImage: "number.square")
+                    .frame(maxWidth: .infinity)
+            })
+            .camelButton()
+            .labelStyle(.titleOnly)
             
             Divider()
                 .padding(.vertical)
@@ -35,10 +41,10 @@ struct HomeScreen: View {
                 Text("Previous calculations")
                     .font(.headline)
                 Spacer()
-
-                if appModel.persons.count > 1 {
+                
+                if model.persons.count > 1 {
                     Button(action: {
-                        appModel.personSortOrder = appModel.getNextSortOrder()
+                        model.personSortOrder = model.getNextSortOrder()
                     }, label: {
                         sortImage()
                         Image(systemName: "arrow.up.arrow.down")
@@ -46,20 +52,23 @@ struct HomeScreen: View {
                 }
             }
             
-            PersonList()
+            PersonList { person in
+                model.currentPerson = person
+                model.appState = .ShowResult
+            }
             
+            .padding(.bottom, 10)
+            .foregroundColor(Color.textInfo)
+        }
+        .navigationTitle("Camel Calculator")
+        .safeAreaInset(edge: .bottom) {
             VStack(alignment: .center) {
                 Text("Please consider this app as a joke.")
                     .bold()
                 Text("There is no serious situation in which other persons, their life or their actions may be counted in camels or any other currency.")
                     .multilineTextAlignment(.center)
             }
-            .padding(.bottom, 10)
-            .foregroundColor(Color.textInfo)
         }
-        .navigationTitle("Camel Calculator")
-        .edgesIgnoringSafeArea(.bottom)
-        .camelDesign()
     }
 }
 

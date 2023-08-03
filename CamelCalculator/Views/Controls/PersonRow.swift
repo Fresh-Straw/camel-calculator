@@ -21,14 +21,16 @@ struct PersonRow: View {
                 Text(String(person.camelValue.sum.result))
                     .font(.headline)
             }
+            .background(.clear)
         }
+        .background(.clear)
         .padding(.vertical, 10)
     }
 }
 
 struct PersonRow_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
+        VStack {
             ForEach(CamelAppModel().persons) { person in
                 PersonRow(person: person)
             }

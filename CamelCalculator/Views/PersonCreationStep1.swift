@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct PersonCreationStep1: View {
-    @State var person: Person
+    @EnvironmentObject private var model: CamelAppModel
+    
+    private var person: Person {
+        model.currentPerson
+    }
     
     private var isPageComplete: Bool {
         !person.name.isEmpty && person.sex != nil
@@ -23,7 +27,7 @@ struct PersonCreationStep1: View {
             // Name
             VStack(alignment: .leading) {
                 Text("Tell us the name of your friend, please:")
-                TextField("What's the name?", text: $person.name)
+                TextField("What's the name?", text: $model.currentPerson.name)
                     .keyboardType(.alphabet)
                     .autocapitalization(.words)
                     .font(.title)
@@ -34,31 +38,34 @@ struct PersonCreationStep1: View {
             // Sex
             VStack(alignment: .leading) {
                 Text("And what is your friend's sex?")
-                CustomPicker(value: $person.sex, allValues: Sex.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, customAction: {self.hideKeyboard()})
+                CustomPicker(value:  $model.currentPerson.sex, allValues: Sex.allCases, textProvider: {LocalizedStringKey($0.rawValue)}, customAction: {self.hideKeyboard()})
             }
             .padding(.bottom, 15)
-
+            
             // Age
             VStack(alignment: .leading) {
                 Text("How old is your friend?")
-                SliderEditor(value: $person.age, range: ageRange, customAction: {self.hideKeyboard()})
+                SliderEditor(value:  $model.currentPerson.age, range: ageRange, customAction: {self.hideKeyboard()})
             }
             .padding(.bottom, 15)
             
             // height
             VStack(alignment: .leading) {
                 Text("How high is your friend?")
-                SliderEditor(value: $person.height, range: heightRange, customAction: {self.hideKeyboard()})
+                SliderEditor(value:  $model.currentPerson.height, range: heightRange, customAction: {self.hideKeyboard()})
             }
             .padding(.bottom, 15)
             
             // Go to next screen
-            NavigationLink(destination: PersonCreationStep2(person: person)
-                            .navigationBarTitle(person.name.trimName())) {
-                BigButton(caption: "Next")
-                    .opacity(isPageComplete ? 1 : 0.5)
-                    .animation(.easeInOut)
-            }.disabled(!isPageComplete)
+            Button(action: {
+                model.appState = .OuterValues
+            }, label: {
+                Label("Next", systemImage: "arrow.forward")
+                    .frame(maxWidth: .infinity)
+            })
+            .camelButton()
+            .disabled(!isPageComplete)
+            .animation(.easeInOut, value: person)
             
             // Hint, that the name is missing
             if isOnlyNameMissing {
@@ -67,14 +74,12 @@ struct PersonCreationStep1: View {
                     .padding(.top, 5)
             }
         }
-        .padding()
-        .camelDesign()
     }
 }
 
 struct PersonCreationStep1_Previews: PreviewProvider {
     static var previews: some View {
-        PersonCreationStep1(person: .empty)
+        PersonCreationStep1()
             .environmentObject(CamelAppModel())
     }
 }

@@ -23,11 +23,11 @@ struct CustomPicker<T: Equatable & Identifiable>: View {
                     customAction()
                 }) {
                     VStack {
-                        if textProvider != nil {
-                            Text(textProvider!(v))
+                        if let textProvider {
+                            Text(textProvider(v))
                         }
-                        if imageProvider != nil {
-                            Image(imageProvider!(v))
+                        if let imageProvider {
+                            Image(imageProvider(v))
                         }
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -36,7 +36,7 @@ struct CustomPicker<T: Equatable & Identifiable>: View {
                 .frame(maxWidth: .infinity)
                 .padding(textProvider != nil ? 10 : 0)
                 .background(value == v ? Color.pickerSelected : Color.pickerUnselected)
-                .animation(.easeInOut)
+                .animation(.easeInOut, value: value)
                 //.foregroundColor(.pickerFont)
                 .cornerRadius(7)
                 .shadow(color: .pickerUnselected, radius: 7)

@@ -10,6 +10,8 @@ import SwiftUI
 struct PersonList: View {
     @EnvironmentObject private var appModel: CamelAppModel
     
+    var action: (Person) -> Void = {_ in}
+    
     var sortedPersons: [Person] {
         appModel.persons.sorted(by: createPersonSorter())
     }
@@ -32,7 +34,7 @@ struct PersonList: View {
     }
 
     var body: some View {
-        ScrollView {
+        /*ScrollView {
             ForEach (sortedPersons) { person in
                 NavigationLink(destination: PersonResultDisplay(person: person)) {
                     VStack {
@@ -46,7 +48,19 @@ struct PersonList: View {
                 }
             }
         }
-        .listStyle(PlainListStyle())
+        .listStyle(PlainListStyle())*/
+        List {
+            ForEach(sortedPersons) { person in
+                Button(action: {action(person)}, label: {
+                    HStack {
+                        PersonRow(person: person)
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.gray)
+                    }
+                })
+            }.listRowBackground(Color.clear)
+        }
+        .listStyle(.plain)
     }
 }
 
@@ -54,8 +68,8 @@ struct PersonList_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             PersonList()
-                .environmentObject(CamelAppModel())
         }
+        .environmentObject(CamelAppModel())
         .previewLayout(.fixed(width: 350, height: 500))
     }
 }

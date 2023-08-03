@@ -14,7 +14,7 @@ struct PersonResultDisplay: View {
     @State private var showDeleteAlert = false
     
     var person: Person
-    var showSaveButton = false
+    var showAnimation = false
     
     var camelValue: CamelValue {
         CamelValue(person: person)
@@ -22,6 +22,14 @@ struct PersonResultDisplay: View {
     
     var body: some View {
         VStack(alignment: .center) {
+            if !showAnimation {
+                HStack {
+                    Spacer()
+                
+                    createDeleteButton(for: person)
+                }
+                .padding(.horizontal)
+            }
             
             Spacer()
             
@@ -34,11 +42,11 @@ struct PersonResultDisplay: View {
                 Text("is worth:")
                     .padding(.bottom, 50)
                 
-                Text("\(showSaveButton ? value : Int(person.camelValue.sum.result))")
+                Text("\(showAnimation ? value : Int(person.camelValue.sum.result))")
                     .font(.system(size: resultBaseFontsize * 3.5))
                     .bold()
                     .onAppear {
-                        if showSaveButton {
+                        if showAnimation {
                             runCounter(counter: $value, start: 0, end: Int(camelValue.sum.result), speed: 0.05)
                         }
                     }
@@ -47,28 +55,40 @@ struct PersonResultDisplay: View {
             
             Spacer()
             
-            VStack {
-                if showSaveButton {
-                    BigButton(caption: "Wow, next one")
-                        .padding()
-                        .onTapGesture {
-                            appModel.finishPersonComputation(for: person)
-                        }
+                if showAnimation {
+                    Button(action: {
+                        appModel.finishPersonComputation(for: person)
+                    }, label: {
+                        Label("Wow, next one", systemImage: "chevron.right.square")
+                    })
+                    .camelButton(transparent: true)
+                    .padding()
+                    .labelStyle(.titleOnly)
                 }
-            }
             
             Spacer()
         }
-        .navigationBarItems(trailing: showSaveButton ? nil : createDeleteButton(for: person))
-        .camelDesign()
+        //.navigationBarItems(trailing: showAnimation ? nil : createDeleteButton(for: person))
+    }
+    
+    func runCounter(counter: Binding<Int>, start: Int, end: Int, speed: Double) {
+        counter.wrappedValue = start
+
+        Timer.scheduledTimer(withTimeInterval: speed, repeats: true) { timer in
+            counter.wrappedValue += 1
+            if counter.wrappedValue == end {
+                timer.invalidate()
+            }
+        }
     }
     
     private func createDeleteButton(for person: Person) -> some View {
         Button(action: {
             self.showDeleteAlert = true
         }, label: {
-            Image(systemName:"trash")
+            Label("Delete", systemImage: "trash")
         })
+        .labelStyle(.iconOnly)
         .alert(isPresented: $showDeleteAlert, content: {
             Alert(title: Text("Delete \(person.name.trimName())?"), primaryButton: .destructive(Text("Delete")) {
                 appModel.delete(person: person)
@@ -80,7 +100,7 @@ struct PersonResultDisplay: View {
 
 struct PersonResultDisplay_Previews: PreviewProvider {
     static var previews: some View {
-        PersonResultDisplay(person: .default, showSaveButton: true)
+        PersonResultDisplay(person: .default, showAnimation: false)
             .environmentObject(CamelAppModel())
     }
 }

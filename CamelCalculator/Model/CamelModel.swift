@@ -70,3 +70,20 @@ enum Beard: String, Codable, CaseIterable, Identifiable {
     
     var id: String { self.rawValue }
 }
+
+enum Humor: String, Codable, CaseIterable, Identifiable {
+    case veryFunny = "verFunny"
+    case okish = "okish"
+    case meeeh = "meeeh"
+    case notAtAll = "notAtAll"
+    
+    var id: String { self.rawValue }
+}
+
+// - [ ] Loyal
+// - [ ] Zuverlässigkeit
+// - [ ] Freundlichkeit
+// - [ ] Ehrlich
+// - [ ] Intelligenz
+// - [ ] Humor
+// - [ ] Schweigsam/ Quasselstrippe

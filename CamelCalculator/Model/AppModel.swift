@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
+import Combine
 
 final class CamelAppModel : ObservableObject {
     static var example1 = Person(id: CamelAppModel.getNextId(), name: "Tarzan", sex: .male, age: 23, height: 175, hairColor: .black, hairLength: .shoulder, eyeColor: .green, boobSize: BoobSize.c, beard: nil, figure: .normal)
@@ -18,15 +20,18 @@ final class CamelAppModel : ObservableObject {
     
     fileprivate static func getNextId() -> Int {
         currentIdLock.lock()
+        defer { currentIdLock.unlock() }
         currentId += 1
-        let idToReturn = currentId
-        currentIdLock.unlock()
-        return idToReturn
+        return currentId
     }
     
     @Published var persons: [Person] = [CamelAppModel.example1, CamelAppModel.example2, CamelAppModel.example3, CamelAppModel.example4]
-    @Published var computationNavigationActive = false
     @Published var personSortOrder: PersonSortOrder = .byResultDown
+    
+    @Published var appState: CamelState = .Home
+    @Published var currentPerson: Person = .empty
+    var transition: AnyTransition = AnyTransition.opacity.combined(with: .scale) //AnyTransition.asymmetric(insertion: AnyTransition.move(edge: .trailing), removal: AnyTransition.move(edge: .leading))
+    
     
     init() {
         let defaults = UserDefaults.standard
@@ -46,12 +51,13 @@ final class CamelAppModel : ObservableObject {
         let newPerson = Person(id: CamelAppModel.getNextId(), person: personToCopy)
         persons.append(newPerson)
         saveData()
-        computationNavigationActive = false
+        appState = .Home
     }
     
     func delete(person: Person) {
         persons.removeAll(where: { $0.id == person.id })
         saveData()
+        appState = .Home
     }
     
     func saveData() {
@@ -74,7 +80,11 @@ final class CamelAppModel : ObservableObject {
     }
 }
 
-struct Person: Identifiable, Codable {
+enum CamelState: Int, Equatable {
+    case Home, NameAndAge, OuterValues, InnerValues, ComputeResult, ShowResult
+}
+
+struct Person: Identifiable, Codable, Equatable {
     static var `default` = Person(name: "Jane", sex: .female, age: 23, height: 169, hairColor: .blond, hairLength: .long, eyeColor: .brown, boobSize: BoobSize.c, beard: nil, figure: .normal)
     static var empty = Person(name: "", sex: nil, age: 20, height: 160, hairColor: nil, hairLength: nil, eyeColor: nil, boobSize: nil, beard: nil, figure: nil)
     
