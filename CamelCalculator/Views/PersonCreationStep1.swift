@@ -66,6 +66,7 @@ struct PersonCreationStep1: View {
             .camelButton()
             .disabled(!isPageComplete)
             .animation(.easeInOut, value: person)
+            .labelStyle(.titleOnly)
             
             // Hint, that the name is missing
             if isOnlyNameMissing {

@@ -16,7 +16,7 @@ struct PersonCreationStepInnverValues: View {
     }
     
     private var isPageComplete: Bool {
-        person.hairLength != nil && person.hairColor != nil && person.eyeColor != nil && person.figure != nil && (person.beard != nil || person.boobSize != nil)
+        person.humor != nil && person.intelligence != nil && person.loyalty != nil && person.bloodPressure != nil
     }
     
     var body: some View {

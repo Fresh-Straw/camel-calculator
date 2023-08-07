@@ -35,10 +35,10 @@ struct CamelValue {
         let sex: Sex = person.sex!
         
         // main capping value - it is not possible to get a score higher than this
-        let capping = Int(computeAgeCapping(forAge: person.age, andSex: sex))
+        let capping = computeAgeCapping(forAge: person.age, andSex: sex)
         
         // compute the other values
-        age = Change(summand: Double(Int(Double(capping) * 0.4)), factor: 1.0)
+        age = Change(summand: round(capping * 0.4), factor: 1.0)
         height = getValueFor(height: person.height, sex: sex)
         hairColor = getValueFor(hairColor: person.hairColor)
         hairLength = getValueFor(hairLength: person.hairLength, andSex: person.sex)
@@ -179,13 +179,13 @@ private func getValueFor(humor: Humor?) -> Change {
     
     switch humor {
     case .notAtAll:
-        return Change(summand: 0, factor: 1)
+        return Change(summand: -1, factor: 0.98)
     case .meeeh:
-        return Change(summand: 0, factor: 1)
+        return Change(summand: 0, factor: 1.0)
     case .okish:
-        return Change(summand: 0, factor: 1)
+        return Change(summand: 1, factor: 1.02)
     case .veryFunny:
-        return Change(summand: 0, factor: 1)
+        return Change(summand: 3, factor: 1.04)
     }
 }
 
@@ -194,13 +194,13 @@ private func getValueFor(intelligence: Intelligence?) -> Change {
     
     switch intelligence {
     case .Einstein:
-        return Change(summand: 0, factor: 1)
+        return Change(summand: -2, factor: 1.05)
     case .quiteSmart:
-        return Change(summand: 0, factor: 1)
+        return Change(summand: 2, factor: 1.01)
     case .mediocre:
-        return Change(summand: 0, factor: 1)
+        return Change(summand: 1, factor: 1)
     case .dumb:
-        return Change(summand: 0, factor: 1)
+        return Change(summand: -5, factor: 1.1)
     }
 }
 
@@ -209,11 +209,11 @@ private func getValueFor(loyalty: Loyalty?) -> Change {
     
     switch loyalty {
     case .AlwaysOnMySide:
-        return Change(summand: 0, factor: 1)
+        return Change(summand: 4, factor: 0.99)
     case .kindOfOk:
-        return Change(summand: 0, factor: 1)
+        return Change(summand: 2, factor: 1.001)
     case .LikeTheWind:
-        return Change(summand: 0, factor: 1)
+        return Change(summand: 1, factor: 0.99)
     }
 }
 
@@ -222,22 +222,22 @@ private func getValueFor(bloodPressure: BloodPressure?) -> Change {
     
     switch bloodPressure {
     case .bp110to80:
-        return Change(summand: 0, factor: 1)
+        return Change(summand: 2, factor: 1.01)
     case .bp120to80:
-        return Change(summand: 0, factor: 1)
+        return Change(summand: 3, factor: 1.02)
     case .bp130to80:
-        return Change(summand: 0, factor: 1)
+        return Change(summand: 3, factor: 1)
     case .bp140to85:
-        return Change(summand: 0, factor: 1)
+        return Change(summand: 4, factor: 0.98)
     case .bp160to100:
-        return Change(summand: 0, factor: 1)
+        return Change(summand: -2, factor: 0.97)
     }
 }
 
 private func getValueFor(lungVolume: Double?) -> Change {
     guard let lungVolume else { return Change.Nothing }
     
-    return Change.Nothing
+    return Change(summand: lungVolume, factor: 1.035 - Double(lungVolume) * 0.01)
 }
 
 
@@ -246,9 +246,9 @@ private func getValueFor(lungVolume: Double?) -> Change {
 private var femaleAgeCapping: [Double] = [0,10,40,53,76,110,90,85,70,45,34,26,23,19,16,14,12,10,8,6,5,4,3,2,1]
 private var maleAgeCapping: [Double] = [0,13,28,53,98,109,111,87,70,52,38,29,23,19,16,14,12,10,8,6,5,4,3,2,1]
 
-private func computeAgeCapping(forAge age: Double, andSex sex: Sex) -> Int {
+private func computeAgeCapping(forAge age: Double, andSex sex: Sex) -> Double {
     let cappingRawValues = getFittingValuable(sex: sex, male: maleAgeCapping, female: femaleAgeCapping)
-    return Int(ceil(getSpline(forValues: cappingRawValues, atPosition: age)))
+    return ceil(getSpline(forValues: cappingRawValues, atPosition: age))
 }
 
 // MARK: Freaky math
