@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C5048CF12A7C1CBD002130D7 /* PersonCreationStepInnverValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5048CF02A7C1CBD002130D7 /* PersonCreationStepInnverValues.swift */; };
 		C51F87C025AB7CFD00D326A8 /* PersonResultDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F87BF25AB7CFD00D326A8 /* PersonResultDisplay.swift */; };
 		C51F87E325AC882800D326A8 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F87E225AC882800D326A8 /* AppTheme.swift */; };
 		C539F8302A78F67D00DCA6BC /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539F82F2A78F67D00DCA6BC /* PurchaseManager.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C5048CF02A7C1CBD002130D7 /* PersonCreationStepInnverValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCreationStepInnverValues.swift; sourceTree = "<group>"; };
 		C51F87BF25AB7CFD00D326A8 /* PersonResultDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonResultDisplay.swift; sourceTree = "<group>"; };
 		C51F87E225AC882800D326A8 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		C539F82F2A78F67D00DCA6BC /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				C5BAAE6525A50E35004A91FA /* HomeScreen.swift */,
 				C53C3B7A25AA22DA00FFBE1E /* PersonCreationStep1.swift */,
 				C53C3B9025AA431E00FFBE1E /* PersonCreationStep2.swift */,
+				C5048CF02A7C1CBD002130D7 /* PersonCreationStepInnverValues.swift */,
 				C51F87BF25AB7CFD00D326A8 /* PersonResultDisplay.swift */,
 				C539F8392A7932CD00DCA6BC /* CloseableView.swift */,
 				C539F83B2A7935C800DCA6BC /* PurchaseInnerValues.swift */,
@@ -379,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C53C3B9125AA431E00FFBE1E /* PersonCreationStep2.swift in Sources */,
+				C5048CF12A7C1CBD002130D7 /* PersonCreationStepInnverValues.swift in Sources */,
 				C571A2C325A519E40037136D /* CamelMath.swift in Sources */,
 				C5BAAE6B25A515EA004A91FA /* PersonRow.swift in Sources */,
 				C539F83C2A7935C800DCA6BC /* PurchaseInnerValues.swift in Sources */,

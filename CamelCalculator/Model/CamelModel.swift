@@ -7,6 +7,7 @@
 
 var ageRange = 14.0...75.0
 var heightRange = 140.0...210.0
+var lungVolumeRange = 2.0...9.0
 
 enum Sex: String, CaseIterable, Codable, Identifiable {
     case male = "male"
@@ -80,6 +81,35 @@ enum Humor: String, Codable, CaseIterable, Identifiable {
     var id: String { self.rawValue }
 }
 
+enum Intelligence: String, Codable, CaseIterable, Identifiable {
+    case dumb
+    case mediocre
+    case quiteSmart
+    case Einstein
+    
+    var id: String { self.rawValue }
+}
+
+enum Loyalty: String, Codable, CaseIterable, Identifiable {
+    case LikeTheWind
+    case kindOfOk
+    case AlwaysOnMySide
+    
+    var id: String { self.rawValue }
+}
+
+enum BloodPressure: String, Codable, CaseIterable, Identifiable {
+    case bp110to80
+    case bp120to80
+    case bp130to80
+    case bp140to85
+    case bp160to100
+    
+    var id: String { self.rawValue }
+}
+
+
+
 // - [ ] Loyal
 // - [ ] Zuverlässigkeit
 // - [ ] Freundlichkeit
@@ -87,3 +117,5 @@ enum Humor: String, Codable, CaseIterable, Identifiable {
 // - [ ] Intelligenz
 // - [ ] Humor
 // - [ ] Schweigsam/ Quasselstrippe
+// - [ ] Blutdruck
+// - [ ] Lungenvolumen

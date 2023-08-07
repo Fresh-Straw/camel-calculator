@@ -41,7 +41,7 @@ class PurchaseManager: ObservableObject {
     @Published
     private(set) var productsLoaded = false
     
-    @PostPublished
+    @Published
     private(set) var purchasedProductIDs = Set<String>()
     
     private var updates: Task<Void, Never>? = nil

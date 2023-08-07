@@ -65,7 +65,7 @@ struct CamelCalculatorNavigatorView: View {
                 heading("Inner Values") {
                     model.appState = .OuterValues
                 }
-                Text("abc")
+                PersonCreationStepInnverValues()
                     .transition(model.transition)
             case .ComputeResult:
                 heading("Result")

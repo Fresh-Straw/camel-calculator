@@ -17,6 +17,12 @@ struct CamelValue {
     var extra: Change
     var figure: Change
     
+    var humor: Change
+    var intelligence: Change
+    var loyalty: Change
+    var bloodPressure: Change
+    var lungVolume: Change
+    
     var sum: Change
     
     init(person: Person) {
@@ -43,11 +49,19 @@ struct CamelValue {
             case .male: extra = getValueFor(beard: person.beard)
         }
         
-        sum = Change(changes: [age, height, hairLength, hairColor, eyeColor, extra, figure])
+        humor = getValueFor(humor: person.humor)
+        intelligence = getValueFor(intelligence: person.intelligence)
+        loyalty = getValueFor(loyalty: person.loyalty)
+        bloodPressure = getValueFor(bloodPressure: person.bloodPressure)
+        lungVolume = getValueFor(lungVolume: person.lungVolume)
+        
+        sum = Change(changes: [age, height, hairLength, hairColor, eyeColor, extra, figure, humor, intelligence, loyalty, bloodPressure, lungVolume])
     }
 }
 
 struct Change {
+    static let Nothing = Change(summand: 0, factor: 1)
+    
     var summand: Double
     var factor: Double
     
@@ -159,6 +173,74 @@ private func getValueFor(beard: Beard?) -> Change {
     default: return Change(summand: 0, factor: 1)
     }
 }
+
+private func getValueFor(humor: Humor?) -> Change {
+    guard let humor else { return Change.Nothing }
+    
+    switch humor {
+    case .notAtAll:
+        return Change(summand: 0, factor: 1)
+    case .meeeh:
+        return Change(summand: 0, factor: 1)
+    case .okish:
+        return Change(summand: 0, factor: 1)
+    case .veryFunny:
+        return Change(summand: 0, factor: 1)
+    }
+}
+
+private func getValueFor(intelligence: Intelligence?) -> Change {
+    guard let intelligence else { return Change.Nothing }
+    
+    switch intelligence {
+    case .Einstein:
+        return Change(summand: 0, factor: 1)
+    case .quiteSmart:
+        return Change(summand: 0, factor: 1)
+    case .mediocre:
+        return Change(summand: 0, factor: 1)
+    case .dumb:
+        return Change(summand: 0, factor: 1)
+    }
+}
+
+private func getValueFor(loyalty: Loyalty?) -> Change {
+    guard let loyalty else { return Change.Nothing }
+    
+    switch loyalty {
+    case .AlwaysOnMySide:
+        return Change(summand: 0, factor: 1)
+    case .kindOfOk:
+        return Change(summand: 0, factor: 1)
+    case .LikeTheWind:
+        return Change(summand: 0, factor: 1)
+    }
+}
+
+private func getValueFor(bloodPressure: BloodPressure?) -> Change {
+    guard let bloodPressure else { return Change.Nothing }
+    
+    switch bloodPressure {
+    case .bp110to80:
+        return Change(summand: 0, factor: 1)
+    case .bp120to80:
+        return Change(summand: 0, factor: 1)
+    case .bp130to80:
+        return Change(summand: 0, factor: 1)
+    case .bp140to85:
+        return Change(summand: 0, factor: 1)
+    case .bp160to100:
+        return Change(summand: 0, factor: 1)
+    }
+}
+
+private func getValueFor(lungVolume: Double?) -> Change {
+    guard let lungVolume else { return Change.Nothing }
+    
+    return Change.Nothing
+}
+
+
 
 // MARK: Age capping
 private var femaleAgeCapping: [Double] = [0,10,40,53,76,110,90,85,70,45,34,26,23,19,16,14,12,10,8,6,5,4,3,2,1]

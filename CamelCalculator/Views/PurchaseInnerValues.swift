@@ -48,7 +48,7 @@ struct PurchaseProductView: View {
                 GridRow {
                     Image(systemName: "checkmark.circle")
                         .foregroundColor(.green)
-                    Text("Even more evaluation options")
+                    Text("Even more evaluation options (like 'kindness' or 'lung volume')")
                 }
                 GridRow {
                     Image(systemName: "checkmark.circle")

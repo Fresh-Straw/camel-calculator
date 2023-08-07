@@ -10,10 +10,10 @@ import SwiftUI
 import Combine
 
 final class CamelAppModel : ObservableObject {
-    static var example1 = Person(id: CamelAppModel.getNextId(), name: "Tarzan", sex: .male, age: 23, height: 175, hairColor: .black, hairLength: .shoulder, eyeColor: .green, boobSize: BoobSize.c, beard: nil, figure: .normal)
-    private static var example2 = Person(id: CamelAppModel.getNextId(), name: "Jane", sex: .female, age: 23, height: 169, hairColor: .blond, hairLength: .long, eyeColor: .brown, boobSize: BoobSize.c, beard: nil, figure: .thin)
-    private static var example3 = Person(id: CamelAppModel.getNextId(), name: "Claire", sex: .female, age: 30, height: 172, hairColor: .blond, hairLength: .long, eyeColor: .blue, boobSize: BoobSize.c, beard: nil, figure: .normal)
-    private static var example4 = Person(id: CamelAppModel.getNextId(), name: "Phil", sex: .male, age: 34, height: 184, hairColor: .blond, hairLength: .short, eyeColor: .blue, boobSize: nil, beard: .threeDay, figure: .thin)
+    static var example1 = Person(id: CamelAppModel.getNextId(), name: "Tarzan", sex: .male, age: 23, height: 175, hairColor: .black, hairLength: .shoulder, eyeColor: .green, boobSize: BoobSize.c, beard: nil, figure: .normal, humor: .meeeh, intellgence: .dumb, loyalty: .AlwaysOnMySide, bloodPressure: .bp140to85, lungVolume: 2)
+    private static var example2 = Person(id: CamelAppModel.getNextId(), name: "Jane", sex: .female, age: 23, height: 169, hairColor: .blond, hairLength: .long, eyeColor: .brown, boobSize: BoobSize.c, beard: nil, figure: .thin, humor: .veryFunny, intellgence: .Einstein, loyalty: .kindOfOk, bloodPressure: .bp130to80, lungVolume: 4)
+    private static var example3 = Person(id: CamelAppModel.getNextId(), name: "Claire", sex: .female, age: 30, height: 172, hairColor: .blond, hairLength: .long, eyeColor: .blue, boobSize: BoobSize.c, beard: nil, figure: .normal, humor: .okish, intellgence: .mediocre, loyalty: .LikeTheWind, bloodPressure: .bp140to85, lungVolume: 8)
+    private static var example4 = Person(id: CamelAppModel.getNextId(), name: "Phil", sex: .male, age: 34, height: 184, hairColor: .blond, hairLength: .short, eyeColor: .blue, boobSize: nil, beard: .threeDay, figure: .thin, humor: .notAtAll, intellgence: .quiteSmart, loyalty: .LikeTheWind, bloodPressure: .bp110to80, lungVolume: 6)
     
     private static var currentId: Int = 0
     private static let currentIdLock = NSLock()
@@ -85,14 +85,14 @@ enum CamelState: Int, Equatable {
 }
 
 struct Person: Identifiable, Codable, Equatable {
-    static var `default` = Person(name: "Jane", sex: .female, age: 23, height: 169, hairColor: .blond, hairLength: .long, eyeColor: .brown, boobSize: BoobSize.c, beard: nil, figure: .normal)
-    static var empty = Person(name: "", sex: nil, age: 20, height: 160, hairColor: nil, hairLength: nil, eyeColor: nil, boobSize: nil, beard: nil, figure: nil)
+    static var `default` = Person(name: "Jane", sex: .female, age: 23, height: 169, hairColor: .blond, hairLength: .long, eyeColor: .brown, boobSize: BoobSize.c, beard: nil, figure: .normal, humor: .veryFunny, intellgence: .quiteSmart, loyalty: .AlwaysOnMySide, bloodPressure: .bp110to80, lungVolume: 3.4)
+    static var empty = Person(name: "", sex: nil, age: 20, height: 160, hairColor: nil, hairLength: nil, eyeColor: nil, boobSize: nil, beard: nil, figure: nil, humor: nil, intellgence: nil, loyalty: nil, bloodPressure: nil, lungVolume: 3)
     
     fileprivate init(id: Int, person: Person) {
-        self.init(id: id, name: person.name, sex: person.sex, age: person.age, height: person.height, hairColor: person.hairColor, hairLength: person.hairLength, eyeColor: person.eyeColor, boobSize: person.boobSize, beard: person.beard, figure: person.figure)
+        self.init(id: id, name: person.name, sex: person.sex, age: person.age, height: person.height, hairColor: person.hairColor, hairLength: person.hairLength, eyeColor: person.eyeColor, boobSize: person.boobSize, beard: person.beard, figure: person.figure, humor: person.humor, intellgence: person.intelligence, loyalty: person.loyalty, bloodPressure: person.bloodPressure, lungVolume: person.lungVolume)
     }
     
-    fileprivate init(id: Int = CamelAppModel.getNextId(), name: String, sex: Sex?, age: Double, height: Double, hairColor: HairColor?, hairLength: HairLength?, eyeColor: EyeColor?, boobSize: BoobSize?, beard: Beard?, figure: Figure?) {
+    fileprivate init(id: Int = CamelAppModel.getNextId(), name: String, sex: Sex?, age: Double, height: Double, hairColor: HairColor?, hairLength: HairLength?, eyeColor: EyeColor?, boobSize: BoobSize?, beard: Beard?, figure: Figure?, humor: Humor?, intellgence: Intelligence?, loyalty: Loyalty?, bloodPressure: BloodPressure?, lungVolume: Double?) {
         self.id = id
         self.name = name.trimName()
         self.sex = sex
@@ -104,6 +104,12 @@ struct Person: Identifiable, Codable, Equatable {
         self.boobSize = boobSize
         self.beard = beard
         self.figure = figure
+        
+        self.humor = humor
+        self.intelligence = intellgence
+        self.loyalty = loyalty
+        self.bloodPressure = bloodPressure
+        self.lungVolume = lungVolume
     }
     
     var id: Int
@@ -118,6 +124,12 @@ struct Person: Identifiable, Codable, Equatable {
     var boobSize: BoobSize?
     var beard: Beard?
     var figure: Figure?
+    
+    var humor: Humor?
+    var intelligence: Intelligence?
+    var loyalty: Loyalty?
+    var bloodPressure: BloodPressure?
+    var lungVolume: Double?
     
     var camelValue: CamelValue {
         return CamelValue(person: self)

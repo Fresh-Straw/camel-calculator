@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PersonCreationStep2: View {
     @EnvironmentObject private var purchaseManager: PurchaseManager
-
     @EnvironmentObject private var model: CamelAppModel
     
     private var person: Person {
@@ -95,7 +94,11 @@ struct PersonCreationStep2: View {
                 .labelStyle(.titleOnly)
             }
         }
-        .sheet(isPresented: $showPurchaseSheet) {
+        .sheet(isPresented: $showPurchaseSheet, onDismiss: {
+            if purchaseManager.hasUnlocked(.InnerValues) {
+                model.appState = .InnerValues
+            }
+        }) {
             CloseableView(imageName: "AppBackground") {
                 PurchaseProductView(purchase: .InnerValues)
             }
