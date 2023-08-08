@@ -73,7 +73,7 @@ struct PersonCreationStep2: View {
                     .camelButton(transparent: true)
                     
                     Button(action: {
-                        if purchaseManager.hasUnlocked(.InnerValues) {
+                        if unlockedInnerValues {
                             model.appState = .InnerValues
                         } else {
                             showPurchaseSheet = true

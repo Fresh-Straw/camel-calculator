@@ -1,0 +1,46 @@
+/* No comment provided by engineer. */
+"Even more evaluation options (like 'kindness' or 'lung volume')" = "Even more evaluation options (like ‚humor‘ or ‚lung volume‘ )";
+
+
+
+"%@ liters" = "%@ liters";
+
+"Intro" = "Intro";
+"What's the name?" = "What's the name?";
+"male" = "male";
+"female" = "female";
+"Next" = "Next";
+"And what is his hair color?" = "And what is his hair color?";
+"How does he look?" = "How does he look?";
+"Calculate result" = "Calculate result";
+"Inner Values" = "Inner values";
+"And what is her hair color?" = "And what is her hair color?";
+"How does she look?" = "How does she look?";
+"thin" = "thin";
+"normal" = "normal";
+"chubby" = "chubby";
+"fat" = "fat";
+"And how intelligent is he?" = "And how intelligent is he?";
+"And how intelligent is she?" = "And how intelligent is she?";
+"How high is his blood pressure?" = "How high is his blood pressure?";
+"How high is her blood pressure?" = "How high is her blood pressure?";
+
+"verFunny" = "Reeaally funny";
+"okish" = "OKish";
+"meeeh" = "'Meeeh''";
+"notAtAll" = "Nope, not at all";
+
+"dumb" = "Dumb!";
+"mediocre" = "Not the brightest candle on the cake";
+"quiteSmart" = "Quite smart";
+"Einstein" = "Einstein!";
+
+"LikeTheWind" = "Flag in the wind";
+"kindOfOk" = "Quite passable";
+"AlwaysOnMySide" = "Sticks to me like dirt.";
+
+"bp110to80" = "110 to 70";
+"bp120to80" = "120 to 75";
+"bp130to80" = "130 to 80";
+"bp140to85" = "140 to 85";
+"bp160to100" = "160 to 100";

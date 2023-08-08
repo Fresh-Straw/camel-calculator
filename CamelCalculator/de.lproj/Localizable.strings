@@ -1,17 +1,17 @@
 /* No comment provided by engineer. */
 "-" = "-";
 
-"Please enter the name of your friend." = "Bitte gib den Namen Deines Freundes an.";
+/* No comment provided by engineer. */
+"%@" = "%@";
 
 /* No comment provided by engineer. */
-"And what is his hair color?" = "Und welche Haarfarbe hat er?";
-"And what is her hair color?" = "Und welche Haarfarbe hat sie?";
+"abc" = "abc";
 
 /* No comment provided by engineer. */
 "And what is your friend's sex?" = "Ist dein Freund männlich oder weiblich?";
 
 /* No comment provided by engineer. */
-"Consists of: %.02f = %.0f * %.02f" = "Besteht aus: %1$.02f = %2$.0f * %3$.02f";
+"Cancel" = "Abbrechen";
 
 /* No comment provided by engineer. */
 "Delete" = "Löschen";
@@ -20,13 +20,34 @@
 "Delete %@?" = "%@ löschen?";
 
 /* No comment provided by engineer. */
+"Description" = "Beschreibung";
+
+/* No comment provided by engineer. */
+"Display Name" = "Anzeigename";
+
+/* No comment provided by engineer. */
+"Even more evaluation options (like 'kindness' or 'lung volume')" = "Noch mehr Bewertungsmöglichkeiten (wie ‚Humor‘ oder ‚Lungenvolumen‘)";
+
+/* No comment provided by engineer. */
+"Higher scores" = "Höhere Bewertungen";
+
+/* No comment provided by engineer. */
 "How big are her boobs?" = "Wie groß sind ihre Brüste?";
+
+/* No comment provided by engineer. */
+"How big is the lung volume of %@?" = "Wie groß ist das Lungenvolumen von %@?";
+
+/* No comment provided by engineer. */
+"How funny is %@?" = "Wie witzig ist %@?";
 
 /* No comment provided by engineer. */
 "How high is your friend?" = "Wie groß ist dein Freund?";
 
 /* No comment provided by engineer. */
 "How long is %@'s hair?" = "Wie lang sind die Haare von %@?";
+
+/* No comment provided by engineer. */
+"How loyal is %@?" = "Wie loyal ist %@?";
 
 /* No comment provided by engineer. */
 "How many camels are your friends worth?" = "Wie viele Kamele sind deine Freunde wert?";
@@ -38,16 +59,16 @@
 "is worth:" = "wert ist:";
 
 /* No comment provided by engineer. */
-"Name" = "Name";
+"Payment will be charged to your iTunes account at confirmation of purchase." = "Die Zahlung wird bei der Kaufbestätigung von Ihrem iTunes-Konto abgebucht.";
 
 /* No comment provided by engineer. */
 "Please consider this app as a joke." = "Bitte betrachte diese App als Witz.";
 
 /* No comment provided by engineer. */
-"Previous calculations" = "Alte Berechnungen";
+"Please enter the name of your friend." = "Bitte gib den Namen Deines Freundes an.";
 
 /* No comment provided by engineer. */
-"Result: %.0f" = "Ergebnis: %.0f";
+"Previous calculations" = "Alte Berechnungen";
 
 /* No comment provided by engineer. */
 "Tell us the name of your friend, please:" = "Wie heißt dein Freund?";
@@ -62,37 +83,53 @@
 "What kind of beard does he have?" = "Was für einen Bart hat er?";
 
 /* No comment provided by engineer. */
-"What's the name?" = "Wie ist der Name?";
-
-/* No comment provided by engineer. */
 "Which eye color does %@ have?" = "Welche Augenfarbe hat %@?";
 
-"fat" = "fett";
+"Appearance" = "Aussehen";
+"Result" = "Ergebnis";
 
-"chubby" = "moppelig";
 
-"normal" = "normal";
-
-"thin" = "dünn";
-
-"male" = "männlich";
-
-"female" = "weiblich";
-
-"Camel Calculator" = "Kamelrechner";
+"%@ liters" = "%@ Liter";
 
 "Calculate Camels" = "Kamele berechnen";
-
-"About your friend" = "Über deinen Freund";
-
+"Camel Calculator" = "Kamelrechner";
+"Intro" = "Einstieg";
+"What's the name?" = "Wie ist der Name?";
+"male" = "männlich";
+"female" = "weiblich";
 "Next" = "Weiter";
-
-"How does she look?" = "Wie sieht sie aus?";
-
+"And what is his hair color?" = "Und welche Haarfarbe hat er?";
 "How does he look?" = "Wie sieht er aus?";
-
 "Calculate result" = "Ergebnis berechnen";
+"Inner Values" = "Innere Werte";
+"And what is her hair color?" = "Und welche Haarfarbe hat sie?";
+"How does she look?" = "Wie sieht sie aus?";
+"thin" = "dünn";
+"normal" = "normal";
+"chubby" = "rundlich";
+"fat" = "fett";
+"And how intelligent is he?" = "Und wie intelligent ist er?";
+"And how intelligent is she?" = "Und wie intelligent ist sie?";
+"How high is his blood pressure?" = "Wie hoch ist sein Blutdruck?";
+"How high is her blood pressure?" = "Wie hoch ist ihr Blutdruck?";
 
-"Wow, next one" = "Cool, nächster";
+"verFunny" = "Super lustig";
+"okish" = "Na, ganz OK";
+"meeeh" = "puh, joa...";
+"notAtAll" = "Nope, kein Stück";
 
-"Result" = "Ergebnis";
+"dumb" = "Dumm!";
+"mediocre" = "Nicht die hellste Kerze auf der Torte";
+"quiteSmart" = "Schon irgendwie kluk";
+"Einstein" = "Einstein!";
+
+"LikeTheWind" = "Fähnchen im Wind";
+"kindOfOk" = "Ganz passabel";
+"AlwaysOnMySide" = "Hält zu mir wir Dreck.";
+
+"bp110to80" = "110 zu 70";
+"bp120to80" = "120 zu 75";
+"bp130to80" = "130 zu 80";
+"bp140to85" = "140 zu 85";
+"bp160to100" = "160 zu 100";
+

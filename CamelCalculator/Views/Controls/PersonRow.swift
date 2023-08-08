@@ -16,7 +16,7 @@ struct PersonRow: View {
                 .font(.title2)
             Spacer()
             VStack(alignment: .trailing) {
-                Text(person.sex?.rawValue ?? "-")
+                Text(LocalizedStringKey(person.sex?.rawValue ?? "-"))
                     .font(.subheadline)
                 Text(String(person.camelValue.sum.result))
                     .font(.headline)

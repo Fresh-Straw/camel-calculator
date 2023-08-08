@@ -47,7 +47,7 @@ struct PersonCreationStepInnverValues: View {
                 VStack(alignment: .leading) {
                     Text("How big is the lung volume of \(person.name.trimName())?")
                     VStack(alignment: .center) {
-                        Text(String(format: "%.1f liters", person.lungVolume ?? 2))
+                        Text("\(String(format: "%.1f", person.lungVolume ?? 2)) liters")
                             .font(.headline)
                         Slider(value: .init(get: { model.currentPerson.lungVolume ?? lungVolumeRange.lowerBound }, set: { model.currentPerson.lungVolume = $0 }), in: lungVolumeRange, step: 0.1)
                     }

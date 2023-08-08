@@ -57,6 +57,8 @@
 
 /* Begin PBXFileReference section */
 		C5048CF02A7C1CBD002130D7 /* PersonCreationStepInnverValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCreationStepInnverValues.swift; sourceTree = "<group>"; };
+		C51D04902A8190CD0017DE34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C51D04912A8190CD0017DE34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C51F87BF25AB7CFD00D326A8 /* PersonResultDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonResultDisplay.swift; sourceTree = "<group>"; };
 		C51F87E225AC882800D326A8 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		C539F82F2A78F67D00DCA6BC /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 			children = (
 				C542C13025B431BE00015BD9 /* de */,
 				C576723B25D413BD00BB1528 /* en-GB */,
+				C51D04902A8190CD0017DE34 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 			children = (
 				C542C13325B431BE00015BD9 /* de */,
 				C576723A25D413BD00BB1528 /* en-GB */,
+				C51D04912A8190CD0017DE34 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
