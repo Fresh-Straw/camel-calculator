@@ -90,6 +90,7 @@
 
 
 "%@ liters" = "%@ Liter";
+"Wow, next one" = "Wow, nächster";
 
 "Calculate Camels" = "Kamele berechnen";
 "Camel Calculator" = "Kamelrechner";
@@ -114,18 +115,18 @@
 "How high is her blood pressure?" = "Wie hoch ist ihr Blutdruck?";
 
 "verFunny" = "Super lustig";
-"okish" = "Na, ganz OK";
-"meeeh" = "puh, joa...";
-"notAtAll" = "Nope, kein Stück";
+"okish" = "Schon recht lustig";
+"meeeh" = "Ist OK";
+"notAtAll" = "Gar nicht";
 
-"dumb" = "Dumm!";
-"mediocre" = "Nicht die hellste Kerze auf der Torte";
-"quiteSmart" = "Schon irgendwie kluk";
-"Einstein" = "Einstein!";
+"dumb" = "Nicht die hellste Kerze auf der Torte";
+"mediocre" = "Mittelmäßig";
+"quiteSmart" = "Smart";
+"Einstein" = "Quasi Einstein!";
 
-"LikeTheWind" = "Fähnchen im Wind";
+"LikeTheWind" = "Wie ein Fähnchen im Wind";
 "kindOfOk" = "Ganz passabel";
-"AlwaysOnMySide" = "Hält zu mir wir Dreck.";
+"AlwaysOnMySide" = "Immer an meiner Seite";
 
 "bp110to80" = "110 zu 70";
 "bp120to80" = "120 zu 75";
